@@ -1,0 +1,49 @@
+<div class="container">
+
+    <div ng-if="model.error"
+         class="alert alert-danger">
+        {{model.error}}
+    </div>
+
+
+    <h1 align="center">
+        Login TA Portal
+    </h1>
+
+    <form novalidate name="model.myform">
+        <input ng-model="username"
+               placeholder="username"
+               name="username"
+               type="text"
+               class="form-control"
+               required/>
+        <p></p>
+        <span class="alert-class"
+              ng-show="model.myform.username.$invalid">
+            {{model.alert}}
+        </span>
+
+        <input ng-model="password"
+               placeholder="password"
+               name="password"
+               type="password"
+               class="form-control"
+               required/>
+
+        <span class="alert-class"
+              ng-show="model.myform.password.$invalid">
+            {{model.alert}}
+        </span>
+        <p></p>
+        <button ng-click="model.login(username,password)"
+                class="btn btn-primary btn-block" type="submit">Login</button>
+    </form>
+
+    <p></p>
+    <a class="btn btn-success btn-block"
+       href="#/sregister">Student Register</a>
+    <a class="btn btn-success btn-block"
+       href="#/fregister">Faculty Register</a>
+
+
+</div>

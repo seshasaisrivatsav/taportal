@@ -1,69 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="TaPortal">
 
 <head>
+
+    <meta charset="UTF-8" >
+
+    <!-- Meta tags for making website for mobile-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Making it Safari Friendly-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--Disabling user pinch and default to 25% size-->
+    <meta name="viewport" content="initial-scale=1.25, user-scalable=no">
+
     <title>TA Portal</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- BootStrap style sheet-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <!--IMP-->
+    <!-- Load jQuery before Angular for DOM manipulation-->
+
+
+    <!-- STYLE sheet comes after all the libraries are loaded. Document style-->
+    <link href="css/style.css" rel="stylesheet"/>
+
+
+
+
+    <!--Angular Modules-->
+    <!--Angular Module. Deals with centralized routing mechanism-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <!--Routing Module-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+
+    <!--App.js-->
+    <script src="app.js"></script>
+
+    <!--config.js. What do we wanna show when we click things. configure-->
+    <!-- this is the centralized single maintenance point-->
+    <script src="config.js"></script>
+
+
+    <!--Controllers-->
+    <!--User-->
+    <script src="views/user/login.controller.client.js"></script>
+    <script src="./services/user.service.client.js"></script>
+
+
 </head>
 
 <body>
-    <!-- Title Heading -->
-    <div class="container-fluid">
-        <h1  style="text-align:center;"> TA Portal test </h1>
-    </div>
-
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-
-            <!-- Logo -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="#" class="navbar-brand">TA Portal Home Page</a>
-            </div>
-
-            <!-- Menu Items -->
-            <div class="collapse navbar-collapse" id="mainNavBar">
-                <ul class="nav navbar-nav">
-
-                    <li><a href="test/index.html">Test Mongo DB</a></li>
-
-
-                    <!-- drop down menu -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Useful Links <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="https://openshift.redhat.com/app/console/applications">OpenShift Console</a></li>
-
-                            <li><a href="https://github.com/">GitHub</a></li>
-                            <li><a href="http://myneu.neu.edu/cp/home/displaylogin">MyNeu</a></li>
-                            <li><a href="https://studentemployment.neu.edu/">Student Employement</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
-            </div>
-
-
-
-        </div>
-    </nav>
-
-    <div class="container">
-
-            <p1>TA Portal </p1>
-            This is just to test the functionality of openshift. The application is live.
-            TA Portal is the best website
-
-    </div>
-
+    <div ng-view></div>
 </body>
+
 </html>

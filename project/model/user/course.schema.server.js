@@ -1,6 +1,21 @@
 /**
- * Created by seshasai on 11/3/2016.
+ * Created by seshasai on 11/5/2016.
  */
 
 
-// Course schema has the list of courses
+module.exports = function () {
+    var mongoose = require("mongoose");
+
+    var CourseSchema = mongoose.Schema({
+
+        course: [{
+            course: String
+        }]
+
+
+
+
+
+    }, {collections: 'taportal.course'});
+    return CourseSchema;
+};

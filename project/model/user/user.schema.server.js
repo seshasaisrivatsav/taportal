@@ -8,27 +8,30 @@ module.exports = function () {
     var mongoose = require("mongoose");
 
     var UserSchema = mongoose.Schema ({
-        username: String,
-        password: String,
-        firstName: String,
-        lastName: String,
-        email: String,
-        usertype: String, // type: student, faculty, admin
-        image: String,
-        aboutMyself: String,
 
-        // Students
+        //Common fields for all the users
+        username: String, // Username
+        password: String, //Password
+        firstName: String, //First Name
+        lastName: String, // LastName
+        email: String, // Email of the student
+        usertype: String, // type: student, faculty, admin
+        image: String, // Image of the user
+        aboutMyself: String, // Few lines about the user
+
+        // Fields specific for Students
         resume: {
-            url: String,
+            url: String, //Place where the Resume is stored
             resume : file
         } ,
-
+        // Relevant documents that are attached by a student
         documents: [
             {
                 name: String,
                 file: file
             }
         ],
+        //NUID of the student 
         nuid : Number,
         phone : String,
         gpa : Number,
@@ -45,6 +48,7 @@ module.exports = function () {
 
         rating :[
             {
+                _user : {type : mongoose.Schema.ObjectId, ref: "User"}, //in model
                 ratedBy: String,
                 rating: Number
             }
@@ -52,12 +56,13 @@ module.exports = function () {
 
         feedBack : [
             {
+                _user : {type : mongoose.Schema.ObjectId, ref: "User"}, //in model
                 givenBy: String,
                 feedback: String
             }
         ],
 
-        //Faculty
+        //Fields related to the Faculty
         myCourses:[
             {
                 courseName: String //Consists of Course ID + Course Name
