@@ -15,7 +15,7 @@ module.exports = function () {
         firstName: String, //First Name
         lastName: String, // LastName
         email: String, // Email of the student
-        usertype: String, // type: student, faculty, admin
+        usertype: {type : String,  enum: ['student', 'faculty', 'admin']}, // type: student, faculty, admin
         image: String, // Image of the user
         aboutMyself: String, // Few lines about the user
 

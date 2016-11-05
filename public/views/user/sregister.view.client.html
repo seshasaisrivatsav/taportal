@@ -1,0 +1,104 @@
+
+<!-- Header -->
+
+<!-- End of Header-->
+
+<!--Body-->
+<div class="container-fluid">
+    <div class="container-fluid">
+
+        <p></p>
+
+        <h1>Register Page for TA Portal</h1>
+
+
+        <div ng-if="model.error"
+             class="alert alert-danger">
+            {{model.error}}
+        </div>
+
+
+        <form novalidate name="model.myform">
+            <input ng-model="username"
+                   name="username"
+                   placeholder="username"
+                   type="text"
+                   class="form-control"
+                   required/>
+
+       <span class="alert-class"
+             ng-show="model.myform.username.$invalid">{{model.alert}}</span>
+
+            <p></p>
+
+            <input ng-model="firstName"
+                   placeholder="firstName"
+                   name="firstName"
+                   type="firstName"
+                   class="form-control"
+                   required/>
+
+            <p></p>
+
+            <input ng-model="lastName"
+                   placeholder="lastName"
+                   name="lastName"
+                   type="lastName"
+                   class="form-control"
+                   required/>
+
+            <p></p>
+
+            <input ng-model="password"
+                   placeholder="password"
+                   name="password"
+                   type="password"
+                   class="form-control"
+                   required/>
+    <span class="alert-class"
+          ng-show="model.myform.password.$invalid">{{model.alert}}</span>
+            <p></p>
+
+
+            <input ng-model="vpassword"
+                   name="vpassword"
+                   placeholder="verify password"
+                   type="password"
+                   class="form-control"
+                   required/>
+    <span class="alert-class"
+          ng-show="model.myform.vpassword.$invalid">{{model.pwmatch}}</span>
+
+            <p></p>
+
+            <button class="btn btn-primary btn-block"
+                    ng-click="model.register(username, password, firstName, lastName)"
+                    type="submit">Register</button>
+
+        </form>
+
+        <p> </p>
+        <a class="btn btn-danger btn-block"
+           href="#/login">Cancel</a>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a href="#/login">
+                <span>Login</span>
+            </a>
+        </p>
+        <p class="navbar-text pull-left">
+
+            <span>Already registered? Please </span>
+            </a>
+        </p>
+
+    </div>
+</nav>
+
+

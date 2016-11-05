@@ -45,10 +45,9 @@
                         var user = response.data;
 
                         if (user._id){
-                            $location.url("/user");
+                            $location.url("/sprofile");
                         } else {
                             vm.error = response.data;
-                            // $location.url("/login");
                         }
                     });
             }
