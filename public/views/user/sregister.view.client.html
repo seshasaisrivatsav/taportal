@@ -70,7 +70,15 @@
           ng-show="model.myform.vpassword.$invalid">{{model.pwmatch}}</span>
 
             <p></p>
+            
+            <input ng-model="email"
+                   placeholder="email"
+                   name="email"
+                   type="email"
+                   class="form-control"
+                   required/>
 
+            <p> </p>
             <button class="btn btn-primary btn-block"
                     ng-click="model.register(username, password, firstName, lastName)"
                     type="submit">Register</button>
@@ -78,6 +86,8 @@
         </form>
 
         <p> </p>
+
+
         <a class="btn btn-danger btn-block"
            href="#/login">Cancel</a>
 
