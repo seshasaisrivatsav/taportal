@@ -26,6 +26,10 @@
                 templateUrl: "views/user/sregister.view.client.html",
                 controller: "SRegisterController",
                 controllerAs: "model"
+                // ,
+                // resolve: {
+                //     freeView : freeView
+                // }
             })
 
             // Home page is the login page
@@ -65,5 +69,29 @@
 
             return deferred.promise;
         }
+
+        function freeView (UserService, $location, $q, $rootScope) {
+            var deferred = $q.defer();
+            UserService
+                .loggedIn()
+                .then(
+                    function (response) {
+                        var user = response.data;
+                        if(user == '0'){
+                            deferred.resolve();
+                        } else {
+                            $rootScope.currentUser = user;
+                            deferred.resolve();
+                        }
+                    },
+                    function (err) {
+                        $location.url("/login");
+                    }
+                );
+            return deferred.promise;
+        }
+
+
+
     }
 })();

@@ -11,8 +11,10 @@
 
         vm.register = register;
 
-        function register(username, password) {
-            var usertype="student";
+
+
+        function register(username, password, firstName, lastName, email, usertype) {
+            var usertype = "student";
             if(vm.myform.$valid == false){
                 vm.error = "Enter the username/password";
                 vm.alert = "* Enter the fields";
@@ -21,13 +23,11 @@
                 }
             }else {
                 UserService
-
-                    .register(username,password,usertype)
+                    .register(username,password, firstName, lastName, email, usertype)
                     .then(function (response) {
                             var user = response.data;
                             if(user){
-
-                                $location.url("/user");
+                                $location.url("/sprofile");
                             }
 
                         },
@@ -39,9 +39,5 @@
         }
 
     }
-
-
-
-
 
 })();

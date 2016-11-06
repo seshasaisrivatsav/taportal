@@ -28,14 +28,18 @@
         return api;
         /*functions are implemented below*/
 
-        function register(username, password, usertype) {
+        function register(username,password, firstName, lastName, email, usertype) {
 
 
             var user= {
                 username: username,
                 password : password,
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
                 usertype: usertype
             };
+         
             return $http.post("/api/register",user);
 
         }

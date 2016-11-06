@@ -1,7 +1,4 @@
 
-<!-- Header -->
-
-<!-- End of Header-->
 
 <!--Body-->
 <div class="container-fluid">
@@ -70,7 +67,7 @@
           ng-show="model.myform.vpassword.$invalid">{{model.pwmatch}}</span>
 
             <p></p>
-            
+
             <input ng-model="email"
                    placeholder="email"
                    name="email"
@@ -80,7 +77,7 @@
 
             <p> </p>
             <button class="btn btn-primary btn-block"
-                    ng-click="model.register(username, password, firstName, lastName)"
+                    ng-click="model.register(username, password, firstName, lastName, email)"
                     type="submit">Register</button>
 
         </form>

@@ -11,16 +11,16 @@ module.exports= function(app, models){
 
     var userModel = models.userModel;
 
-    app.get("/api/project/user", getUsers);
-    app.post("/api/project/user", createUser);
-    app.post("/api/project/register", register);
-    app.get("/api/project/loggedIn",loggedIn);
-    app.post("/api/project/logout", logout);
-    app.post('/api/project/login', passport.authenticate('TaPortal'), login);
-    app.get("/api/project/user/:userId", findUserById);
-    app.delete("/api/project/user/:userId", deleteUser);
-    app.put("/api/project/user/:userId", updateUser);
-    app.get('/api/project/findallusers', findallusers);
+    app.get("/api/user", getUsers);
+    app.post("/api/user", createUser);
+    app.post("/api/register", register);
+    app.get("/api/loggedIn",loggedIn);
+    app.post("/api/logout", logout);
+    app.post('/api/login', passport.authenticate('TaPortal'), login);
+    app.get("/api/user/:userId", findUserById);
+    app.delete("/api/user/:userId", deleteUser);
+    app.put("/api/user/:userId", updateUser);
+    app.get('/api/findallusers', findallusers);
 
 
     passport.use('TaPortal', new LocalStrategy(localStrategy));
@@ -58,6 +58,7 @@ module.exports= function(app, models){
 
 
     function register(req,res) {
+        console.log("here");
         var username = req.body.username;
         var password = req.body.password;
         userModel
@@ -67,6 +68,7 @@ module.exports= function(app, models){
                         res.status(400).send("Username is in use");
                         return;
                     }else{
+
                         req.body.password = bcrypt.hashSync(req.body.password);
                         return userModel
                             .createUser(req.body);

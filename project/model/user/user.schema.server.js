@@ -22,13 +22,13 @@ module.exports = function () {
         // Fields specific for Students
         resume: {
             url: String, //Place where the Resume is stored
-            resume : file
+            resume : String
         } ,
         // Relevant documents that are attached by a student
         documents: [
             {
                 name: String,
-                file: file
+                file: String
             }
         ],
         //NUID of the student 

@@ -3,10 +3,8 @@
 module.exports  = function () {
 
     var models = {
-        userModel : require("./user/user.model.server")(),
-        semesterModel : require("./user/semester.model.server")(),
-        positionModel : require("./user/position.model.server")(),
-        courseModel : require("./user/course.model.server")()
+        userModel : require("./user/user.model.server")()
+
 
     };
     return models;
