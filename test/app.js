@@ -5,7 +5,7 @@ module.exports = function(app)
     app.delete("/api/test/:id", deleteMessage);
 
     var connectionString = 'mongodb://127.0.0.1:27017/test';
-
+    ///jenkin Test
     if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
         connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
             process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
