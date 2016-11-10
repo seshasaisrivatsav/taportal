@@ -1,0 +1,76 @@
+
+
+
+<div class="container">
+    <h1>Student Profile Edit</h1>
+    <div ng-if="model.success"
+         class="alert alert-success">
+        {{model.success}}
+    </div>
+
+    <div ng-if="model.error"
+         class="alert alert-danger">
+        {{model.error}}
+    </div>
+
+    <form>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input ng-model="model.user.username"
+                   type="text"
+                   class="form-control"
+                   id="username" placeholder="walice">
+        </div>
+    </form>
+
+    <form>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input ng-model="model.user.email"
+                   type="email"
+                   class="form-control"
+                   id="email"
+                   placeholder="alice.wonderland@unicorn.com">
+        </div>
+    </form>
+
+    <form>
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input ng-model="model.user.firstName"
+                   type="text"
+                   class="form-control"
+                   id="first-name"
+                   placeholder="Alice">
+        </div>
+    </form>
+
+    <form>
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input ng-model="model.user.lastName"
+                   type="text"
+                   class="form-control"
+                   id="last-name"
+                   placeholder="Wonderland">
+        </div>
+    </form>
+
+    <a ng-click = "model.logout()"class="btn btn-danger btn-block">Logout</a>
+    <a class="btn btn-danger btn-block "
+       ng-click = "model.deleteUser()">un-register</a>
+
+</div>
+
+<!-- Footer -->
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a href="#/sprofile">
+                <span class="glyphicon glyphicon-user">  Profile</span>
+            </a>
+        </p>
+
+    </div>
+</nav>
