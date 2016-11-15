@@ -6,9 +6,9 @@ var session      = require('express-session');
 var passport = require('passport'); //core passport library initialized here
 var app = express();
 
-var connectionString = 'mongodb://127.0.0.1:27017/taportal';
+//var connectionString = 'mongodb://127.0.0.1:27017/taportal';
 
-//var connectionString = 'mongodb://admin:admin@ds149567.mlab.com:49567/taportal';
+var connectionString = 'mongodb://admin:admin@ds149567.mlab.com:49567/taportal';
 
 var mongoose = require("mongoose");
 mongoose.connect(connectionString);
@@ -36,8 +36,6 @@ var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
 var project = require("./project/app.js");
 project(app);
-
-
 
 app.listen(port, ipaddress);
 

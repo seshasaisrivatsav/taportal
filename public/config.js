@@ -12,10 +12,41 @@
         $routeProvider
 
 
+
+
         // Student Profile
             .when("/fprofile",{
                 templateUrl :"views/faculty/fprofile.view.client.html",
                 controller: "FProfileController",
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
+            })
+
+            .when("/aconsole",{
+                templateUrl: "views/admin/aconsole.view.client.html",
+                controller: "AConsoleController",
+                controllerAs: "model",
+                resolve:{
+                    loggedIn: checkLoggedIn
+                }
+            })
+
+            // Admin profile
+            .when("/aprofile",{
+                templateUrl :"views/admin/aprofile.view.client.html",
+                controller: "AProfileController",
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
+            })
+
+            // Student Edit Profile
+            .when("/aeditprofile",{
+                templateUrl :"views/admin/aprofileedit.view.client.html",
+                controller: "AEditProfileController",
                 controllerAs: "model",
                 resolve: {
                     loggedIn: checkLoggedIn

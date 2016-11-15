@@ -49,7 +49,7 @@
                         } else if(user.usertype=="faculty"){
                             $location.url("/fprofile");
                         } else if(user.usertype=="admin"){
-                            $location.url("/aprofile")
+                            $location.url("/aconsole")
                         }else{
                             vm.error = response.data;
                         }
