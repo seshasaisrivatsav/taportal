@@ -42,7 +42,7 @@ module.exports = function () {
                 $set: {firstName : user.firstName,
                     lastName : user.lastName,
                     email: user.email,
-                    admin : user.admin}}
+                    usertype : user.usertype}}
             );
     }
 

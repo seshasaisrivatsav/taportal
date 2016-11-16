@@ -43,6 +43,14 @@
                 }
             })
 
+            .when("/manageusers",{
+                templateUrl: "views/admin/manageusers.view.client.html",
+                controller: "ManageUsersController",
+                controllerAs: "model",
+                resolve:{
+                    loggedIn: checkLoggedIn
+                }
+            })
             // Student Edit Profile
             .when("/aeditprofile",{
                 templateUrl :"views/admin/aprofileedit.view.client.html",

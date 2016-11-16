@@ -21,8 +21,8 @@
             deleteUser: deleteUser,
             login: login,
             logout: logout,
-            findUserByUsername: findUserByUsername
-
+            findUserByUsername: findUserByUsername,
+            findAllUsers: findAllUsers
         };
 
         return api;
@@ -44,6 +44,10 @@
 
         }
 
+        function findAllUsers() {
+            var url = "/api/findallusers";
+            return $http.get(url);
+        }
 
         function loggedIn() {
             return $http.get("/api/loggedIn");

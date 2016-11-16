@@ -1,0 +1,302 @@
+<!--Body-->
+
+
+<div class="container">
+
+    <!--NavBar-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ><b>Manage Users</b></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Create User <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">Role Manager </a></li>
+                    <li><a href="#">Update/Delete User</a></li>
+
+                </ul>
+
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+
+
+
+
+
+
+
+
+
+    <!--End of NavBar-->
+
+
+
+    <!-- Active Users -->
+    <div class="container">
+        <h4><b>Active Users:</b> {{model.userCount}}</h4>
+    </div>
+
+
+    <!-- Create User -->
+    <div class="container ">
+
+        <div ng-if="model.createsuccess" class="alert alert-success">
+            {{model.createsuccess}}
+        </div>
+
+        <h4><b>Create User (Admin/Student/Faculty)</b></h4>
+
+        <div class="row">
+            <div class="col-md-3 col-sm-12 col-xs-12 paddedfromtop3">
+                <input type="text"
+                       class="form-control"
+                       placeholder="username"
+                       ng-model="model.username"/>
+            </div>
+
+            <div class="col-md-3  col-sm-12 col-xs-12 paddedfromtop3">
+                <input type="password"
+                       class="form-control"
+                       placeholder="password"
+                       ng-model="model.password"/>
+            </div>
+
+            <div class="col-md-3 col-sm-12 col-xs-12 paddedfromtop3">
+                <select type="string"
+                        class="form-control"
+                        placeholder="Admin/User"
+                        ng-model="model.usertype">
+
+                    <option value="admin">Admin</option>
+                    <option value="student">Student</option>
+                    <option value="faculty">Faculty</option>
+                </select>
+            </div>
+
+            <div class="col-md-3 col-sm-12 col-xs-12 paddedfromtop3">
+                <a ng-click="model.createUser(model.username, model.password, model.usertype)"
+                   class="btn btn-block btn-primary">
+                    Create
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <p></p>
+    <p></p>
+    <!-- Role Manager-->
+    <div class="container ">
+        <h4 ><b>Role Manager</b></h4>
+        <div ng-if="model.updatedmessage" class="alert alert-success">
+            {{model.updatedmessage}}
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <th>Update User</th>
+
+
+                <th>Username</th>
+                <th>Role (Student/Faculty/Admin)</th>
+
+
+
+                <tr ng-repeat="user in model.users">
+                    <td><a class="glyphicon glyphicon-ok makeblack"
+                           ng-click="model.updateUser(user._id, user)"></a>
+
+                        <!-- User Name -->
+                    <td>
+                        <a class="makeblack"
+                           href="#/user/profile/{{user.username}}">{{user.username}}</a>
+                    </td>
+
+                    <!-- Admin -->
+                    <td>
+                        <select type="string"
+                                class="form-control"
+                                placeholder="Admin/User"
+                                ng-model="user.usertype">
+
+                            <option value="admin">Admin</option>
+                            <option value="student">Student</option>
+                            <option value="faculty">Faculty</option>
+                        </select>
+                    </td>
+
+
+
+
+
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <p></p>
+    <p></p>
+    <!-- Update Delete USers -->
+    <div class="container ">
+        <h4 ><b>Update/Delete Users</b></h4>
+        <div ng-if="model.warning" class="alert alert-warning">
+            {{model.warning}}
+        </div>
+        <div ng-if="model.updatedmessage" class="alert alert-success">
+            {{model.updatedmessage}}
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <th>Update User</th>
+                <th>Delete User</th>
+
+                <th>Username</th>
+
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+
+
+                <tr ng-repeat="user in model.users">
+                    <td><a class="glyphicon glyphicon-ok makeblack"
+                           ng-click="model.updateUser(user._id, user)"></a>
+                    </td>
+                    <td><a class="glyphicon glyphicon-remove makeblack"
+                           ng-click="model.deleteUser(user._id)"></a>
+                    </td>
+                    <!-- User Name -->
+                    <td>
+                        <a class="makeblack"
+                           href="#/user/profile/{{user.username}}">{{user.username}}</a>
+                    </td>
+
+
+                    <!-- First Name -->
+                    <td><input type="text"
+                               ng-model="user.firstName"
+                               placeholder="First Name"/></td>
+
+                    <!-- Last Name -->
+                    <td><input type="text"
+                               ng-model="user.lastName"
+                               placeholder="Last Name"/></td>
+
+                    <!-- Email -->
+                    <td><input type="text"
+                               ng-model="user.email"
+                               placeholder="Email"/></td>
+
+
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="container pushdown">
+        <h4 ><b>Current Users</b></h4>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+
+                    <th>Username</th>
+                    <th>Type</th>
+                    <th>FirstName</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+
+                </tr>
+                </thead>
+
+                <!-- Table Body-->
+                <tbody ng-repeat="user in model.users">
+
+                <tr>
+                    <!--Username-->
+                    <td>
+                    <span class="glyphicon glyphicon-user ">
+                        <a class="makeblack"
+                           href="#/user/profile/{{user.username}}">
+                         {{user.username}}</a></span>
+                    </td>
+
+                    <td>
+                        <!--{{user.admin}}-->
+
+                        <a ng-if="user.admin=='true'"class="makeblack">
+                            Admin
+                        </a>
+
+                        <a ng-if="user.admin=='false'"class="makeblack">
+                            User
+                        </a>
+                    </td>
+
+                    <!--First Name -->
+                    <td> {{user.firstName}}</td>
+
+
+                    <!--Last Name -->
+                    <td> {{user.lastName}}</td>
+
+                    <!-- Email Name -->
+                    <td> {{user.email}}</td>
+
+
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a  ng-click="model.logout()">
+                <span>Logout</span>
+            </a>
+
+        </p>
+        <p class="navbar-text pull-left">
+
+            <a  href="#/adminconsole">
+                <span>Back to AdminConsole</span>
+            </a>
+        </p>
+
+    </div>
+</nav>
+
+
+
+
+
+
+
+
