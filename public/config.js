@@ -51,6 +51,15 @@
                     loggedIn: checkLoggedIn
                 }
             })
+
+            .when("/addcoursesandsemesters",{
+                templateUrl: "views/admin/managecoursesandsemesters.view.client.html",
+                controller: "ManageCoursesSemestersController",
+                controllerAs: "model",
+                resolve:{
+                    loggedIn: checkLoggedIn
+                }
+            })
             // Student Edit Profile
             .when("/aeditprofile",{
                 templateUrl :"views/admin/aprofileedit.view.client.html",

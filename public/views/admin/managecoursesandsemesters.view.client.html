@@ -1,0 +1,104 @@
+<h1>
+    Manage Semesters and Courses
+</h1>
+
+
+<!-- To create Courses and semesters -->
+
+<div class="row container">
+    <!-- Create Course-->
+    <div class="col-xs-12 col-sm-6 col-md-6">
+        <div ng-if="model.createsuccess" class="alert alert-success">
+            {{model.createsuccess}}
+        </div>
+
+        <h2> Create Courses</h2>
+        <hr>
+
+        <div class="col-md-8  col-sm-12 col-xs-12">
+            <input type="text"
+                   class="form-control"
+                   placeholder="Course Name (Eg: (CS 5010) PDP) "
+                   ng-model="model.coursename"/>
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12">
+            <a ng-click="model.createCourse(model.coursename)"
+               class="btn btn-block btn-primary">
+                Create
+            </a>
+        </div>
+
+    </div>
+
+    <!--Create Semester-->
+    <div class="col-sm-6 col-md-6">
+            <div ng-if="model.screatesuccess" class="alert alert-success">
+                {{model.screatesuccess}}
+            </div>
+            <h2> Create Semesters</h2>
+            <hr>
+            <div class="col-md-8  col-sm-12 col-xs-12">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Semester Name (Eg: Spring 2017) "
+                       ng-model="model.semestername"/>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <a ng-click="model.createSemester(model.semestername)"
+                   class="btn btn-block btn-primary">
+                    Create
+                </a>
+            </div>
+    </div>
+
+
+</div>
+
+<!-- To view the Courses and Semesters-->
+
+
+<div class="row container">
+    <div class="col-sm-6 col-md-6">
+        <h2>Courses</h2>
+        <h4>Total Courses : {{model.courseCount}}</h4>
+
+        <div ng-if="model.warning" class="alert alert-warning">
+            {{model.warning}}
+        </div>
+
+        <div ng-if="model.updatedmessage" class="alert alert-success">
+            {{model.updatedmessage}}
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <!--Row names of the table-->
+                <th>Update Course</th>
+                <th>Delete Course</th>
+                <th>CourseName</th>
+
+                <tr ng-repeat="course in model.courses">
+                    <td><a class="glyphicon glyphicon-ok makeblack"
+                           ng-click="model.updateCourse(course._id, course)"></a>
+                    </td>
+                    <td><a class="glyphicon glyphicon-remove makeblack"
+                           ng-click="model.deleteCourse(course._id)"></a>
+                    </td>
+                    <!-- Course Name -->
+                    <td><input type="text"
+                               ng-model="course.coursename"
+                               placeholder="Course Name"/></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="col-sm-6 col-md-6">
+        <h2>Semesters</h2>
+        <hr>
+
+
+    </div>
+
+</div>

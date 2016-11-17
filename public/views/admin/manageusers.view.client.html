@@ -1,5 +1,7 @@
 <!--Body-->
 
+<!--TO DO - Make this in tabbed format -->
+
 
 <div class="container">
 
@@ -60,21 +62,21 @@
         <h4><b>Create User (Admin/Student/Faculty)</b></h4>
 
         <div class="row">
-            <div class="col-md-3 col-sm-12 col-xs-12 paddedfromtop3">
+            <div class="col-md-3 col-sm-12 col-xs-12">
                 <input type="text"
                        class="form-control"
                        placeholder="username"
                        ng-model="model.username"/>
             </div>
 
-            <div class="col-md-3  col-sm-12 col-xs-12 paddedfromtop3">
+            <div class="col-md-3  col-sm-12 col-xs-12">
                 <input type="password"
                        class="form-control"
                        placeholder="password"
                        ng-model="model.password"/>
             </div>
 
-            <div class="col-md-3 col-sm-12 col-xs-12 paddedfromtop3">
+            <div class="col-md-3 col-sm-12 col-xs-12">
                 <select type="string"
                         class="form-control"
                         placeholder="Admin/User"
@@ -86,7 +88,7 @@
                 </select>
             </div>
 
-            <div class="col-md-3 col-sm-12 col-xs-12 paddedfromtop3">
+            <div class="col-md-3 col-sm-12 col-xs-12">
                 <a ng-click="model.createUser(model.username, model.password, model.usertype)"
                    class="btn btn-block btn-primary">
                     Create

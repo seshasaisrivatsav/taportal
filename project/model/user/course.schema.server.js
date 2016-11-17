@@ -8,9 +8,7 @@ module.exports = function () {
 
     var CourseSchema = mongoose.Schema({
 
-        course: [{
-            course: String
-        }]
+       coursename: String
 
 
 

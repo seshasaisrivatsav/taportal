@@ -11,7 +11,7 @@ module.exports = function () {
 
 
         semester: [{
-            semester: String
+            semestername: String
         }]
 
 
