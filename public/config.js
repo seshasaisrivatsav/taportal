@@ -33,6 +33,7 @@
                 }
             })
 
+                
             // Admin profile
             .when("/aprofile",{
                 templateUrl :"views/admin/aprofile.view.client.html",
@@ -60,6 +61,18 @@
                     loggedIn: checkLoggedIn
                 }
             })
+                
+            .when("/createandmanageapplications", {
+                templateUrl : "views/admin/createandmanageapplications.view.client.html",
+                controller: "ManageCreateApplicationsController",
+                controllerAs : "model",
+                resolve:{
+                    loggedIn: checkLoggedIn
+                }
+            })
+                
+                
+                
             // Student Edit Profile
             .when("/aeditprofile",{
                 templateUrl :"views/admin/aprofileedit.view.client.html",
