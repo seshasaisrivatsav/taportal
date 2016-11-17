@@ -16,7 +16,8 @@
         vm.createSemester = createSemester;
         vm.updateCourse = updateCourse;
         vm.deleteCourse = deleteCourse;
-
+        vm.deleteSemester = deleteSemester;
+        vm.updateSemester = updateSemester;
 
         function init() {
             findAllCourses();
@@ -105,14 +106,14 @@
                 .createSemester(semester)
                 .then(
                     function (response) {
-                        vm.createsuccess="semester created successfully";
+                        vm.screatesuccess="semester created successfully";
 
                         CoursesandSemestersService
-                            .findAllSemester()
+                            .findAllSemesters()
                             .then(
                                 function(response){
-                                    vm.semester = response.data;
-                                    vm.semesterCount = vm.semester.length;
+                                    vm.semesters = response.data;
+                                    vm.semesterCount = vm.semesters.length;
                                 }
                             )
                     }
@@ -137,12 +138,12 @@
         }
 
         function deleteSemester(semesterId) {
-
+           
             CoursesandSemestersService
                 .deleteSemester(semesterId)
                 .then(
                     function (response) {
-                        vm.warning = "Deleted Semester Successfully!";
+                        vm.swarning = "Deleted Semester Successfully!";
                         vm.createsuccess = null;
                         CoursesandSemestersService
                             .findAllSemesters()

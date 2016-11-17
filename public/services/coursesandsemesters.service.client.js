@@ -18,7 +18,7 @@
             updateCourse:updateCourse ,
             findAllSemesters: findAllSemesters,
             updateSemester: updateSemester,
-             deleteSemester: deleteSemester,
+            deleteSemester: deleteSemester,
             createSemester: createSemester
         };
 
@@ -71,6 +71,7 @@
             var url = "/api/semester/" + semesterId;
             return $http.delete(url);
         }
+
 
 
 

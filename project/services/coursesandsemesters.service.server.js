@@ -4,13 +4,20 @@
 module.exports= function(app, models){
 
     var courseModel = models.courseModel;
-
+    var semesterModel = models.semesterModel;
 
     app.post("/api/course", createCourse);
     app.get("/api/course/:courseId", findCourseById);
     app.delete("/api/course/:courseId", deleteCourse);
     app.put("/api/course/:courseId", updateCourse);
     app.get("/api/findallcourses", findallcourses);
+
+    
+    app.post("/api/semester", createSemester);
+    app.get("/api/semester/:semesterId", findSemesterById);
+    app.delete("/api/semester/:semesterId", deleteSemester);
+    app.put("/api/semester/:semesterId", updateSemester);
+    app.get("/api/findallsemesters", findallsemesters);
 
     function findCourseById(req, res) {
         var id = req.params.courseId;
@@ -118,7 +125,113 @@ module.exports= function(app, models){
     }
 
 
+/* Semester Functions */
 
+    function findSemesterById(req, res) {
+        var id = req.params.semesterId;
+
+        semesterModel
+            .findSemesterById(id)
+            .then(function (semester) {
+                res.send(semester);
+            }, function (error) {
+                res.statusCode(404).send(error);
+            });
+    }
+
+    function updateSemester(req, res) {
+        var id = req.params.semesterId;
+        var semester = req.body;
+
+
+        semesterModel
+            .updateSemester(id, semester)
+            .then(
+                function (stats) {
+                    res.sendStatus(200);
+                },
+                function (error) {
+                    res.sendStatus(404);
+                }
+            );
+    }
+
+
+    function deleteSemester(req,res) {
+
+        var semesterId = req.params.semesterId;
+
+        semesterModel
+            .deleteSemester(semesterId)
+
+            .then(function (stats) {
+                    res.send(200);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                });
+    }
+
+
+    function findallsemesters(req,res) {
+        semesterModel
+            .findAllSemesters()
+            .then(
+                function (semesters) {
+                    res.json(semesters);
+                },
+                function (error) {
+                    res.sendStatus(404);
+                }
+            );
+    }
+
+
+
+    function createSemester(req, res) {
+
+        var semester = req.body;
+        console.log(semester);
+        semesterModel
+            .findSemesterBySemestername(semester.semestername)
+            .then(
+                function (semester) {
+                    if (semester){
+                        res.send("semester already exists");
+                        return;
+                    }else{
+                        return semesterModel
+                            .createSemester(req.body)
+                    }
+                }, function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            )
+            .then(
+                function (semester) {
+                    if(semester){
+                        res.sendStatus(200);
+                    }
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
+    }
+
+
+    function findSemesterBySemestername(semestername, res) {
+        semesterModel
+            .findSemesterBySemestername(semestername)
+            .then(
+                function (semester) {
+                    res.json(semester);
+                },
+                function (error) {
+                    res.sendStatus(404).send(error);
+                }
+            );
+    }
 
 
 

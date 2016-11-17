@@ -99,8 +99,8 @@
         <hr>
         <h4>Total Semesters : {{model.semesterCount}}</h4>
 
-        <div ng-if="model.warning" class="alert alert-warning">
-            {{model.warning}}
+        <div ng-if="model.swarning" class="alert alert-warning">
+            {{model.swarning}}
         </div>
 
         <div ng-if="model.supdatedmessage" class="alert alert-success">
@@ -121,7 +121,7 @@
                     <td><a class="glyphicon glyphicon-remove makeblack"
                            ng-click="model.deleteSemester(semester._id)"></a>
                     </td>
-                    <!-- Course Name -->
+                    <!-- Semester Name -->
                     <td><input type="text"
                                ng-model="semester.semestername"
                                placeholder="Semester Name"/></td>
