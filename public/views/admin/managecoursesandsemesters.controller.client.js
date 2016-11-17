@@ -95,35 +95,76 @@
                 })
         }
 
-        function findAllSemesters(){
-
-        }
-        
-
-
         function createSemester(semestername){
 
             var semester = {
-                coursename : semestername
+                semestername : semestername
             };
 
             CoursesandSemestersService
                 .createSemester(semester)
                 .then(
                     function (response) {
-                        vm.screatesuccess="semester created successfully";
+                        vm.createsuccess="semester created successfully";
 
                         CoursesandSemestersService
-                            .findAllSemesters()
+                            .findAllSemester()
                             .then(
                                 function(response){
-                                    vm.semesters = response.data;
-                                    vm.semesterCount = vm.semesters.length;
+                                    vm.semester = response.data;
+                                    vm.semesterCount = vm.semester.length;
                                 }
                             )
                     }
                 )
         }
+
+        function updateSemester(semesterId, semester) {
+            CoursesandSemestersService
+                .updateSemester(semesterId, semester)
+                .then(function (response) {
+                    vm.supdatedmessage = "Updated Semester Successfully!";
+                    CoursesandSemestersService
+                        .findAllSemesters()
+                        .then(
+                            function (response) {
+                                vm.semesters = response.data;
+                                vm.semesterCount = vm.semesters.length;
+                            }
+                        )
+                })
+
+        }
+
+        function deleteSemester(semesterId) {
+
+            CoursesandSemestersService
+                .deleteSemester(semesterId)
+                .then(
+                    function (response) {
+                        vm.warning = "Deleted Semester Successfully!";
+                        vm.createsuccess = null;
+                        CoursesandSemestersService
+                            .findAllSemesters()
+                            .then(
+                                function (response) {
+                                    vm.semesters = response.data;
+                                    vm.semesterCount = vm.semesters.length;
+                                }
+                            );
+                    }
+                )
+        }
+
+        function findAllSemesters() {
+            CoursesandSemestersService
+                .findAllSemesters()
+                .then(function (response) {
+                    vm.semesters =  response.data;
+                    vm.semesterCount = vm.semesters.length;
+                })
+        }
+
 
         function getLoggedInUser() {
             if($rootScope.currentUser){

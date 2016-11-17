@@ -13,16 +13,15 @@
         /* provide an API that allows access to this thing */
         var api = {
             createCourse: createCourse,
-            createSemester: createSemester,
-            findAllCourses: findAllCourses,
-            findAllSemesters: findAllSemesters,
-            updateCourse:updateCourse ,
-            updateSemester: updateSemester,
             deleteCourse: deleteCourse,
-            deleteSemester: deleteSemester
-
-
+            findAllCourses: findAllCourses,
+            updateCourse:updateCourse ,
+            findAllSemesters: findAllSemesters,
+            updateSemester: updateSemester,
+             deleteSemester: deleteSemester,
+            createSemester: createSemester
         };
+
 
         return api;
         /*functions are implemented below*/
@@ -62,13 +61,15 @@
         }
 
 
-        function updateSemester() {
-
+        function updateSemester(semesterId, semester) {
+            var url = "/api/semester/" + semesterId;
+            return $http.put(url, semester);
         }
 
 
-        function deleteSemester() {
-
+        function deleteSemester(semesterId) {
+            var url = "/api/semester/" + semesterId;
+            return $http.delete(url);
         }
 
 
