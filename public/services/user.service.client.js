@@ -21,13 +21,8 @@
             deleteUser: deleteUser,
             login: login,
             logout: logout,
-<<<<<<< HEAD
             findUserByUsername: findUserByUsername,
             findAllUsers: findAllUsers
-=======
-            findUserByUsername: findUserByUsername
-
->>>>>>> 2773ecc4b8401a6fb8f3fc711720ec3ce41f96d9
         };
 
         return api;
@@ -44,22 +39,15 @@
                 email: email,
                 usertype: usertype
             };
-<<<<<<< HEAD
          
-=======
-
->>>>>>> 2773ecc4b8401a6fb8f3fc711720ec3ce41f96d9
             return $http.post("/api/register",user);
 
         }
 
-<<<<<<< HEAD
         function findAllUsers() {
             var url = "/api/findallusers";
             return $http.get(url);
         }
-=======
->>>>>>> 2773ecc4b8401a6fb8f3fc711720ec3ce41f96d9
 
         function loggedIn() {
             return $http.get("/api/loggedIn");
@@ -115,10 +103,6 @@
         }
 
 
-<<<<<<< HEAD
         
-=======
-
->>>>>>> 2773ecc4b8401a6fb8f3fc711720ec3ce41f96d9
     }
 })();

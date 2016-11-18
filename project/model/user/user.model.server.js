@@ -42,11 +42,7 @@ module.exports = function () {
                 $set: {firstName : user.firstName,
                     lastName : user.lastName,
                     email: user.email,
-<<<<<<< HEAD
                     usertype : user.usertype}}
-=======
-                    admin : user.admin}}
->>>>>>> 2773ecc4b8401a6fb8f3fc711720ec3ce41f96d9
             );
     }
 

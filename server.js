@@ -6,12 +6,11 @@ var session      = require('express-session');
 var passport = require('passport'); //core passport library initialized here
 var app = express();
 
-<<<<<<< HEAD
 // var connectionString = 'mongodb://127.0.0.1:27017/taportal';
 var connectionString = 'mongodb://admin:admin@ds149567.mlab.com:49567/taportal';
-=======
-var connectionString = 'mongodb://127.0.0.1:27017/taportal';
->>>>>>> 2773ecc4b8401a6fb8f3fc711720ec3ce41f96d9
+
+//var connectionString = 'mongodb://127.0.0.1:27017/taportal';
+
 
 var mongoose = require("mongoose");
 mongoose.connect(connectionString);

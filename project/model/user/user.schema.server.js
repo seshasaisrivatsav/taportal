@@ -71,16 +71,5 @@ module.exports = function () {
         ]
 
     }, {collection: 'taportal.user'});
-<<<<<<< HEAD
     return UserSchema;
-=======
-
-    module.exports = mongoose.model("users", UserSchema);
-    return UserSchema;
-    //
-    // //dhvani
-    // var TodoModel = mongoose.model('Todo', UserSchema);
-    //
-
->>>>>>> 2773ecc4b8401a6fb8f3fc711720ec3ce41f96d9
 };
