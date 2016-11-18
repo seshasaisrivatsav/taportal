@@ -32,7 +32,7 @@ describe('users service', function() {
             })
     });
 
-<<<<<<< HEAD
+
     //dhvani start
     it('should get all users error', function (done) {
         chai.request(server)
@@ -44,8 +44,6 @@ describe('users service', function() {
             })
     });
     //dhvani end
-=======
->>>>>>> 2773ecc4b8401a6fb8f3fc711720ec3ce41f96d9
 
     it('user should be able to login', function (done) {
         chai.request(server)
