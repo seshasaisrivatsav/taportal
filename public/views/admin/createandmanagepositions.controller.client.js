@@ -22,7 +22,9 @@
 
 
         function init() {
-
+            findAllCourses();
+            findAllSemesters();
+            getLoggedInUser();
         }
         init();
 
@@ -37,7 +39,28 @@
         function deletePosition() {
 
         }
-        
+
+        function findAllCourses() {
+            CoursesandSemestersService
+                .findAllCourses()
+                .then(function (response) {
+                    vm.courses =  response.data;
+                    vm.courseCount = vm.courses.length;
+                })
+        }
+
+
+        function findAllSemesters() {
+            CoursesandSemestersService
+                .findAllSemesters()
+                .then(function (response) {
+                    vm.semesters =  response.data;
+                    vm.semesterCount = vm.semesters.length;
+                })
+        }
+
+
+
         function getLoggedInUser() {
             if($rootScope.currentUser){
                 vm.loggedIn = "true";

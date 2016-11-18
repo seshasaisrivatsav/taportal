@@ -13,7 +13,6 @@
         /* provide an API that allows access to this thing */
         var api = {
             createPosition : createPosition,
-            findPositionById:findPositionById,
             updatePosition:updatePosition,
             findAllPositions: findAllPositions,
             deletePosition: deletePosition
@@ -22,27 +21,28 @@
         return api;
         /*functions are implemented below*/
 
-        function createPosition() {
-
+        function createPosition(position) {
+            var url = "/api/position";
+            return $http.post(url, position);
         }
 
-        function findPositionById() {
 
-        }
-
-        function updatePosition() {
-
+        function updatePosition(positionId, position) {
+            var url = "/api/position/" + positionId;
+            return $http.put(url, position);
         }
 
         function findAllPositions() {
-
+            var url = "/api/findAllPositions";
+            return $http.get(url);
         }
 
-        function deletePosition() {
-
+        function deletePosition(positionId) {
+            var url = "/api/position/" + positionId;
+            return $http.delete(url);
         }
 
-        
+
 
     }
 })();

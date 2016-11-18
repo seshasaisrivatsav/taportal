@@ -11,6 +11,7 @@
     function Config($routeProvider) {
         $routeProvider
 
+<<<<<<< HEAD
 
 
 
@@ -95,6 +96,8 @@
             })
 
 
+=======
+>>>>>>> 2773ecc4b8401a6fb8f3fc711720ec3ce41f96d9
             // Student Profile
             .when("/sprofile",{
                 templateUrl :"views/user/sprofile.view.client.html",
@@ -105,6 +108,7 @@
                 }
             })
 
+<<<<<<< HEAD
             // Student Edit Profile
             .when("/seditprofile",{
                 templateUrl :"views/user/sprofileedit.view.client.html",
@@ -116,6 +120,8 @@
             })
 
 
+=======
+>>>>>>> 2773ecc4b8401a6fb8f3fc711720ec3ce41f96d9
             // Student Register
             .when("/sregister",{
                 templateUrl: "views/user/sregister.view.client.html",

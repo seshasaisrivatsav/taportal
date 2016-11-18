@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="1.2020000000000002" tests="27" failures="0">
+  <testsuite name="Root Suite" timestamp="2016-11-17T03:03:57" tests="7" failures="0" time="0.44800000000000006">
+    <testcase name=" should be able to get user" time="0.274" classname="should be able to get user">
+    </testcase>
+    <testcase name=" should update a SINGLE user on /api/user/&lt;id&gt; PUT" time="0.051" classname="should update a SINGLE user on /api/user/&lt;id&gt; PUT">
+    </testcase>
+    <testcase name=" user should be able to logout" time="0.006" classname="user should be able to logout">
+    </testcase>
+    <testcase name=" should be able to get user" time="0.045" classname="should be able to get user">
+    </testcase>
+    <testcase name=" should be able to find user by id" time="0.023" classname="should be able to find user by id">
+    </testcase>
+    <testcase name=" should be able to delete user by id" time="0.027" classname="should be able to delete user by id">
+    </testcase>
+    <testcase name=" verify delete user by id" time="0.022" classname="verify delete user by id">
+    </testcase>
+  </testsuite>
+  <testsuite name="users service" timestamp="2016-11-17T03:03:57" tests="11" failures="0" time="0.752">
+    <testcase name="users service should get all users" time="0.05" classname="should get all users">
+    </testcase>
+    <testcase name="users service should get all users error" time="0.008" classname="should get all users error">
+    </testcase>
+    <testcase name="users service user should be able to login" time="0.003" classname="user should be able to login">
+    </testcase>
+    <testcase name="users service should not be able to get user" time="0.005" classname="should not be able to get user">
+    </testcase>
+    <testcase name="users service should be able to get all user" time="0.019" classname="should be able to get all user">
+    </testcase>
+    <testcase name="users service should be able to get all user with username" time="0.022" classname="should be able to get all user with username">
+    </testcase>
+    <testcase name="users service should add a single user on /api/user POST" time="0.021" classname="should add a single user on /api/user POST">
+    </testcase>
+    <testcase name="users service should not register present user on /api/register POST" time="0.019" classname="should not register present user on /api/register POST">
+    </testcase>
+    <testcase name="users service should register a user on /api/register POST" time="0.303" classname="should register a user on /api/register POST">
+    </testcase>
+    <testcase name="users service should delete a user on /api/register delete" time="0.018" classname="should delete a user on /api/register delete">
+    </testcase>
+    <testcase name="users service should login a single user on /api/login POST" time="0.284" classname="should login a single user on /api/login POST">
+    </testcase>
+  </testsuite>
+  <testsuite name="user form" timestamp="2016-11-17T03:03:58" tests="9" failures="0" time="0.002">
+    <testcase name="user form invalid e-mail id" time="0.001" classname="invalid e-mail id">
+    </testcase>
+    <testcase name="user form firstname too small" time="0" classname="firstname too small">
+    </testcase>
+    <testcase name="user form firstname too large" time="0" classname="firstname too large">
+    </testcase>
+    <testcase name="user form lastname too small" time="0" classname="lastname too small">
+    </testcase>
+    <testcase name="user form lastname too large" time="0.001" classname="lastname too large">
+    </testcase>
+    <testcase name="user form password length too small" time="0" classname="password length too small">
+    </testcase>
+    <testcase name="user form password too large" time="0" classname="password too large">
+    </testcase>
+    <testcase name="user form passwords should match" time="0" classname="passwords should match">
+    </testcase>
+    <testcase name="user form passwords should match" time="0" classname="passwords should match">
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -6,9 +6,12 @@ var session      = require('express-session');
 var passport = require('passport'); //core passport library initialized here
 var app = express();
 
-//var connectionString = 'mongodb://127.0.0.1:27017/taportal';
-
+<<<<<<< HEAD
+// var connectionString = 'mongodb://127.0.0.1:27017/taportal';
 var connectionString = 'mongodb://admin:admin@ds149567.mlab.com:49567/taportal';
+=======
+var connectionString = 'mongodb://127.0.0.1:27017/taportal';
+>>>>>>> 2773ecc4b8401a6fb8f3fc711720ec3ce41f96d9
 
 var mongoose = require("mongoose");
 mongoose.connect(connectionString);
@@ -32,10 +35,14 @@ app.use(express.static(__dirname + '/public'));
 //require ("./test/app.js")(app);
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
-var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+var port      = process.env.OPENSHIFT_NODEJS_PORT || 3200;
 
 var project = require("./project/app.js");
 project(app);
 
+
+
 app.listen(port, ipaddress);
 
+
+module.exports = app;

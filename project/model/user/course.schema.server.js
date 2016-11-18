@@ -8,7 +8,13 @@ module.exports = function () {
 
     var CourseSchema = mongoose.Schema({
 
+<<<<<<< HEAD
        coursename: String
+=======
+        course: [{
+            course: String
+        }]
+>>>>>>> 2773ecc4b8401a6fb8f3fc711720ec3ce41f96d9
 
 
 

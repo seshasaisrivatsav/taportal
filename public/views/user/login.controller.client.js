@@ -44,6 +44,7 @@
                         /* this is NOT synchronous */
                         var user = response.data;
 
+<<<<<<< HEAD
                         if (user.usertype == "student"){
                             $location.url("/sprofile");
                         } else if(user.usertype=="faculty"){
@@ -51,6 +52,11 @@
                         } else if(user.usertype=="admin"){
                             $location.url("/aconsole")
                         }else{
+=======
+                        if (user._id){
+                            $location.url("/sprofile");
+                        } else {
+>>>>>>> 2773ecc4b8401a6fb8f3fc711720ec3ce41f96d9
                             vm.error = response.data;
                         }
                     });

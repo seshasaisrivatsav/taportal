@@ -180,8 +180,15 @@ module.exports= function(app, models){
                         return;
                     } else {
                         req.body.password = bcrypt.hashSync(req.body.password);
+<<<<<<< HEAD
                         return userModel
                             .createUser(req.body)
+=======
+
+                        return userModel
+                            .createUser(req.body)
+
+>>>>>>> 2773ecc4b8401a6fb8f3fc711720ec3ce41f96d9
                     }
                 },
                 function (err) {
@@ -191,7 +198,15 @@ module.exports= function(app, models){
             .then(
                 function (user) {
                     if(user){
+<<<<<<< HEAD
                         res.sendStatus(200);
+=======
+
+
+
+                        res.sendStatus(200);
+
+>>>>>>> 2773ecc4b8401a6fb8f3fc711720ec3ce41f96d9
                     }
                 },
                 function (err) {
@@ -242,7 +257,11 @@ module.exports= function(app, models){
         } else if(username){
             findUserByUsername(username, res);
         }else {
+<<<<<<< HEAD
+            findallusers();
+=======
             findAllUsers();
+>>>>>>> 2773ecc4b8401a6fb8f3fc711720ec3ce41f96d9
         }
     }
 
