@@ -1,0 +1,67 @@
+<h1>
+    Create and Manage Positions
+</h1>
+
+
+<div class="container">
+    <h4 ><b>Manage TA Positions</b></h4>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+
+                <th>Course</th>
+                <th>Semester</th>
+                <th># Positions</th>
+                <th>Lecturer</th>
+                <th>Deadline</th>
+                <th>Create</th>
+            </tr>
+            </thead>
+
+            <!-- Table Body-->
+            <tbody>
+
+            <tr>
+                <!--Course Name-->
+                <td>
+                    <select type="string"
+                            class="form-control"
+                            placeholder="Admin/User"
+                            ng-model="model.usertype">
+
+                        <option value="admin">Admin</option>
+                        <option value="student">Student</option>
+                        <option value="faculty">Faculty</option>
+                    </select>
+                </td>
+
+                <td>
+                    <!--{{user.admin}}-->
+
+                    <a ng-if="user.admin=='true'"class="makeblack">
+                        Admin
+                    </a>
+
+                    <a ng-if="user.admin=='false'"class="makeblack">
+                        User
+                    </a>
+                </td>
+
+                <!--First Name -->
+                <td> {{user.firstName}}</td>
+
+
+                <!--Last Name -->
+                <td> {{user.lastName}}</td>
+
+                <!-- Email Name -->
+                <td> {{user.email}}</td>
+
+
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

@@ -31,6 +31,7 @@ module.exports= function(app, models){
             });
     }
 
+
     function updateCourse(req, res) {
         var id = req.params.courseId;
         var course = req.body;

@@ -63,8 +63,8 @@
             })
                 
             .when("/createandmanageapplications", {
-                templateUrl : "views/admin/createandmanageapplications.view.client.html",
-                controller: "ManageCreateApplicationsController",
+                templateUrl : "views/admin/createandmanagepositions.view.client.html",
+                controller: "ManageCreatePositionsController",
                 controllerAs : "model",
                 resolve:{
                     loggedIn: checkLoggedIn

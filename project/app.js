@@ -7,5 +7,7 @@ module.exports = function (app) {
     // pass the models to services.
     require("./services/user.service.server.js")(app, models);
     require("./services/coursesandsemesters.service.server.js")(app, models);
+    require("./services/position.service.server.js")(app,models);
+    
 };
 

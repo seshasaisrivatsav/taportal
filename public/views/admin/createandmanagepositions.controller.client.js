@@ -11,26 +11,33 @@
 (function () {
     angular
         .module("TaPortal")
-        .controller("ManageCreateApplicationsController",ManageCreateApplicationsController);
+        .controller("ManageCreatePositionsController",ManageCreatePositionsController);
 
-    function ManageCreateApplicationsController($rootScope, $location, $sce, UserService,CoursesandSemestersService) {
+    function ManageCreatePositionsController($rootScope, $location, $sce, UserService,CoursesandSemestersService) {
         var vm = this;
 
+        vm.createPosition = createPosition;
+        vm.updatePosition  = updatePosition;
+        vm.deletePosition = deletePosition;
 
-        vm.createCourse = createCourse;
-        vm.createSemester = createSemester;
-        vm.updateCourse = updateCourse;
-        vm.deleteCourse = deleteCourse;
-        vm.deleteSemester = deleteSemester;
-        vm.updateSemester = updateSemester;
 
         function init() {
 
         }
         init();
 
-       
+        function createPosition() {
 
+        }
+
+        function updatePosition() {
+
+        }
+
+        function deletePosition() {
+
+        }
+        
         function getLoggedInUser() {
             if($rootScope.currentUser){
                 vm.loggedIn = "true";
