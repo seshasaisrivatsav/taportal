@@ -11,8 +11,6 @@
 
         vm.register = register;
 
-
-
         function register(username, password, firstName, lastName, email, usertype) {
             var usertype = "faculty";
             
