@@ -82,6 +82,99 @@
     </div>
 </div>
 
+<!----
+<!-- Positions Manager -->
+<div class="container ">
+    <h4 ><b>Positions Manager</b></h4>
+
+    <!-- Update Message -->
+    <div ng-if="model.updatedmessage" class="alert alert-success">
+        {{model.updatedmessage}}
+    </div>
+
+    <!-- Heading -->
+    <div class="table-responsive">
+        <table class="table table-hover">
+
+            <!-- Header for Position-->
+
+            <th>Course</th>
+            <th>Semester</th>
+            <th># Positions</th>
+            <th>Lecturer</th>
+            <th>Deadline</th>
+
+            <th>Update Position</th>
+            <th>Delete Position</th>
+
+
+            <tr ng-repeat="position in model.positions">
+
+
+                <!--Course-->
+
+                <td>
+                    <select type="string"
+                            class="form-control"
+                            placeholder="coursename"
+                            ng-model="position.coursename">
+
+                        <option value="admin">Admin</option>
+                        <option value="student">Student</option>
+                        <option value="faculty">Faculty</option>
+                    </select>
+                </td>
+
+                <!--Semester-->
+                <td>
+                    <select type="string"
+                            class="form-control"
+                            placeholder="semestername"
+                            ng-model="position.semestername">
+
+                        <option value="admin">Admin</option>
+                        <option value="student">Student</option>
+                        <option value="faculty">Faculty</option>
+                    </select>
+                </td>
+
+
+                <!--# Positions-->
+                <td><input type="number"
+                           ng-model="position.number"
+                           placeholder="Number of positions"/></td>
+
+                <!--Lecturer-->
+                <td><input type="text"
+                           ng-model="position.professor"
+                           placeholder="professor Name"/></td>
+
+                <!--Deadline-->
+                <td><input type="date"
+                           ng-model="position.deadline"
+                           placeholder="deadline for the position"/></td>
+
+
+                <!-- Update Position Button-->
+                <td>
+                    <a class="glyphicon glyphicon-ok makeblack"
+                       ng-click="model.updatePosition(position._id, position)"></a>
+                </td>
+
+                <!--Delete Position Button-->
+                <td>
+                    <a class="glyphicon glyphicon-remove makeblack"
+                       ng-click="model.deletePosition(position._id)"></a>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+
+
 
 <!-- Footer -->
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
