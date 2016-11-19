@@ -33,6 +33,9 @@
                 }
             })
 
+            .when("/reports", {
+                templateUrl : "..views/coverage/lcov-report/index.html"
+            })
                 
             // Admin profile
             .when("/aprofile",{
