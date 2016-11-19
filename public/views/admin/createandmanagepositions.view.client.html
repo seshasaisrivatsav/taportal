@@ -27,8 +27,8 @@
                 <td>
                     <select type="string"
                             class="form-control"
-                            placeholder="Admin/User"
-                            ng-model="model.usertype">
+                            placeholder="Course Name"
+                            ng-model="position.coursename">
 
                         <option value="admin">Admin</option>
                         <option value="student">Student</option>
@@ -36,32 +36,68 @@
                     </select>
                 </td>
 
+                <!--Semester Name-->
                 <td>
-                    <!--{{user.admin}}-->
+                    <select type="string"
+                            class="form-control"
+                            placeholder="Semester Name"
+                            ng-model="position.semestername">
 
-                    <a ng-if="user.admin=='true'"class="makeblack">
-                        Admin
-                    </a>
-
-                    <a ng-if="user.admin=='false'"class="makeblack">
-                        User
-                    </a>
+                        <option value="admin">Admin</option>
+                        <option value="student">Student</option>
+                        <option value="faculty">Faculty</option>
+                    </select>
                 </td>
 
-                <!--First Name -->
-                <td> {{user.firstName}}</td>
+                <!-- # of Positions -->
+                <td>
+                    <input type="number"
+                           ng-model="position.number"
+                           placeholder="Number of Positions"/>
+                </td>
+
+                <!-- Professor Name -->
+                <td>
+                    <input type="text"
+                           ng-model="position.professor"
+                           placeholder="Professor name"/>
+                </td>
+
+                <!-- Deadline for this position-->
+                <td><input type="date"
+                           ng-model="position.deadline"
+                           placeholder="Deadline Date"/></td>
 
 
-                <!--Last Name -->
-                <td> {{user.lastName}}</td>
-
-                <!-- Email Name -->
-                <td> {{user.email}}</td>
-
-
+                <td>
+                    <a ng-click="model.createPosition(position)"
+                       class="btn btn-block btn-primary">
+                        Create
+                    </a>
+                </td>
             </tr>
             </tbody>
 
         </table>
     </div>
 </div>
+
+
+<!-- Footer -->
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a  ng-click="model.logout()">
+                <span>Logout</span>
+            </a>
+
+        </p>
+        <p class="navbar-text pull-left">
+
+            <a  href="#/adminconsole">
+                <span>Back to AdminConsole</span>
+            </a>
+        </p>
+
+    </div>
+</nav>
