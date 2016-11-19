@@ -26,10 +26,10 @@ module.exports = function () {
         delete position._id;
         return Position
             .update({_id: positionId},{
-                $set: {course: position.coursename, 
-                        semester: position.semestername,
+                $set: {course: position.course,
+                        semester: position.semester,
                         number: position.number,
-                        professor: position.professorname,
+                        professor: position.professor,
                         deadline : position.deadline}}
             );
     }
@@ -39,6 +39,7 @@ module.exports = function () {
     }
 
     function createPosition(position) {
+        console.log(position);
         return  Position.create(position);
     }
 
@@ -50,8 +51,5 @@ module.exports = function () {
         return Position.findById({_id: positionId});
     }
 
-
-
-
-
+    
 };

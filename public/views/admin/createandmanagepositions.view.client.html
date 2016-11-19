@@ -28,7 +28,7 @@
                     <select type="string"
                             class="form-control"
                             placeholder="Course Name"
-                            ng-model="position.coursename">
+                            ng-model="model.coursename">
 
                         <option value="admin">Admin</option>
                         <option value="student">Student</option>
@@ -41,7 +41,7 @@
                     <select type="string"
                             class="form-control"
                             placeholder="Semester Name"
-                            ng-model="position.semestername">
+                            ng-model="model.semestername">
 
                         <option value="admin">Admin</option>
                         <option value="student">Student</option>
@@ -52,25 +52,25 @@
                 <!-- # of Positions -->
                 <td>
                     <input type="number"
-                           ng-model="position.number"
+                           ng-model="model.number"
                            placeholder="Number of Positions"/>
                 </td>
 
                 <!-- Professor Name -->
                 <td>
                     <input type="text"
-                           ng-model="position.professor"
+                           ng-model="model.professor"
                            placeholder="Professor name"/>
                 </td>
 
                 <!-- Deadline for this position-->
                 <td><input type="date"
-                           ng-model="position.deadline"
+                           ng-model="model.deadline"
                            placeholder="Deadline Date"/></td>
 
 
                 <td>
-                    <a ng-click="model.createPosition(position)"
+                    <a ng-click="model.createPosition(model.coursename, model.semestername,model.number, model.professor, model.deadline )"
                        class="btn btn-block btn-primary">
                         Create
                     </a>
@@ -82,8 +82,9 @@
     </div>
 </div>
 
-<!----
-<!-- Positions Manager -->
+<!------------------------------------------------->
+<!--            Positions Manager                -->
+<!------------------------------------------------->
 <div class="container ">
     <h4 ><b>Positions Manager</b></h4>
 
@@ -117,7 +118,7 @@
                     <select type="string"
                             class="form-control"
                             placeholder="coursename"
-                            ng-model="position.coursename">
+                            ng-model="position.course">
 
                         <option value="admin">Admin</option>
                         <option value="student">Student</option>
@@ -130,7 +131,7 @@
                     <select type="string"
                             class="form-control"
                             placeholder="semestername"
-                            ng-model="position.semestername">
+                            ng-model="position.semester">
 
                         <option value="admin">Admin</option>
                         <option value="student">Student</option>
@@ -176,7 +177,9 @@
 
 
 
-<!-- Footer -->
+<!------------------------------------------------->
+<!--                 Footer                      -->
+<!------------------------------------------------->
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
@@ -187,7 +190,7 @@
         </p>
         <p class="navbar-text pull-left">
 
-            <a  href="#/adminconsole">
+            <a  href="#/aconsole">
                 <span>Back to AdminConsole</span>
             </a>
         </p>
