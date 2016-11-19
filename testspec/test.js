@@ -8,6 +8,7 @@ var server = require('../server');
 // var server = require('../project/app');
 var should = chai.should();
 var userId = "";
+var id = "";
 
 var expect = require('chai').expect;
 
@@ -142,11 +143,11 @@ describe('users service', function() {
 
 describe("user form", function(){
     var newuser = new user({
-        username: "manognya", password: "manognyakoduganti", firstName: "manognya", lastName: "koduganti",
-        email: "manognya@ccs.neu.edu", usertype: "student"
+        username: 'manognya', password: 'manognyakoduganti', firstName: 'manognya', lastName: 'koduganti',
+        email: 'manognya@ccs.neu.edu', usertype: 'student'
     });
-    var confirm_password = "manognyakoduganti";
-    var case_check_password = "ManognyaKoduganti";
+    var confirm_password = 'manognyakoduganti';
+    var case_check_password = 'ManognyaKoduganti';
 
 
     it("invalid e-mail id",function(done){
@@ -201,7 +202,8 @@ it('should be able to get user', function (done) {
 
     var newUser = new user({
         username: 'dhvani',
-        password: 'dhvani1234'
+        password: 'dhvani1234',
+        usertype: 'student'
     });
     newUser.save(function (err, data) {
         chai.request(server)
@@ -222,7 +224,8 @@ it('should be able to get user', function (done) {
 it('should update a SINGLE user on /api/user/<id> PUT', function(done) {
     var updated_user = new user({
         username: 'manognya',
-        password: 'manognyakoduganti'
+        password: 'manognyakoduganti',
+        usertype: 'student'
     });
     chai.request(server)
         .put('/api/user/'+id)
@@ -251,7 +254,8 @@ it('should be able to get user', function (done) {
 
     var newUser = new user({
         username: 'dsheth',
-        password: 'dsheth'
+        password: 'dsheth',
+        usertype: 'student'
     });
     newUser.save(function (err, data) {
         chai.request(server)

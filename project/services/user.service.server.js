@@ -242,7 +242,7 @@ module.exports= function(app, models){
         } else if(username){
             findUserByUsername(username, res);
         }else {
-            findAllUsers();
+            findallusers();
         }
     }
 
