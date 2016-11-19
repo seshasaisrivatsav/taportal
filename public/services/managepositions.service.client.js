@@ -22,24 +22,29 @@
         return api;
         /*functions are implemented below*/
 
-        function createPosition() {
-
+        function createPosition(position) {
+            var url = "/api/position";
+            return $http.post(url, position);
         }
 
-        function findPositionById() {
-
+        function findPositionById(positionId) {
+            var url = "/api/position/" + positionId;
+            return $http.get(url);
         }
 
-        function updatePosition() {
-
+        function updatePosition(positionId, position) {
+            var url="/api/position/"+positionId;
+            return $http.put(url, position);
         }
 
         function findAllPositions() {
-
+            var url = "/api/findallpositions";
+            return $http.get(url);
         }
 
-        function deletePosition() {
-
+        function deletePosition(positionId) {
+            var url = "/api/position/"+positionId;
+            return $http.delete(url);
         }
 
         
