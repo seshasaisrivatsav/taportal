@@ -53,6 +53,24 @@
                 }
             })
 
+            .when("/rolemanager",{
+                templateUrl : "views/admin/manageusers.role.manager.view.client.html",
+                controller : "ManageUsersController",
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
+            })
+            
+            .when("/updatedeleteusers", {
+                templateUrl: "views/admin/manageusers.updatedelete.view.client.html",
+                controller : "ManageUsersController",
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
+            })
+            
             .when("/addcoursesandsemesters",{
                 templateUrl: "views/admin/managecoursesandsemesters.view.client.html",
                 controller: "ManageCoursesSemestersController",

@@ -5,6 +5,8 @@
 module.exports= function(app, models){
 
     var positionModel = models.positionModel;
+    var courseModel = models.courseModel;
+    
 
     app.post("/api/position", createPosition);
     app.get("/api/position/:positionId", findPositionById);
@@ -44,10 +46,10 @@ module.exports= function(app, models){
 
     function deletePosition(req,res) {
 
-        var courseId = req.params.positionId;
+        var positionId = req.params.positionId;
 
         positionModel
-            .deleteCourse(positionId)
+            .deletePosition(positionId)
             //responds with some stats
             .then(function (stats) {
                     res.send(200);
@@ -71,33 +73,21 @@ module.exports= function(app, models){
             );
     }
 
-
-
     function createPosition(req, res) {
-
         var position = req.body;
         positionModel
-            .findPositionByCoursename(course.coursename)
+            .createPosition(req.body)
             .then(
-                function (position) {
-                    return positionModel
-                        .createPosition(req.body)
+                function (stats) {
+                    res.send(200);
 
                 }, function (err) {
                     res.sendStatus(400).send(err);
                 }
-            )
-            .then(
-                function (position) {
-                    if(position){
-                        res.sendStatus(200);
-                    }
-                },
-                function (err) {
-                    res.sendStatus(400).send(err);
-                }
             );
     }
+
+
 
 
 
