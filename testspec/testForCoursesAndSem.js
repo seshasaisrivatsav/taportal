@@ -10,6 +10,7 @@ var should = chai.should();
 
 var expect = require('chai').expect;
 
+var course = require('../project/model/user/course.schema.server');
 var semester = require('../project/model/user/semester.schema.server');
 
 var express = require('express');
@@ -20,7 +21,7 @@ chai.use(chaiHttp);
 
 var cid = "";
 
-describe('TestsForCourses', function() {
+describe('Tests For Courses', function() {
 
     it('should find all courses', function (done) {
         chai.request(server)
@@ -52,6 +53,16 @@ describe('TestsForCourses', function() {
             });
     });
 
+    it('should create course', function (done) {
+        chai.request(server)
+            .post('/api/course')
+            .send({'coursename': 'test course qwerty'})
+            .end(function (err, res) {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
     it('should not create a course that exists', function (done) {
         chai.request(server)
             .post('/api/course')
@@ -72,29 +83,11 @@ describe('TestsForCourses', function() {
             .send({'coursename': 'updatedCourse'})
             .end(function (error, response) {
                 response.should.have.status(200);
-                done();
+                // done();
             });
             done();
         });
-
     });
-
-    // it('should find course by courseid', function (done) {
-    //
-    //     chai.request(server)
-    //         .post('/api/course')
-    //         .send({'coursename': 'test1'})
-    //         .end(function (err, res) {
-    //             cid = res.body._id;
-    //             chai.request(server)
-    //                 .get('/api/course/' + cid)
-    //                 .end(function (err, res) {
-    //                     res.should.have.status(200);
-    //                     done();
-    //                 })
-    //             done();
-    //         });
-    // });
 
 
     it('should find course by courseid', function (done) {
@@ -119,7 +112,7 @@ describe('TestsForCourses', function() {
             .delete('/api/course/' + res.body[1]._id)
             .end(function (error, response) {
                 response.should.have.status(200);
-                done();
+                // done();
             });
             done();
         });
@@ -128,7 +121,7 @@ describe('TestsForCourses', function() {
 
 });
 
-describe('TestsForSemesters', function() {
+describe('Tests For Semesters', function() {
 
     it('should find all semesters', function (done) {
         chai.request(server)
@@ -162,7 +155,7 @@ describe('TestsForSemesters', function() {
 
     it('should not create a semester that exists', function (done) {
         chai.request(server)
-            .post('/api/course')
+            .post('/api/semester')
             .send({'semestername': 'Summer 1 17'})
             .end(function (err, res) {
                 res.should.have.status(200);
@@ -180,7 +173,7 @@ describe('TestsForSemesters', function() {
                     .send({'semestername': 'updatedSem'})
                     .end(function (error, response) {
                         response.should.have.status(200);
-                        done();
+                        // done();
                     });
                 done();
             });
@@ -210,11 +203,12 @@ describe('TestsForSemesters', function() {
                     .delete('/api/semester/' + res.body[1]._id)
                     .end(function (error, response) {
                         response.should.have.status(200);
-                        done();
+                        // done();
                     });
                 done();
             });
     });
+
 
 
 });
