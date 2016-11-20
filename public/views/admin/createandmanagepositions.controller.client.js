@@ -19,9 +19,7 @@
         vm.createPosition = createPosition;
         vm.updatePosition  = updatePosition;
         vm.deletePosition = deletePosition;
-
-
-        vm.fromcontroller = "2015-05-29T19:06:16.693209Z";
+        vm.updateDeadline = updateDeadline;
 
 
         function init() {
@@ -31,7 +29,18 @@
             findAllSemesters();
         }
         init();
-        
+
+        function updateDeadline(semestername, deadline) {
+            PositionService
+                .updateDeadline(semestername, deadline)
+                .then(
+                    function (response) {
+                        vm.updatedmessage = "Updated Successfully!";
+                    }
+                );
+        }
+
+
         function findAllPositions() {
             PositionService
                 .findAllPositions()

@@ -16,6 +16,7 @@ module.exports = function () {
         createPosition: createPosition,
         findAllPositions: findAllPositions,
         updatePosition: updatePosition,
+        updateDeadline: updateDeadline,
         deletePosition: deletePosition,
         findPositionById: findPositionById
     };
@@ -33,6 +34,18 @@ module.exports = function () {
                         deadline : position.deadline}}
             );
     }
+
+    function updateDeadline(semester, deadline) {
+
+    
+        
+        return Position
+            .update({semester : semester},{
+                $set : {deadline : deadline}
+            });
+
+    }
+
 
     function findAllPositions(){
         return Position.find();

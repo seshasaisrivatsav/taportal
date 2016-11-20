@@ -18,13 +18,14 @@
         vm.deleteCourse = deleteCourse;
         vm.deleteSemester = deleteSemester;
         vm.updateSemester = updateSemester;
-
+        
         function init() {
             findAllCourses();
             findAllSemesters();
             getLoggedInUser();
         }
         init();
+
 
         function createCourse(coursename){
 

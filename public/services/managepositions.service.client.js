@@ -16,7 +16,8 @@
             findPositionById:findPositionById,
             updatePosition:updatePosition,
             findAllPositions: findAllPositions,
-            deletePosition: deletePosition
+            deletePosition: deletePosition,
+            updateDeadline: updateDeadline
         };
 
         return api;
@@ -35,6 +36,11 @@
         function updatePosition(positionId, position) {
             var url="/api/position/"+positionId;
             return $http.put(url, position);
+        }
+
+        function updateDeadline(semestername, deadline) {
+            var url = "/api/position" + semestername;
+            return $http.put(url,deadline);
         }
 
         function findAllPositions() {
