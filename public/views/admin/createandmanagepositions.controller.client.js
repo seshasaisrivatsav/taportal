@@ -67,14 +67,15 @@
                     function (response) {
                         vm.createsuccess = "Created TA Position Successfully";
 
-                        PositionService
-                            .findAllPositions()
-                            .then(
-                                function (response) {
-                                    vm.positions = response.data;
-                                    vm.positionCount = vm.positions.length;
-                                }
-                         );
+                        // PositionService
+                        //     .findAllPositions()
+                        //     .then(
+                        //         function (response) {
+                        //             vm.positions = response.data;
+                        //             vm.positionCount = vm.positions.length;
+                        //         }
+                        //  );
+                        init();
                     }
                 )
         }
@@ -86,14 +87,15 @@
                 .then(
                     function (response) {
                         vm.updatedmessage = "Updated Successfully!";
-                        PositionService
-                            .findAllPositions()
-                            .then(
-                                function (response) {
-                                    vm.positions = response.data;
-                                    vm.positionCount = vm.positions.length;
-                                }
-                            );
+                        // PositionService
+                        //     .findAllPositions()
+                        //     .then(
+                        //         function (response) {
+                        //             vm.positions = response.data;
+                        //             vm.positionCount = vm.positions.length;
+                        //         }
+                        //     );
+                        init();
                     }
                 );
         }
@@ -105,14 +107,15 @@
                     function (response) {
                         vm.warning = "Deleted Successfully!";
                         vm.createsuccess = null;
-                        PositionService
-                            .findAllPositions()
-                            .then(
-                                function (response) {
-                                    vm.positions = response.data;
-                                    vm.positionCount = vm.positions.length;
-                                }
-                            );
+                        // PositionService
+                        //     .findAllPositions()
+                        //     .then(
+                        //         function (response) {
+                        //             vm.positions = response.data;
+                        //             vm.positionCount = vm.positions.length;
+                        //         }
+                        //     );
+                        init();
                     }
                 )
         }
