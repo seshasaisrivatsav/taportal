@@ -31,8 +31,12 @@
         init();
 
         function updateDeadline(semestername, deadline) {
+            var position = {
+                semester : semestername,
+                deadline : deadline
+            };
             PositionService
-                .updateDeadline(semestername, deadline)
+                .updateDeadline(position)
                 .then(
                     function (response) {
                         vm.updatedmessage = "Updated Successfully!";

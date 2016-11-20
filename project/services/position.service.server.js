@@ -12,7 +12,7 @@ module.exports= function(app, models){
     app.get("/api/position/:positionId", findPositionById);
     app.delete("/api/position/:positionId", deletePosition);
     app.put("/api/position/:positionId", updatePosition);
-    app.put("/api/position/:semestername", updateDeadline);
+    app.put("/api/position/semestername", updateDeadline);
     app.get("/api/findallpositions", findallpositions);
 
 
@@ -44,11 +44,13 @@ module.exports= function(app, models){
             );
     }
 
-
+    // TO DO : Fix this!
     function updateDeadline(req, res) {
-        var semester = req.params.semestername;
-        var deadline = req.body;
-        console.log(semester + "   " + deadline);
+        var position = req.body;
+
+        var deadline = position.deadline;
+        var semester = position.semester;
+ 
         positionModel
             .updateDeadline(semester, deadline)
             .then(
