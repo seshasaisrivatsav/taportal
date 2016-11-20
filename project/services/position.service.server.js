@@ -12,6 +12,7 @@ module.exports= function(app, models){
     app.get("/api/position/:positionId", findPositionById);
     app.delete("/api/position/:positionId", deletePosition);
     app.put("/api/position/:positionId", updatePosition);
+    app.put("/api/position/:semestername", updateDeadline);
     app.get("/api/findallpositions", findallpositions);
 
 
@@ -43,6 +44,22 @@ module.exports= function(app, models){
             );
     }
 
+
+    function updateDeadline(req, res) {
+        var semester = req.params.semestername;
+        var deadline = req.body;
+        console.log(semester + "   " + deadline);
+        positionModel
+            .updateDeadline(semester, deadline)
+            .then(
+                function (stats) {
+                    res.sendStatus(200);
+                },
+                function (error) {
+                    res.sendStatus(404);
+                }
+            );
+    }
 
     function deletePosition(req,res) {
 

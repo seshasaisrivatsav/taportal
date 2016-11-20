@@ -22,19 +22,19 @@
     </div><!-- /.container-fluid -->
 </nav>
 
+<!---------------------------------------->
+<!---       Manage Deadlines           --->
+<!---------------------------------------->
+
 <div class="container">
-    <h4 ><b>Manage TA Positions</b></h4>
+    <h4 ><b>Manage Deadlines for respective Semesters</b></h4>
     <div class="table-responsive">
         <table class="table">
             <thead>
             <tr>
 
-                <th>Course</th>
                 <th>Semester</th>
-                <th># Positions</th>
-                <th>Lecturer</th>
                 <th>Deadline</th>
-                <th>Create</th>
             </tr>
             </thead>
 
@@ -43,16 +43,8 @@
 
             <tr>
                 <!--Course Name-->
-                    <!-- Dropdown is populated from the database -->
-                <td>
-                    <select type="string"
-                            class="form-control"
-                            placeholder="Course Name"
-                            ng-model="model.coursename">
+                <!-- Dropdown is populated from the database -->
 
-                        <option ng-repeat="course in model.courses">{{course.coursename}}</option>
-                    </select>
-                </td>
 
                 <!--Semester Name-->
                 <td>
@@ -65,19 +57,6 @@
                     </select>
                 </td>
 
-                <!-- # of Positions -->
-                <td>
-                    <input type="number"
-                           ng-model="model.number"
-                           placeholder="Number of Positions"/>
-                </td>
-
-                <!-- Professor Name -->
-                <td>
-                    <input type="text"
-                           ng-model="model.professor"
-                           placeholder="Professor name"/>
-                </td>
 
                 <!-- Deadline for this position-->
                 <td><input type="date"
@@ -86,11 +65,12 @@
 
 
                 <td>
-                    <a ng-click="model.createPosition(model.coursename, model.semestername,model.number, model.professor, model.deadline )"
+                    <a ng-click="model.updateDeadline(model.semestername, model.deadline )"
                        class="btn btn-block btn-primary">
                         Create
                     </a>
                 </td>
+
             </tr>
             </tbody>
 
@@ -99,10 +79,10 @@
 </div>
 
 <!------------------------------------------------->
-<!--            Positions Manager                -->
+<!--            Deadlines Manager                -->
 <!------------------------------------------------->
 <div class="container ">
-    <h4 ><b>Positions Manager</b></h4>
+    <h4 ><b>Deadlines Manager</b></h4>
 
     <!-- Update Message -->
     <div ng-if="model.updatedmessage" class="alert alert-success">
@@ -115,31 +95,15 @@
 
             <!-- Header for Position-->
 
-            <th>Course</th>
             <th>Semester</th>
-            <th># Positions</th>
-            <th>Lecturer</th>
             <th>Deadline</th>
+            <th>Update Deadline</th>
 
-            <th>Update Position</th>
-            <th>Delete Position</th>
 
 
             <tr ng-repeat="position in model.positions">
 
 
-                <!--Course-->
-
-                <td>
-                    <select type="string"
-                            class="form-control"
-                            placeholder="coursename"
-                            ng-model="position.course">
-
-                        <option ng-repeat="course in model.courses">{{course.coursename}}</option>
-
-                    </select>
-                </td>
 
                 <!--Semester-->
                 <td>
@@ -153,31 +117,18 @@
                 </td>
 
 
-                <!--# Positions-->
-                <td><input type="number"
-                           ng-model="position.number"
-                           placeholder="Number of positions"/></td>
-
-                <!--Lecturer-->
-                <td><input type="text"
-                           ng-model="position.professor"
-                           placeholder="professor Name"/></td>
-
                 <!--Deadline-->
                 <td><input type="date"
                            ng-model="position.deadline"
                            placeholder="deadline for the position"/></td>
 
-          <!-- Update Position Button-->
+                <!-- Update Position Button-->
                 <td>
-                    <a class="glyphicon glyphicon-ok makeblack"
-                       ng-click="model.updatePosition(position._id, position)"></a>
-                </td>
-
-                <!--Delete Position Button-->
-                <td>
-                    <a class="glyphicon glyphicon-remove makeblack"
-                       ng-click="model.deletePosition(position._id)"></a>
+                    <a ng-click="model.updatePosition(position._id, position)"
+                       class="btn btn-block btn-primary">
+                        Update Deadline
+                    </a>
+                    
                 </td>
 
             </tr>

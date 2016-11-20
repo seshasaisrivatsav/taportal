@@ -19,25 +19,49 @@
         vm.createPosition = createPosition;
         vm.updatePosition  = updatePosition;
         vm.deletePosition = deletePosition;
+        vm.updateDeadline = updateDeadline;
 
 
         function init() {
             findAllPositions();
             getLoggedInUser();
+            findAllCourses();
+            findAllSemesters();
         }
         init();
-        
+
+        function updateDeadline(semestername, deadline) {
+            PositionService
+                .updateDeadline(semestername, deadline)
+                .then(
+                    function (response) {
+                        vm.updatedmessage = "Updated Successfully!";
+                    }
+                );
+        }
+
+
         function findAllPositions() {
             PositionService
                 .findAllPositions()
                 .then(function (response) {
-                    vm.positions = response.data;
+                    var pos = response.data;
+
+                    for(i=0; i<pos.length; i++){
+                        var temp = pos[i].deadline;
+                        pos[i].deadline = new Date(temp);
+                    }
+
+
+                    vm.positions = pos;
+                    //console.log(  vm.positions);
                     vm.positionCount = vm.positions.length;
 
                 });
         }
 
         function createPosition(coursename, semestername, number, professor, deadline) {
+            //console.log("from create " + deadline);
             var position = {
                 course : coursename,
                 semester : semestername,
@@ -52,14 +76,15 @@
                     function (response) {
                         vm.createsuccess = "Created TA Position Successfully";
 
-                        PositionService
-                            .findAllPositions()
-                            .then(
-                                function (response) {
-                                    vm.positions = response.data;
-                                    vm.positionCount = vm.positions.length;
-                                }
-                         );
+                        // PositionService
+                        //     .findAllPositions()
+                        //     .then(
+                        //         function (response) {
+                        //             vm.positions = response.data;
+                        //             vm.positionCount = vm.positions.length;
+                        //         }
+                        //  );
+                        init();
                     }
                 )
         }
@@ -71,14 +96,15 @@
                 .then(
                     function (response) {
                         vm.updatedmessage = "Updated Successfully!";
-                        PositionService
-                            .findAllPositions()
-                            .then(
-                                function (response) {
-                                    vm.positions = response.data;
-                                    vm.positionCount = vm.positions.length;
-                                }
-                            );
+                        // PositionService
+                        //     .findAllPositions()
+                        //     .then(
+                        //         function (response) {
+                        //             vm.positions = response.data;
+                        //             vm.positionCount = vm.positions.length;
+                        //         }
+                        //     );
+                        init();
                     }
                 );
         }
@@ -90,18 +116,38 @@
                     function (response) {
                         vm.warning = "Deleted Successfully!";
                         vm.createsuccess = null;
-                        PositionService
-                            .findAllPositions()
-                            .then(
-                                function (response) {
-                                    vm.positions = response.data;
-                                    vm.positionCount = vm.positions.length;
-                                }
-                            );
+                        // PositionService
+                        //     .findAllPositions()
+                        //     .then(
+                        //         function (response) {
+                        //             vm.positions = response.data;
+                        //             vm.positionCount = vm.positions.length;
+                        //         }
+                        //     );
+                        init();
                     }
                 )
         }
-        
+
+        function findAllCourses() {
+            CoursesandSemestersService
+                .findAllCourses()
+                .then(function (response) {
+                    vm.courses =  response.data;
+                    vm.courseCount = vm.courses.length;
+                })
+        }
+
+
+        function findAllSemesters() {
+            CoursesandSemestersService
+                .findAllSemesters()
+                .then(function (response) {
+                    vm.semesters =  response.data;
+                    vm.semesterCount = vm.semesters.length;
+                })
+        }
+
         function getLoggedInUser() {
             if($rootScope.currentUser){
                 vm.loggedIn = "true";
