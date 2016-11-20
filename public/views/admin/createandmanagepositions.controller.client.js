@@ -21,9 +21,14 @@
         vm.deletePosition = deletePosition;
 
 
+        vm.fromcontroller = "2015-05-29T19:06:16.693209Z";
+
+
         function init() {
             findAllPositions();
             getLoggedInUser();
+            findAllCourses();
+            findAllSemesters();
         }
         init();
         
@@ -32,12 +37,14 @@
                 .findAllPositions()
                 .then(function (response) {
                     vm.positions = response.data;
+                    //console.log(  vm.positions);
                     vm.positionCount = vm.positions.length;
 
                 });
         }
 
         function createPosition(coursename, semestername, number, professor, deadline) {
+            //console.log("from create " + deadline);
             var position = {
                 course : coursename,
                 semester : semestername,
@@ -101,7 +108,26 @@
                     }
                 )
         }
-        
+
+        function findAllCourses() {
+            CoursesandSemestersService
+                .findAllCourses()
+                .then(function (response) {
+                    vm.courses =  response.data;
+                    vm.courseCount = vm.courses.length;
+                })
+        }
+
+
+        function findAllSemesters() {
+            CoursesandSemestersService
+                .findAllSemesters()
+                .then(function (response) {
+                    vm.semesters =  response.data;
+                    vm.semesterCount = vm.semesters.length;
+                })
+        }
+
         function getLoggedInUser() {
             if($rootScope.currentUser){
                 vm.loggedIn = "true";
