@@ -36,7 +36,15 @@
             PositionService
                 .findAllPositions()
                 .then(function (response) {
-                    vm.positions = response.data;
+                    var pos = response.data;
+
+                    for(i=0; i<pos.length; i++){
+                        var temp = pos[i].deadline;
+                        pos[i].deadline = new Date(temp);
+                    }
+
+
+                    vm.positions = pos;
                     //console.log(  vm.positions);
                     vm.positionCount = vm.positions.length;
 

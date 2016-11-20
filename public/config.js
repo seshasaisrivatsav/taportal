@@ -91,7 +91,15 @@
                     loggedIn: checkLoggedIn
                 }
             })
-                
+
+            .when("/setpositiondeadlines", {
+                templateUrl : "views/admin/createandmanagepositions.setdeadlines.view.client.html",
+                controller: "ManageCreatePositionsController",
+                controllerAs : "model",
+                resolve:{
+                    loggedIn: checkLoggedIn
+                }
+            })
                 
                 
             // Student Edit Profile
