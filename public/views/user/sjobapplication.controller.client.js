@@ -9,7 +9,7 @@
     /* HTML and Java script communicate via scope */
     /* handles the JAVA Script */
 
-    function SJobApplicationController($routeParams, $location, UserService, $rootScope) {
+    function SJobApplicationController($routeParams, $location, UserService, $rootScope, CoursesandSemestersService, PositionService) {
         var vm = this;
 
         vm.userId = $rootScope.currentUser._id;
@@ -18,6 +18,9 @@
 
         /*it is good practice to declare initialization ina function. say init*/
         function init(){
+            findAllCourses();
+            findAllSemesters();
+            findAllPositions();
             UserService
                 .findUserById(userId)
                 .then(function (response) {
@@ -25,6 +28,47 @@
                 });
         }
         init();
+
+
+
+
+        
+        function findAllSemesters() {
+            CoursesandSemestersService
+                .findAllSemesters()
+                .then(function (response) {
+                    vm.semesters =  response.data;
+                    vm.semesterCount = vm.semesters.length;
+                })
+        }
+
+        function findAllCourses() {
+            CoursesandSemestersService
+                .findAllCourses()
+                .then(function (response) {
+                    vm.courses =  response.data;
+                    vm.courseCount = vm.courses.length;
+                })
+        }
+
+        function findAllPositions() {
+            PositionService
+                .findAllPositions()
+                .then(function (response) {
+                    var pos = response.data;
+
+                    for(i=0; i<pos.length; i++){
+                        var temp = pos[i].deadline;
+                        pos[i].deadline = new Date(temp);
+                    }
+
+
+                    vm.positions = pos;
+                    //console.log(  vm.positions);
+                    vm.positionCount = vm.positions.length;
+
+                });
+        }
 
 
 

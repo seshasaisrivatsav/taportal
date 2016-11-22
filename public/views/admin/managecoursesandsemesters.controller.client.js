@@ -18,7 +18,8 @@
         vm.deleteCourse = deleteCourse;
         vm.deleteSemester = deleteSemester;
         vm.updateSemester = updateSemester;
-        
+        vm.logout = logout;
+
         function init() {
             findAllCourses();
             findAllSemesters();
@@ -168,6 +169,8 @@
         }
 
 
+        
+
         function getLoggedInUser() {
             if($rootScope.currentUser){
                 vm.loggedIn = "true";
@@ -178,7 +181,19 @@
 
             }
         }
-        
+
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $location.url("/login");
+                    },
+                    function () {
+                        $location.url("/login");
+                    }
+                );
+        }
 
 
     }

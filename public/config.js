@@ -34,6 +34,14 @@
                 }
             })
 
+            .when("/myjobsdashboard",{
+                templateUrl : "views/user/smyjobsdashboard.view.client.html",
+                controller: "SMyJobsDashboardController",
+                controllerAs : "model",
+                resolve:{
+                    loggedIn: checkLoggedIn
+                }
+            })
 
             .when("/aconsole",{
                 templateUrl: "views/admin/aconsole.view.client.html",

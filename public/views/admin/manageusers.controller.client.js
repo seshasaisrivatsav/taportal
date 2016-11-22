@@ -15,7 +15,7 @@
         vm.createUser = createUser;
         vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
-
+        vm.logout = logout;
         function init() {
             getLoggedInUser();
             findAllUsers();
@@ -107,6 +107,20 @@
 
             }
         }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $location.url("/login");
+                    },
+                    function () {
+                        $location.url("/login");
+                    }
+                );
+        }
+
 
     }
 })();
