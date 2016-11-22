@@ -5,7 +5,7 @@
 module.exports= function(app, models){
 
     var positionModel = models.positionModel;
-    var courseModel = models.courseModel;
+
     
 
     app.post("/api/position", createPosition);
@@ -65,11 +65,9 @@ module.exports= function(app, models){
 
     function deletePosition(req,res) {
 
-        var positionId = req.params.positionId;
-
+         
         positionModel
-            .deletePosition(positionId)
-            //responds with some stats
+            .deletePosition(req.params.positionId)
             .then(function (stats) {
                     res.send(200);
                 },

@@ -12,7 +12,7 @@
         $routeProvider
 
 
-
+ 
 
         // Student Profile
             .when("/fprofile",{
@@ -24,6 +24,17 @@
                 }
             })
 
+            // Student Job Application
+            .when("/studentjobapplication", {
+                templateUrl : "views/user/sjobapplication.view.client.html",
+                controller: "SJobApplicationController",
+                controllerAs : "model",
+                resolve:{
+                    loggedIn: checkLoggedIn
+                }
+            })
+
+
             .when("/aconsole",{
                 templateUrl: "views/admin/aconsole.view.client.html",
                 controller: "AConsoleController",
@@ -33,10 +44,7 @@
                 }
             })
 
-            .when("/reports", {
-                templateUrl : "..views/coverage/lcov-report/index.html"
-            })
-                
+
             // Admin profile
             .when("/aprofile",{
                 templateUrl :"views/admin/aprofile.view.client.html",
