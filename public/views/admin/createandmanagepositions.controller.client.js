@@ -20,7 +20,7 @@
         vm.updatePosition  = updatePosition;
         vm.deletePosition = deletePosition;
         vm.updateDeadline = updateDeadline;
-
+        vm.logout = logout;
 
         function init() {
             findAllPositions();
@@ -163,7 +163,18 @@
             }
         }
 
-
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $location.url("/login");
+                    },
+                    function () {
+                        $location.url("/login");
+                    }
+                );
+        }
 
     }
 })();
