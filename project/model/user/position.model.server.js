@@ -36,9 +36,6 @@ module.exports = function () {
     }
 
     function updateDeadline(semester, deadline) {
-
-    
-        
         return Position
             .update({semester : semester},{
                 $set : {deadline : deadline}

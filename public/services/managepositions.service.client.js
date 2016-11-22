@@ -38,9 +38,9 @@
             return $http.put(url, position);
         }
 
-        function updateDeadline(semestername, deadline) {
-            var url = "/api/position" + semestername;
-            return $http.put(url,deadline);
+        function updateDeadline(position) {
+            var url = "/api/position/semestername" ;
+            return $http.put(url, position);
         }
 
         function findAllPositions() {
