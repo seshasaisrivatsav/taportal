@@ -78,15 +78,15 @@ describe('Tests For Courses', function() {
         chai.request(server)
             .get('/api/findallcourses')
             .end(function(err, res){
-        chai.request(server)
-            .put('/api/course/'+res.body[0]._id)
-            .send({'coursename': 'updatedCourse'})
-            .end(function (error, response) {
-                response.should.have.status(200);
-                // done();
+                chai.request(server)
+                    .put('/api/course/'+res.body[0]._id)
+                    .send({'coursename': 'updatedCourse'})
+                    .end(function (error, response) {
+                        response.should.have.status(200);
+                        // done();
+                    });
+                done();
             });
-            done();
-        });
     });
 
 
@@ -105,20 +105,6 @@ describe('Tests For Courses', function() {
 
 
     it('should delete a course', function (done) {
-        chai.request(server)
-            .get('/api/findallcourses')
-            .end(function(err, res){
-        chai.request(server)
-            .delete('/api/course/' + res.body[1]._id)
-            .end(function (error, response) {
-                response.should.have.status(200);
-                // done();
-            });
-            done();
-        });
-    });
-
-    it('should delete a course error', function (done) {
         chai.request(server)
             .get('/api/findallcourses')
             .end(function(err, res){
