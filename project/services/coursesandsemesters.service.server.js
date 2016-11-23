@@ -82,7 +82,6 @@ module.exports= function(app, models){
     
 
     function createCourse(req, res) {
-        
         var course = req.body;
         courseModel
             .findCourseByCoursename(course.coursename)
@@ -113,18 +112,19 @@ module.exports= function(app, models){
 
     /* for future use if required */
 
-    /*function findCourseByCoursename(coursename, res) {
-        courseModel
-            .findCourseByCoursename(coursename)
-            .then(
-                function (course) {
-                    res.json(course);
-                },
-                function (error) {
-                    res.sendStatus(404).send(error);
-                }
-            );
-    }*/
+
+    // function findCourseByCoursename(coursename, res) {
+    //     courseModel
+    //         .findCourseByCoursename(coursename)
+    //         .then(
+    //             function (course) {
+    //                 res.json(course);
+    //             },
+    //             function (error) {
+    //                 res.sendStatus(404).send(error);
+    //             }
+    //         );
+    // }
 
 
 /* Semester Functions */

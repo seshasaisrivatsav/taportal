@@ -10,11 +10,11 @@ module.exports = function () {
         _user : {type : mongoose.Schema.ObjectId, ref: "User"},
         priority : Number,
         previouslyTaken : String,
-        gradeObtained : {type : String,  enum: ['A', 'A-', 'B', 'B-',]},
+        gradeObtained : {type : String,  enum: ['A', 'A-', 'B', 'B-', 'lower']},
         beenTASemester : String ,
         availability : {type : String,  enum: ['Fully Available', 'Looking for Co-ops']}, // Enum
         remarks : String,
-        status :{type : String,  enum: ['Accepted', 'Rejected', 'In Progress']},// Enum Accepted Rejected
+        status :{type : String,  enum: ['Accepted', 'Rejected', 'In Progress']}// Enum Accepted Rejected
 }, {collections: 'taportal.application'});
     return ApplicationSchema;
 };

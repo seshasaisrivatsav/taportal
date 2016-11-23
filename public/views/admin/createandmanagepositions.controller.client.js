@@ -20,7 +20,7 @@
         vm.updatePosition  = updatePosition;
         vm.deletePosition = deletePosition;
         vm.updateDeadline = updateDeadline;
-
+        vm.logout = logout;
 
         function init() {
             findAllPositions();
@@ -31,8 +31,12 @@
         init();
 
         function updateDeadline(semestername, deadline) {
+            var position = {
+                semester : semestername,
+                deadline : deadline
+            };
             PositionService
-                .updateDeadline(semestername, deadline)
+                .updateDeadline(position)
                 .then(
                     function (response) {
                         vm.updatedmessage = "Updated Successfully!";
@@ -159,7 +163,18 @@
             }
         }
 
-
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $location.url("/login");
+                    },
+                    function () {
+                        $location.url("/login");
+                    }
+                );
+        }
 
     }
 })();
