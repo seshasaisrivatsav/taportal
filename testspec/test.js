@@ -115,25 +115,44 @@ describe('Test For User', function() {
             });
     });
 
+    // it('should register a user on /api/register POST', function(done) {
+    //     chai.request(server)
+    //         .post('/api/register')
+    //         .send({'username': 'new', 'password': 'neww'})
+    //         .end(function(err, res){
+    //             newid = res.body._id;
+    //             res.should.have.status(200);
+    //             done();
+    //         });
+    // });
+
+
     it('should register a user on /api/register POST', function(done) {
         chai.request(server)
             .post('/api/register')
-            .send({'username': 'new', 'password': 'neww'})
-            .end(function(err, res){
+            .send({'username': 'new123', 'password': 'new123', 'usertype' : 'student', 'email' : 'new123@gmail.com'})
+            .end(function(err, res) {
                 newid = res.body._id;
-                res.should.have.status(200);
-                done();
+                chai.request(server)
+                    .delete('/api/user/' + newid)
+                    .end(function (err, res) {
+                        res.should.have.status(200);
+                        done();
+                        // res.should.have.status(200);
+                        // done();
+                    });
+                // done();
             });
     });
 
-    it('should delete a user on /api/register delete', function(done) {
-        chai.request(server)
-            .delete('/api/user/' + newid)
-            .end(function (err, res) {
-                res.should.have.status(200);
-                done();
-            });
-    });
+    // it('should delete a user on /api/register delete', function(done) {
+    //     chai.request(server)
+    //         .delete('/api/user/' + newid)
+    //         .end(function (err, res) {
+    //             res.should.have.status(200);
+    //             done();
+    //         });
+    // });
 
     it('should login a single user on /api/login POST', function(done) {
         chai.request(server)
@@ -155,7 +174,7 @@ describe('Test For User', function() {
                     .end(function (error, response) {
                         response.should.have.status(200);
                         done();
-                    })
+                    });
             });
     });
 

@@ -118,6 +118,20 @@ describe('Tests For Courses', function() {
         });
     });
 
+    it('should delete a course error', function (done) {
+        chai.request(server)
+            .get('/api/findallcourses')
+            .end(function(err, res){
+                chai.request(server)
+                    .delete('/api/course/' + res.body[1]._id)
+                    .end(function (error, response) {
+                        response.should.have.status(200);
+                        // done();
+                    });
+                done();
+            });
+    });
+
 
 });
 
