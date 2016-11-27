@@ -1,3 +1,44 @@
-<h1>
-    Faculty Profile
-</h1>
+
+<div class="row container">
+    <h1>
+        Welcome Prof. {{model.user.firstName}} {{model.user.lastName}}
+    </h1>
+    <hr>
+    <div class="col-sm-4 col-md-4">
+        <img src="http://leafii.com/images/defaultProfilePic.png" style="width:75%;">
+        <p><b>First Name</b>: {{model.user.firstName}}</p>
+        <p><b>Last Name</b>: {{model.user.lastName}}</p>
+        <p><b>Email Address</b>: {{model.user.email}}</p>
+        <p><b>Phone:</b>{{model.user.phone}}</p>
+        <p><b>My Courses:</b><p ng-repeat="course in model.user.coursesTaken">{{course}}</p></p>
+        <p><b>About Myself:</b>{{model.user.aboutMyself}}</p>
+    </div>
+
+
+    <div class="col-sm-8 col-md-8">
+        <h3>Check TA Applications</h3>
+    </div>
+</div>
+
+
+
+
+<!------------------------------------------------>
+<!-- Footer -->
+<!------------------------------------------------>
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a ng-click = "model.logout()">Logout</a>
+            </a>
+        </p>
+
+        <p class="navbar-text pull-left">
+            <a href="#/feditprofile">
+                <span>Edit Profile</span>
+            </a>
+        </p>
+
+    </div>
+</nav>
+

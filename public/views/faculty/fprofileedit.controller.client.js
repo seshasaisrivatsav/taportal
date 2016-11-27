@@ -11,6 +11,8 @@
         vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
         vm.addUserCourses = addUserCourses;
+        vm.deleteUserCourse = deleteUserCourse;
+
         vm.userId = $rootScope.currentUser._id;
         var userId = $rootScope.currentUser._id;
         vm.logout = logout;
@@ -46,6 +48,23 @@
                     }
                 );
         }
+
+        function deleteUserCourse(course) {
+           UserService
+                .deleteUserCourse(userId, course)
+                .then(function (res) {
+                    var updatedUser = res.data;
+                    if(updatedUser){
+                        vm.success="Successfully Deleted courses";
+                        init();
+                    }else {
+                        vm.error="Someting is off";
+                    }
+                })
+
+        }
+
+
         function deleteUser() {
             UserService
                 .deleteUser(userId)
@@ -73,6 +92,7 @@
                 })
         }
         function updateUser(user){
+           
             UserService
                 .updateUser(userId, user)
                 .then(function (res) {
