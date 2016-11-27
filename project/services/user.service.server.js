@@ -20,6 +20,7 @@ module.exports= function(app, models){
     app.get("/api/user/:userId", findUserById);
     app.delete("/api/user/:userId", deleteUser);
     app.put("/api/user/:userId", updateUser);
+    app.put("/api/user/addcourse/:userId", addUserCourses);
     app.get('/api/findallusers', findallusers);
 
 
@@ -148,6 +149,22 @@ module.exports= function(app, models){
             res.send('0');
         }
     }
+
+    function addUserCourses(req,res) {
+        var id = req.params.userId;
+        var user = req.body;
+        userModel
+            .addUserCourses(id, user)
+            .then(
+                function (stats) {
+                    res.sendStatus(200);
+                },
+                function (error) {
+                    res.sendStatus(404);
+                }
+            );
+    }
+
 
     function updateUser(req, res) {
         var id = req.params.userId;

@@ -16,7 +16,9 @@ module.exports = function () {
         deleteUser: deleteUser,
         updateUser: updateUser,
         findUserByUsername: findUserByUsername,
-        findAllUsers: findAllUsers
+        findAllUsers: findAllUsers,
+        addUserCourses: addUserCourses
+
 
     };
     return api;
@@ -35,6 +37,14 @@ module.exports = function () {
         return User.findOne({username: username});
     }
 
+    function addUserCourses(userId, user) {
+        return User
+            .update({_id: userId},{
+                $push: {coursesTaken: user.coursename}
+            });
+
+    }
+
     function updateUser(userId, user) {
         delete user._id;
         return User
@@ -45,6 +55,7 @@ module.exports = function () {
                     usertype : user.usertype}}
             );
     }
+
 
 
     function deleteUser(userId) {

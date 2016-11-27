@@ -35,16 +35,8 @@ module.exports = function () {
         nuid : Number,
         phone : String,
         gpa : Number,
-        coursesTaken: [
-            {
-                name: String
-            }
-        ],
-        currentCourses :[
-            {
-                name: String
-            }
-        ],
+        coursesTaken: [String],
+        currentCourses :[String],
 
         rating :[
             {

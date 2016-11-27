@@ -118,7 +118,7 @@
             })
                 
                 
-            // Student Edit Profile
+            // Admin Edit Profile
             .when("/aeditprofile",{
                 templateUrl :"views/admin/aprofileedit.view.client.html",
                 controller: "AEditProfileController",
@@ -128,7 +128,7 @@
                 }
             })
 
-            // Student Register
+            // Faculty Register
             .when("/fregister",{
                 templateUrl: "views/faculty/fregsiter.view.client.html",
                 controller: "FRegisterController",
@@ -137,6 +137,16 @@
                 // resolve: {
                 //     freeView : freeView
                 // }
+            })
+
+            // Faculty Edit Profile
+            .when("/feditprofile",{
+                templateUrl :"views/faculty/fprofileedit.view.client.html",
+                controller: "FEditProfileController",
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
             })
 
 

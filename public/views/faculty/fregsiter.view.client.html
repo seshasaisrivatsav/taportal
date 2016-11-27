@@ -31,7 +31,7 @@
             <input ng-model="firstName"
                    placeholder="firstName"
                    name="firstName"
-                   type="firstName"
+                   type="text"
                    class="form-control"
                    required/>
 
@@ -40,7 +40,7 @@
             <input ng-model="lastName"
                    placeholder="lastName"
                    name="lastName"
-                   type="lastName"
+                   type="text"
                    class="form-control"
                    required/>
 
@@ -52,8 +52,10 @@
                    type="password"
                    class="form-control"
                    required/>
-    <span class="alert-class"
-          ng-show="model.myform.password.$invalid">{{model.alert}}</span>
+            <span class="alert-class"
+                ng-show="model.myform.password.$invalid">{{model.alert}}
+            </span>
+
             <p></p>
 
 
@@ -63,6 +65,7 @@
                    type="password"
                    class="form-control"
                    required/>
+
     <span class="alert-class"
           ng-show="model.myform.vpassword.$invalid">{{model.pwmatch}}</span>
 
@@ -75,7 +78,8 @@
                    class="form-control"
                    required/>
 
-            <p> </p>
+            <p></p>
+
             <button class="btn btn-primary btn-block"
                     ng-click="model.register(username, password, firstName, lastName, email)"
                     type="submit">Register</button>

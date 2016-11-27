@@ -22,7 +22,8 @@
             login: login,
             logout: logout,
             findUserByUsername: findUserByUsername,
-            findAllUsers: findAllUsers
+            findAllUsers: findAllUsers,
+            addUserCourses: addUserCourses
         };
 
         return api;
@@ -93,6 +94,11 @@
             return $http.put(url, user);
 
 
+        }
+        
+        function addUserCourses(userId, user) {
+            var url="/api/user/addcourse/"+userId;
+            return $http.put(url, user);
         }
 
 
