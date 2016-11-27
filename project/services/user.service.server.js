@@ -227,7 +227,7 @@ module.exports= function(app, models){
             //responds with some stats
             .then(function (stats) {
 
-                    res.send(200);
+                    res.sendStatus(200);
                 },
                 function (error) {
                     res.statusCode(404).send(error);
@@ -259,7 +259,7 @@ module.exports= function(app, models){
         } else if(username){
             findUserByUsername(username, res);
         }else {
-            findAllUsers();
+            findallusers();
         }
     }
 

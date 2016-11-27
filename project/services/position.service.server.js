@@ -96,7 +96,7 @@ module.exports= function(app, models){
             .createPosition(req.body)
             .then(
                 function (stats) {
-                    res.send(200);
+                    res.sendStatus(200);
 
                 }, function (err) {
                     res.sendStatus(400).send(err);

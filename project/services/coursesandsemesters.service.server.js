@@ -58,7 +58,7 @@ module.exports= function(app, models){
             .deleteCourse(courseId)
             //responds with some stats
             .then(function (stats) {
-                res.send(200);
+                res.sendStatus(200);
                 },
                 function (error) {
                     res.statusCode(404).send(error);
@@ -109,6 +109,8 @@ module.exports= function(app, models){
             }
         );
     }
+
+    /* for future use if required */
 
 
     // function findCourseByCoursename(coursename, res) {
@@ -165,7 +167,7 @@ module.exports= function(app, models){
             .deleteSemester(semesterId)
 
             .then(function (stats) {
-                    res.send(200);
+                    res.sendStatus(200);
                 },
                 function (error) {
                     res.statusCode(404).send(error);
@@ -220,7 +222,9 @@ module.exports= function(app, models){
     }
 
 
-    function findSemesterBySemestername(semestername, res) {
+    /* for future use if required */
+
+    /*function findSemesterBySemestername(semestername, res) {
         semesterModel
             .findSemesterBySemestername(semestername)
             .then(
@@ -231,7 +235,7 @@ module.exports= function(app, models){
                     res.sendStatus(404).send(error);
                 }
             );
-    }
+    }*/
 
 
 
