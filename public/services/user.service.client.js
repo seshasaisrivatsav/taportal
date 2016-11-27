@@ -23,7 +23,8 @@
             logout: logout,
             findUserByUsername: findUserByUsername,
             findAllUsers: findAllUsers,
-            addUserCourses: addUserCourses
+            addUserCourses: addUserCourses,
+            deleteUserCourse: deleteUserCourse
         };
 
         return api;
@@ -31,7 +32,7 @@
 
         function register(username,password, firstName, lastName, email, usertype) {
 
-
+            
             var user= {
                 username: username,
                 password : password,
@@ -101,6 +102,14 @@
             return $http.put(url, user);
         }
 
+        function deleteUserCourse(userId, course){
+            var coursename = {
+                course: course
+            };
+            
+            var url="/api/user/deleteusercourse/"+userId;
+            return $http.put(url, coursename);
+        }
 
         function deleteUser(userId){
             var url = "/api/user/"+userId;

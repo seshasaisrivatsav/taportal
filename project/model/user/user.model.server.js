@@ -17,7 +17,8 @@ module.exports = function () {
         updateUser: updateUser,
         findUserByUsername: findUserByUsername,
         findAllUsers: findAllUsers,
-        addUserCourses: addUserCourses
+        addUserCourses: addUserCourses,
+        deleteUserCourse: deleteUserCourse
 
 
     };
@@ -52,14 +53,22 @@ module.exports = function () {
                 $set: {firstName : user.firstName,
                     lastName : user.lastName,
                     email: user.email,
-                    usertype : user.usertype}}
+                    usertype : user.usertype,
+                    phone: user.phone,
+                    aboutMyself: user.aboutMyself}}
             );
     }
 
-
+    function deleteUserCourse(userId, coursename) {
+         
+        return User
+            .update({_id: userId},{
+                $pull:{coursesTaken: coursename.course}
+            });
+    }
 
     function deleteUser(userId) {
-        return User.remove({_id: userId});
+            return User.remove({_id: userId});
     }
 
     function findUserByCredentials(username, password) {

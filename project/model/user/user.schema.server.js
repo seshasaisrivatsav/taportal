@@ -19,19 +19,19 @@ module.exports = function () {
         image: String, // Image of the user
         aboutMyself: String, // Few lines about the user
 
-        // Fields specific for Students
+        
         resume: {
-            url: String, //Place where the Resume is stored
+            url: String,
             resume : String
         } ,
-        // Relevant documents that are attached by a student
+
         documents: [
             {
                 name: String,
                 file: String
             }
         ],
-        //NUID of the student 
+
         nuid : Number,
         phone : String,
         gpa : Number,

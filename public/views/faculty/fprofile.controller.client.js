@@ -9,7 +9,7 @@
     /* HTML and Java script communicate via scope */
     /* handles the JAVA Script */
 
-    function FProfileController($routeParams, $location, UserService, $rootScope) {
+    function FProfileController($routeParams, $location, UserService, $rootScope,PositionService) {
         var vm = this;
         vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
@@ -23,9 +23,32 @@
                 .then(function (response) {
                     vm.user = response.data;
                 });
+            findAllPositions();
+
         }
         init();
 
+
+        function findAllPositions() {
+            PositionService
+                .findAllPositions()
+                .then(function (response) {
+                    var pos = response.data;
+
+                    for(i=0; i<pos.length; i++){
+                        var temp = pos[i].deadline;
+                        pos[i].deadline = new Date(temp);
+                    }
+
+
+                    vm.positions = pos;
+                    //console.log(  vm.positions);
+                    vm.positionCount = vm.positions.length;
+
+                });
+        }
+
+        
         function logout() {
             UserService
                 .logout()

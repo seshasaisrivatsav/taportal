@@ -21,6 +21,7 @@ module.exports= function(app, models){
     app.delete("/api/user/:userId", deleteUser);
     app.put("/api/user/:userId", updateUser);
     app.put("/api/user/addcourse/:userId", addUserCourses);
+    app.put("/api/user/deleteusercourse/:userId",deleteUserCourse);
     app.get('/api/findallusers', findallusers);
 
 
@@ -216,6 +217,24 @@ module.exports= function(app, models){
                 }
             );
 
+    }
+
+
+    function deleteUserCourse(req,res) {
+        var userId = req.params.userId;
+        var coursename = req.body;
+
+        
+
+        userModel
+            .deleteUserCourse(userId, coursename)
+            .then(function (stats) {
+
+                res.sendStatus(200);
+            },
+            function (error) {
+                res.statusCode(404).send(error);
+            });
     }
 
 

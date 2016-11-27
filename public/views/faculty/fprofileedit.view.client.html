@@ -13,6 +13,7 @@
         {{model.error}}
     </div>
 
+    <!--Username-->
     <form>
         <div class="form-group">
             <label for="username">Username</label>
@@ -23,6 +24,7 @@
         </div>
     </form>
 
+    <!--Email-->
     <form>
         <div class="form-group">
             <label for="email">Email address</label>
@@ -34,6 +36,7 @@
         </div>
     </form>
 
+    <!--First name-->
     <form>
         <div class="form-group">
             <label for="first-name">First Name</label>
@@ -45,6 +48,7 @@
         </div>
     </form>
 
+    <!-- Last Name-->
     <form>
         <div class="form-group">
             <label for="last-name">Last Name</label>
@@ -58,28 +62,67 @@
 
     <!--Course Name-->
     <!-- Dropdown is populated from the database -->
+
     <form>
         <div class="form-group">
-            <label for="username">My Courses</label>
-            <select type="string"
-                    class="form-control"
-                    placeholder="Course Name"
-                    ng-model="model.user.coursename">
+            <div class="row container">
+                <!--Dropdown to select courses-->
+                <div class="col-sm-8 col-md-8">
+                    <label for="username">My Courses</label>
+                    <select type="string"
+                            class="form-control"
+                            placeholder="Course Name"
+                            ng-model="model.user.coursename">
 
-                <option ng-repeat="course in model.courses">{{course.coursename}}</option>
-            </select>
-            <p></p>
-            <p ng-repeat="course in model.user.coursesTaken">{{course}}</p>
+                        <option ng-repeat="course in model.courses">{{course.coursename}}</option>
+                    </select>
+                </div>
+                <!--Button to add-->
+                <div class="col-sm-4 col-md-4">
+                    <label>Add Courses</label>
+                    <a ng-click = "model.addUserCourses(model.user)" class="btn btn-success btn-block">Add my courses</a>
+                </div>
+            </div>
 
-            <p></p>
-            <a ng-click = "model.addUserCourses(model.user)" class="btn btn-success btn-block">Add my courses</a>
+
+            <!-- Display Courses-->
+            <p ng-repeat="course in model.user.coursesTaken">{{course}}
+                <a class="glyphicon glyphicon-remove makeblack"
+                   ng-click="model.deleteUserCourse(course)">
+
+                </a>
+            </p>
+
         </div>
+     </form>
 
-
-
+    <!-- Phone Number-->
+    <form>
+        <div class="form-group">
+            <label for="last-name">Phone Number</label>
+            <input ng-model="model.user.phone"
+                   type="text"
+                   class="form-control"
+                   id="phone"
+                   placeholder="617-447-9680">
+        </div>
     </form>
 
-    <a ng-click = "model.updateUser(model.user)" class="btn btn-success btn-block">Update</a>
+    <!-- About Myself-->
+    <form>
+        <div class="form-group">
+            <label for="last-name">About Myself</label>
+            <input ng-model="model.user.aboutMyself"
+                   type="text"
+                   class="form-control"
+                   id="About Myself"
+                   placeholder="Few Lines about myself">
+        </div>
+    </form>
+
+
+
+    <a ng-click = "model.updateUser(model.user)" class="btn btn-success btn-block">Update Profile</a>
 
 
 
@@ -102,7 +145,7 @@
         </p>
 
         <p class="navbar-text pull-left">
-            <a href="#/sprofile">
+            <a href="#/fprofile">
                 <span>Back to Profile</span>
             </a>
         </p>
