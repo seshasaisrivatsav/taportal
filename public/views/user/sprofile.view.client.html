@@ -7,7 +7,45 @@
        href="#/studentjobapplication">Apply For TA Positions</a>
 </div>
 
-<!-- Footer -->
+
+
+<div class="row container">
+    <h1>
+        Welcome Student. {{model.user.firstName}} {{model.user.lastName}}
+    </h1>
+    <hr>
+    <div class="col-sm-4 col-md-4">
+        <img src="http://leafii.com/images/defaultProfilePic.png" style="width:75%;">
+        <p><b>First Name</b>: {{model.user.firstName}}</p>
+        <p><b>Last Name</b>: {{model.user.lastName}}</p>
+        <p><b>Email Address</b>: {{model.user.email}}</p>
+        <p><b>Phone:</b>{{model.user.phone}}</p>
+        <p><b>Current Courses:</b><p ng-repeat="currentcourse in model.user.currentCourses">{{currentcourse}}</p></p>
+        <p><b>My Previous Courses:</b><p ng-repeat="course in model.user.coursesTaken">{{course}}</p></p>
+        <p><b>About Myself:</b>{{model.user.aboutMyself}}</p>
+    </div>
+
+
+    <div class="col-sm-8 col-md-8">
+
+
+
+        <!-- Display resume -->
+        <br>
+            <a ng-href="{{model.user.resumeURL}}">View Full Resume: {{model.user.resumeName}}</a>
+        <br>
+
+        <iframe name='formresponse' src="{{model.user.resumeURL}}" width='600' height='500'></iframe>
+        <br>
+        <!-------------------->
+
+    </div>
+</div>
+
+
+<!------------------------------------------->
+<!--------------- Footer ------------------>
+<!------------------------------------------->
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">

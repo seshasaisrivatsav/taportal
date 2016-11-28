@@ -6,6 +6,11 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var bcrypt = require("bcrypt-nodejs");
 
+/* For resume upload */
+var fs = require("fs");
+var multer  = require('multer');
+var upload = multer({ dest: __dirname+'/../../public/uploads' });
+
 
 module.exports= function(app, models){
 
@@ -21,8 +26,11 @@ module.exports= function(app, models){
     app.delete("/api/user/:userId", deleteUser);
     app.put("/api/user/:userId", updateUser);
     app.put("/api/user/addcourse/:userId", addUserCourses);
+    app.put("/api/user/addcurrentcourse/:userId", addCurrentCourses);
     app.put("/api/user/deleteusercourse/:userId",deleteUserCourse);
+    app.put("/api/user/deletecurrentcourse/:userId",deleteCurrentCourse);
     app.get('/api/findallusers', findallusers);
+    app.post("/api/resumeupload",upload.single('myResume'), uploadResume);
 
 
     passport.use('TaPortal', new LocalStrategy(localStrategy));
@@ -36,7 +44,53 @@ module.exports= function(app, models){
 
 
 
+    function uploadResume(req, res) {
+       var UserId        = req.body.userId;
+        
+        var myFile        = req.file;
+        var path          = myFile.path;
+        var originalname  = myFile.originalname;
+        var size          = myFile.size;
+        var mimetype      = myFile.mimetype;
+        var filename      = myFile.filename;
+ 
+        //Get the file type
+        var mimes = mimetype.split('/');
+        var extension = mimes[mimes.length - 1];
+        
+        //Append the file extension at the end of randomly generated filename
+        var file = filename+"."+extension;
 
+        var newpath = path+"."+extension;
+
+        //Rename the file path
+        fs.rename(path, newpath);
+
+        //Check whether the upload is for UPLOAD widget or IMAGE widget
+        var resume =
+        {
+            url: "/uploads/"+file, //originalname;
+            resume: originalname
+        };
+
+        //Check whether the user needs to be edited or created!
+        if(UserId){
+            userModel
+                .updateResumeOfStudent(UserId, resume)
+                .then(
+                    function(user) {
+                        res.send(200);
+                       // res.redirect("/sprofile");
+                    },
+                    function(err) {
+                        res.status(400).send(err);
+                    }
+                );
+        }
+
+    }
+    
+    
 
     function logout(req, res) {
         req.logout();
@@ -166,6 +220,20 @@ module.exports= function(app, models){
             );
     }
 
+    function addCurrentCourses(req,res) {
+        var id = req.params.userId;
+        var user = req.body;
+        userModel
+            .addCurrentCourses(id, user)
+            .then(
+                function (stats) {
+                    res.sendStatus(200);
+                },
+                function (error) {
+                    res.sendStatus(404);
+                }
+            );
+    }
 
     function updateUser(req, res) {
         var id = req.params.userId;
@@ -223,9 +291,6 @@ module.exports= function(app, models){
     function deleteUserCourse(req,res) {
         var userId = req.params.userId;
         var coursename = req.body;
-
-        
-
         userModel
             .deleteUserCourse(userId, coursename)
             .then(function (stats) {
@@ -236,6 +301,21 @@ module.exports= function(app, models){
                 res.statusCode(404).send(error);
             });
     }
+
+
+    function deleteCurrentCourse(req,res) {
+        var userId = req.params.userId;
+        var coursename = req.body;
+        userModel
+            .deleteCurrentCourse(userId, coursename)
+            .then(function (stats) {
+                    res.sendStatus(200);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                });
+    }
+
 
 
     function deleteUser(req,res) {

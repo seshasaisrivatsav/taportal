@@ -18,7 +18,10 @@ module.exports = function () {
         findUserByUsername: findUserByUsername,
         findAllUsers: findAllUsers,
         addUserCourses: addUserCourses,
-        deleteUserCourse: deleteUserCourse
+        deleteUserCourse: deleteUserCourse,
+        addCurrentCourses: addCurrentCourses,
+        deleteCurrentCourse: deleteCurrentCourse,
+        updateResumeOfStudent: updateResumeOfStudent
 
 
     };
@@ -38,6 +41,7 @@ module.exports = function () {
         return User.findOne({username: username});
     }
 
+    // Completed courses addition
     function addUserCourses(userId, user) {
         return User
             .update({_id: userId},{
@@ -46,26 +50,81 @@ module.exports = function () {
 
     }
 
-    function updateUser(userId, user) {
-        delete user._id;
+    // Current courses addition
+    function addCurrentCourses(userId, user) {
         return User
             .update({_id: userId},{
-                $set: {firstName : user.firstName,
-                    lastName : user.lastName,
-                    email: user.email,
-                    usertype : user.usertype,
-                    phone: user.phone,
-                    aboutMyself: user.aboutMyself}}
-            );
-    }
+                $push: {currentCourses: user.ccoursename}
+            });
 
+    }
+    
+    // delete completed courses
     function deleteUserCourse(userId, coursename) {
-         
+
         return User
             .update({_id: userId},{
                 $pull:{coursesTaken: coursename.course}
             });
     }
+    
+    
+    // delete current course
+    function deleteCurrentCourse(userId, coursename) {
+        return User
+            .update({_id: userId},{
+                $pull:{coursesTaken: coursename.course}
+            });
+    }
+    
+    
+    
+    
+
+    // Decomissioned on 11/26
+    // function updateUser(userId, user) {
+    //     delete user._id;
+    //     return User
+    //         .update({_id: userId},{
+    //             $set: {firstName : user.firstName,
+    //                 lastName : user.lastName,
+    //                 email: user.email,
+    //                 usertype : user.usertype,
+    //                 phone: user.phone,
+    //                 aboutMyself: user.aboutMyself}}
+    //         );
+    // }
+
+    function updateUser(userId, user) {
+        // delete user._id;
+        return User
+            .update({_id: userId},{
+                $set: {username: user.username,
+                    firstName : user.firstName,
+                    lastName : user.lastName,
+                    email: user.email,
+                    usertype : user.usertype,
+                    currentCourses: user.currentCourses,
+                    coursesTaken: user.coursesTaken,
+                    gpa: parseInt(user.gpa),
+                    aboutMyself: user.aboutMyself
+
+                }}
+            );
+    }
+
+    function updateResumeOfStudent(userId, resume) {
+        // delete user._id;
+       return User
+            .update({_id: userId},{
+                $set: {resumeURL : resume.url,
+                    resumeName: resume.resume}}
+            );
+    }
+
+
+
+  
 
     function deleteUser(userId) {
             return User.remove({_id: userId});

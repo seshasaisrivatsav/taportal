@@ -19,22 +19,26 @@ module.exports = function () {
         image: String, // Image of the user
         aboutMyself: String, // Few lines about the user
 
-        
-        resume: {
-            url: String,
-            resume : String
-        } ,
 
-        documents: [
-            {
-                name: String,
-                file: String
-            }
-        ],
+        resumeURL: String,
+        resumeName: String,
 
         nuid : Number,
         phone : String,
         gpa : Number,
+
+        // coursesTaken: [
+        //     {
+        //         name: String
+        //     }
+        // ],
+        // currentCourses :[
+        //     {
+        //         name: String
+        //     }
+        // ],
+
+        
         coursesTaken: [String],
         currentCourses :[String],
 
