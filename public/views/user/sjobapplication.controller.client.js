@@ -30,7 +30,11 @@
         init();
 
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                      Developed by Srivatsav                                                      //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        // Author: Sesha Sai Srivatsav
 
         
         function findAllSemesters() {
@@ -41,7 +45,7 @@
                     vm.semesterCount = vm.semesters.length;
                 })
         }
-
+        // Author: Sesha Sai Srivatsav
         function findAllCourses() {
             CoursesandSemestersService
                 .findAllCourses()
@@ -50,7 +54,7 @@
                     vm.courseCount = vm.courses.length;
                 })
         }
-
+        // Author: Sesha Sai Srivatsav
         function findAllPositions() {
             PositionService
                 .findAllPositions()
@@ -71,7 +75,7 @@
         }
 
 
-
+        // Author: Sesha Sai Srivatsav
         function logout() {
             UserService
                 .logout()

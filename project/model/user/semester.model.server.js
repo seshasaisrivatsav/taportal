@@ -22,6 +22,18 @@ module.exports = function () {
 
     return api;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                      Developed by Srivatsav                                                      //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                      Description: The below functions provide CRUD operations on semester     //
+    //                                                                                              //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    // Author: Sesha Sai Srivatsav
     function updateSemester(semesterId, semester) {
         delete semester._id;
         return Semester
@@ -30,27 +42,40 @@ module.exports = function () {
             );
     }
 
+    // Author: Sesha Sai Srivatsav
     function findAllSemesters(){
         return Semester.find();
     }
 
+    // Author: Sesha Sai Srivatsav
     function createSemester(semester) {
         return  Semester.create(semester);
     }
 
+    // Author: Sesha Sai Srivatsav
     function deleteSemester(semesterId) {
         return Semester.remove({_id: semesterId});
     }
 
+    // Author: Sesha Sai Srivatsav
     function findSemesterById(semesterId) {
         return Semester.findById({_id: semesterId});
     }
-
+    
+    // Author: Sesha Sai Srivatsav
     function findSemesterBySemestername(semestername) {
         return Semester.findOne({semestername: semestername});
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                      Developed by Anvita                                                      //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                      Developed by Manognya                                                      //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 };

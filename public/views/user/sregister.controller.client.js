@@ -11,7 +11,9 @@
 
         vm.register = register;
 
-
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                      Developed by Srivatsav                                                      //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         function register(username, password, firstName, lastName, email, usertype) {
             var usertype = "student";

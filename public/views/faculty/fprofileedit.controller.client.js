@@ -28,6 +28,12 @@
         }
         init();
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                      Developed by Srivatsav                                                      //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        // Author: Sesha Sai Srivatsav
         function findAllCourses() {
             CoursesandSemestersService
                 .findAllCourses()
@@ -36,6 +42,7 @@
                 })
         }
 
+        // Author: Sesha Sai Srivatsav
         function logout() {
             UserService
                 .logout()
@@ -49,6 +56,7 @@
                 );
         }
 
+        // Author: Sesha Sai Srivatsav
         function deleteUserCourse(course) {
            UserService
                 .deleteUserCourse(userId, course)
@@ -65,6 +73,7 @@
         }
 
 
+        // Author: Sesha Sai Srivatsav
         function deleteUser() {
             UserService
                 .deleteUser(userId)
@@ -78,6 +87,7 @@
                 });
         }
 
+        // Author: Sesha Sai Srivatsav
         function addUserCourses(user) {
             UserService
                 .addUserCourses(userId, user)
@@ -91,6 +101,7 @@
                     }
                 })
         }
+        // Author: Sesha Sai Srivatsav
         function updateUser(user){
            
             UserService

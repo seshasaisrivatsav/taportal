@@ -32,9 +32,9 @@
 
 
 
-        
 
 
+        // Author: Sesha Sai Srivatsav
         function logout() {
             UserService
                 .logout()

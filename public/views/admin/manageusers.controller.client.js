@@ -22,7 +22,12 @@
         }
         init();
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                      Developed by Srivatsav                                                      //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+        // Author: Sesha Sai Srivatsav
         function createUser(username, password, usertype) {
             var user = {
                 username : username,
@@ -47,7 +52,7 @@
                     }
                 )
         }
-
+// Author: Sesha Sai Srivatsav
         function deleteUser(userId) {
             UserService
                 .deleteUser(userId)
@@ -67,6 +72,7 @@
                 )
         }
 
+        // Author: Sesha Sai Srivatsav
         function updateUser(userId, user) {
             UserService
                 .updateUser(userId, user)
@@ -87,6 +93,7 @@
 
 
 
+        // Author: Sesha Sai Srivatsav
         function findAllUsers() {
             UserService
                 .findAllUsers()
@@ -97,6 +104,7 @@
                 });
         }
 
+        // Author: Sesha Sai Srivatsav
         function getLoggedInUser() {
             if($rootScope.currentUser){
                 vm.loggedIn = "true";
@@ -108,6 +116,7 @@
             }
         }
 
+        // Author: Sesha Sai Srivatsav
         function logout() {
             UserService
                 .logout()

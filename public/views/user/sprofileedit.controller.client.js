@@ -26,8 +26,14 @@
         var oldCoursesCurrent;
         var oldCoursesTaken;
 
-
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                      Developed by Srivatsav                                                      //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
         /*it is good practice to declare initialization ina function. say init*/
+
+
+
+        // Author: Sesha Sai Srivatsav
         function init(){
             UserService
                 .findUserById(userId)
@@ -49,7 +55,7 @@
         init();
 
 
-
+        // Author: Sesha Sai Srivatsav
         function addCurrentCourses(user) {
             UserService
                 .addCurrentCourses(userId, user)
@@ -64,7 +70,7 @@
                 })
         }
 
-
+        // Author: Sesha Sai Srivatsav
         function deleteCurrentCourse(course) {
             UserService
                 .deleteCurrentCourse(userId, course)
@@ -79,13 +85,8 @@
                 })
 
         }
-        
-        
-        
-        
-        
-        
-        
+
+        // Author: Sesha Sai Srivatsav
         function addUserCourses(user) {
             UserService
                 .addUserCourses(userId, user)
@@ -100,7 +101,7 @@
                 })
         }
 
-        
+        // Author: Sesha Sai Srivatsav
         function deleteUserCourse(course) {
             UserService
                 .deleteUserCourse(userId, course)
@@ -117,7 +118,7 @@
         }
 
 
-
+        // Author: Sesha Sai Srivatsav
         function logout() {
             UserService
                 .logout()
@@ -130,6 +131,8 @@
                     }
                 );
         }
+
+        // Author: Sesha Sai Srivatsav
         function deleteUser() {
             UserService
                 .deleteUser(userId)
@@ -143,6 +146,19 @@
                 });
         }
 
+ 
+
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                      Developed by Manognya                                                      //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                      Developed by Anvita                                                      //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
         function updateUser(user, newcoursesCurrent, newcoursesTaken){
 
             UserService
@@ -157,10 +173,6 @@
                     }
                 });
         }
-
-
-
-
 
     }
 

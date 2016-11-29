@@ -30,7 +30,11 @@
                 })
         }
 
-         
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                      Developed by Srivatsav                                                      //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Author: Sesha Sai Srivatsav
 
         function register(username, password, firstName, lastName, email, usertype) {
             var usertype = "faculty";

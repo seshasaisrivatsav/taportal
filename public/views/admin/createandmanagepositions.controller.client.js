@@ -30,6 +30,14 @@
         }
         init();
 
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                      Developed by Srivatsav                                                      //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        // Author: Sesha Sai Srivatsav
+
         function updateDeadline(semestername, deadline) {
             var position = {
                 semester : semestername,
@@ -44,6 +52,8 @@
                 );
         }
 
+
+        // Author: Sesha Sai Srivatsav
 
         function findAllPositions() {
             PositionService
@@ -63,6 +73,8 @@
 
                 });
         }
+
+        // Author: Sesha Sai Srivatsav
 
         function createPosition(coursename, semestername, number, professor, deadline) {
             //console.log("from create " + deadline);
@@ -94,6 +106,8 @@
         }
 
 
+        // Author: Sesha Sai Srivatsav
+
         function updatePosition(positionId, position) {
             PositionService
                 .updatePosition(positionId, position)
@@ -112,6 +126,8 @@
                     }
                 );
         }
+
+        // Author: Sesha Sai Srivatsav
 
         function deletePosition(positionId) {
             PositionService
@@ -133,6 +149,8 @@
                 )
         }
 
+        // Author: Sesha Sai Srivatsav
+
         function findAllCourses() {
             CoursesandSemestersService
                 .findAllCourses()
@@ -143,6 +161,8 @@
         }
 
 
+        // Author: Sesha Sai Srivatsav
+
         function findAllSemesters() {
             CoursesandSemestersService
                 .findAllSemesters()
@@ -151,6 +171,8 @@
                     vm.semesterCount = vm.semesters.length;
                 })
         }
+
+        // Author: Sesha Sai Srivatsav
 
         function getLoggedInUser() {
             if($rootScope.currentUser){
@@ -162,6 +184,8 @@
 
             }
         }
+
+        // Author: Sesha Sai Srivatsav
 
         function logout() {
             UserService

@@ -28,6 +28,12 @@
         init();
 
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                      Developed by Srivatsav                                                      //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        // Author: Sesha Sai Srivatsav
         function createCourse(coursename){
 
             var course = {
@@ -52,6 +58,9 @@
                 )
         }
 
+
+        // Author: Sesha Sai Srivatsav
+
         function updateCourse(courseId, course) {
             CoursesandSemestersService
                 .updateCourse(courseId, course)
@@ -68,7 +77,7 @@
                 })
             
         }
-
+        // Author: Sesha Sai Srivatsav
         function deleteCourse(courseId) {
 
             CoursesandSemestersService
@@ -88,7 +97,7 @@
                     }
                 )
         }
-
+        // Author: Sesha Sai Srivatsav
         function findAllCourses() {
             CoursesandSemestersService
                 .findAllCourses()
@@ -97,7 +106,7 @@
                     vm.courseCount = vm.courses.length;
                 })
         }
-
+        // Author: Sesha Sai Srivatsav
         function createSemester(semestername){
 
             var semester = {
@@ -121,7 +130,7 @@
                     }
                 )
         }
-
+        // Author: Sesha Sai Srivatsav
         function updateSemester(semesterId, semester) {
             CoursesandSemestersService
                 .updateSemester(semesterId, semester)
@@ -138,7 +147,7 @@
                 })
 
         }
-
+        // Author: Sesha Sai Srivatsav
         function deleteSemester(semesterId) {
            
             CoursesandSemestersService
@@ -158,7 +167,7 @@
                     }
                 )
         }
-
+        // Author: Sesha Sai Srivatsav
         function findAllSemesters() {
             CoursesandSemestersService
                 .findAllSemesters()
@@ -169,7 +178,7 @@
         }
 
 
-        
+        // Author: Sesha Sai Srivatsav
 
         function getLoggedInUser() {
             if($rootScope.currentUser){
@@ -181,7 +190,7 @@
 
             }
         }
-
+        // Author: Sesha Sai Srivatsav
         function logout() {
             UserService
                 .logout()

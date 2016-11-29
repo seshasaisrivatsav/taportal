@@ -1,4 +1,5 @@
 /*entry gate in to the database connection */
+//Author: Sesha Sai Srivatsav
 // we create a node JS module
 module.exports  = function () {
 

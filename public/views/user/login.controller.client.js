@@ -25,7 +25,11 @@
         //         vm.error = "User not found";
         //     }
         // }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                      Developed by Srivatsav                                                      //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        // Author: Sesha Sai Srivatsav
         vm.login = function (username, password) {
             /*receives a promise which allows us to register
              a function that will be invoked when the server comes back with data

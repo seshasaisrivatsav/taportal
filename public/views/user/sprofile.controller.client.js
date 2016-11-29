@@ -25,7 +25,7 @@
                 });
         }
         init();
-
+        // Author: Sesha Sai Srivatsav
         function logout() {
             UserService
                 .logout()
@@ -38,6 +38,7 @@
                     }
                 );
         }
+        // Author: Sesha Sai Srivatsav
         function deleteUser() {
             UserService
                 .deleteUser(userId)
@@ -50,7 +51,7 @@
                     }
                 });
         }
-
+        // Author: Sesha Sai Srivatsav
         function updateUser(user){
             UserService
                 .updateUser(userId, user)

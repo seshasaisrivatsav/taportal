@@ -26,22 +26,35 @@ module.exports = function () {
 
     };
     return api;
-    //findByID returns just one
 
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                      Developed by Srivatsav                                                      //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // Returns all users in system
+    // Author: Sesha Sai Srivatsav
     function findAllUsers() {
         return User.find();
     }
 
-
+    // Returns user for specified userId
+    // Author: Sesha Sai Srivatsav
     function findUserById(userId) {
         return User.findById({_id: userId});
     }
 
+    // Returns User for specified username
+    // Author: Sesha Sai Srivatsav
     function findUserByUsername(username) {
         return User.findOne({username: username});
     }
 
-    // Completed courses addition
+    // Adds course for user
+    // In case of faculty it adds the courses faculty is teaching or is interested
+    // In case of student, it adds completed courses for student
+    // Author: Sesha Sai Srivatsav
     function addUserCourses(userId, user) {
         return User
             .update({_id: userId},{
@@ -51,6 +64,8 @@ module.exports = function () {
     }
 
     // Current courses addition
+    // In case of student, it adds current courses for student
+    // Author: Sesha Sai Srivatsav
     function addCurrentCourses(userId, user) {
         return User
             .update({_id: userId},{
@@ -59,9 +74,10 @@ module.exports = function () {
 
     }
     
-    // delete completed courses
+    // deletes completed courses for student
+    // delete interested courses for faculty
+    // Author: Sesha Sai Srivatsav
     function deleteUserCourse(userId, coursename) {
-
         return User
             .update({_id: userId},{
                 $pull:{coursesTaken: coursename.course}
@@ -70,15 +86,14 @@ module.exports = function () {
     
     
     // delete current course
+    // deletes current courses for student
+    // Author: Sesha Sai Srivatsav
     function deleteCurrentCourse(userId, coursename) {
         return User
             .update({_id: userId},{
                 $pull:{coursesTaken: coursename.course}
             });
     }
-    
-    
-    
     
 
     // Decomissioned on 11/26
@@ -95,6 +110,9 @@ module.exports = function () {
     //         );
     // }
 
+    // Updates the user
+    // the below fields are updated because of this function
+    // Author: Sesha Sai Srivatsav
     function updateUser(userId, user) {
         // delete user._id;
         return User
@@ -113,9 +131,32 @@ module.exports = function () {
             );
     }
 
+    // deletes a user for given userId
+    // Author: Sesha Sai Srivatsav
+    function deleteUser(userId) {
+            return User.remove({_id: userId});
+    }
+
+    // returns the user whose username and password match
+    // Author: Sesha Sai Srivatsav
+    function findUserByCredentials(username, password) {
+        return User.findOne({username: username, password: password});
+    }
+
+    // Creates a new user Object
+    // Author: Sesha Sai Srivatsav
+    function createUser(user){
+        return  User.create(user);
+    }
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                      Developed by Anvita                                                      //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     function updateResumeOfStudent(userId, resume) {
         // delete user._id;
-       return User
+        return User
             .update({_id: userId},{
                 $set: {resumeURL : resume.url,
                     resumeName: resume.resume}}
@@ -123,19 +164,9 @@ module.exports = function () {
     }
 
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                      Developed by Manognya                                                      //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  
-
-    function deleteUser(userId) {
-            return User.remove({_id: userId});
-    }
-
-    function findUserByCredentials(username, password) {
-        return User.findOne({username: username, password: password});
-    }
-
-    function createUser(user){
-        return  User.create(user);
-    }
 
 };

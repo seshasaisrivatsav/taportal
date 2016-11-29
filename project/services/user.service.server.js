@@ -42,62 +42,23 @@ module.exports= function(app, models){
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                      Developed by Srivatsav                                                     //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    function uploadResume(req, res) {
-       var UserId        = req.body.userId;
-        
-        var myFile        = req.file;
-        var path          = myFile.path;
-        var originalname  = myFile.originalname;
-        var size          = myFile.size;
-        var mimetype      = myFile.mimetype;
-        var filename      = myFile.filename;
- 
-        //Get the file type
-        var mimes = mimetype.split('/');
-        var extension = mimes[mimes.length - 1];
-        
-        //Append the file extension at the end of randomly generated filename
-        var file = filename+"."+extension;
 
-        var newpath = path+"."+extension;
-
-        //Rename the file path
-        fs.rename(path, newpath);
-
-        //Check whether the upload is for UPLOAD widget or IMAGE widget
-        var resume =
-        {
-            url: "/uploads/"+file, //originalname;
-            resume: originalname
-        };
-
-        //Check whether the user needs to be edited or created!
-        if(UserId){
-            userModel
-                .updateResumeOfStudent(UserId, resume)
-                .then(
-                    function(user) {
-                        res.send(200);
-                       // res.redirect("/sprofile");
-                    },
-                    function(err) {
-                        res.status(400).send(err);
-                    }
-                );
-        }
-
-    }
-    
-    
+    // logout: ends session of a user
+    // Author: Sesha Sai Srivatsav
 
     function logout(req, res) {
         req.logout();
         res.sendStatus(200);
     }
 
-
+    // findallUsers
+    // retruns all the users in the system
+    // Author: Sesha Sai Srivatsav
     function findallusers(req, res) {
 
         userModel
@@ -112,7 +73,9 @@ module.exports= function(app, models){
             );
     }
 
-
+    // register
+    // Creates new user
+    // Author: Sesha Sai Srivatsav
     function register(req,res) {
         console.log("here");
         var username = req.body.username;
@@ -154,6 +117,9 @@ module.exports= function(app, models){
                 });
     }
 
+
+    // Author: Sesha Sai Srivatsav
+    // Finds user by username
     function localStrategy(username, password, done) {
         userModel
             .findUserByUsername(username)
@@ -172,10 +138,15 @@ module.exports= function(app, models){
                 });
     }
 
+    // Author: Sesha Sai Srivatsav
+    // Serializes the user
     function serializeUser(user, done) {
         done(null, user);
     }
 
+    // Author: Sesha Sai Srivatsav
+    // Deserialises the user
+    // Finds the user when userId is given
     function deserializeUser(user, done) {
         userModel
             .findUserById(user._id)
@@ -190,13 +161,15 @@ module.exports= function(app, models){
     }
 
 
-
+    // Author: Sesha Sai Srivatsav
+    // A user can login
     function login ( req, res){
         var user = req.user;
         res.json(user);
     }
 
-
+    // Author: Sesha Sai Srivatsav
+    // Checks whether the user is logged in
     function loggedIn(req,res) {
         if(req.isAuthenticated()){
             res.json(req.user);
@@ -204,7 +177,11 @@ module.exports= function(app, models){
             res.send('0');
         }
     }
-
+    
+    // Author: Sesha Sai Srivatsav
+    // Description: Adds the completed courses for a user
+    // In case of faculty, these are the courses that faculty is teaching
+    // function: addUserCourses
     function addUserCourses(req,res) {
         var id = req.params.userId;
         var user = req.body;
@@ -219,7 +196,10 @@ module.exports= function(app, models){
                 }
             );
     }
-
+    
+    // Author: Sesha Sai Srivatsav
+    // Description: Adds current courses a student is studying
+    // function:addCurrentCourses
     function addCurrentCourses(req,res) {
         var id = req.params.userId;
         var user = req.body;
@@ -234,12 +214,13 @@ module.exports= function(app, models){
                 }
             );
     }
-
+    
+    // Author: Sesha Sai Srivatsav
+    // Description:  Updates metadata of given user when userId is specified
+    // function: updateUser
     function updateUser(req, res) {
         var id = req.params.userId;
         var user = req.body;
-
-
         userModel
             .updateUser(id, user)
             .then(
@@ -252,7 +233,9 @@ module.exports= function(app, models){
             );
     }
 
-
+    // Author: Sesha Sai Srivatsav
+    // Description: Creates a user
+    // function: createUser
     function createUser(req, res) {
 
         var username = req.body.username;
@@ -287,7 +270,9 @@ module.exports= function(app, models){
 
     }
 
-
+    // Author: Sesha Sai Srivatsav
+    // Description: Deletes completed course of a student/faculty
+    // function:deleteUserCourse
     function deleteUserCourse(req,res) {
         var userId = req.params.userId;
         var coursename = req.body;
@@ -302,7 +287,9 @@ module.exports= function(app, models){
             });
     }
 
-
+    // Author: Sesha Sai Srivatsav
+    // Description:  Deletes the current course of a student
+    // function: deleteCurrentCourse
     function deleteCurrentCourse(req,res) {
         var userId = req.params.userId;
         var coursename = req.body;
@@ -317,7 +304,9 @@ module.exports= function(app, models){
     }
 
 
-
+    // Author: Sesha Sai Srivatsav
+    // Description: Deletes the user from the system.
+    // function: deleteUser
     function deleteUser(req,res) {
         var userId = req.params.userId;
 
@@ -335,7 +324,9 @@ module.exports= function(app, models){
 
     }
 
-
+    // Author: Sesha Sai Srivatsav
+    // Description: Given a userId, this returns the user Object
+    // function: findUserById
     function findUserById(req, res){
         var id = req.params.userId;
 
@@ -350,6 +341,9 @@ module.exports= function(app, models){
 
     }
 
+    // Author: Sesha Sai Srivatsav
+    // Description: 
+    // function:
     function getUsers(req, res) {
         var username = req.query.username;
         var password = req.query.password;
@@ -361,7 +355,10 @@ module.exports= function(app, models){
             findallusers();
         }
     }
-
+    
+    // Author: Sesha Sai Srivatsav
+    // Description: Given userID and password, the method returns the user object
+    // function: findUserByCredentials
     function findUserByCredentials (username, password, req, res){
         userModel
             .findUserByCredentials(username, password)
@@ -373,7 +370,11 @@ module.exports= function(app, models){
                     res.statusCode(404).send(err);
                 });
     }
-
+    
+    
+    // Author: Sesha Sai Srivatsav
+    // Description: Given username, this function returns the user object
+    // function: findUserByUsername
     function findUserByUsername(username, res) {
         userModel
             .findUserByUsername(username)
@@ -385,6 +386,64 @@ module.exports= function(app, models){
                     res.sendStatus(404).send(error);
                 }
             );
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                      Developed by Manognya                                                     //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                      Developed by Anvita                                                      //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+// uploadResume:
+    // Author: Anvita
+    // Description : To be written by the author
+    function uploadResume(req, res) {
+        var UserId        = req.body.userId;
+
+        var myFile        = req.file;
+        var path          = myFile.path;
+        var originalname  = myFile.originalname;
+        var size          = myFile.size;
+        var mimetype      = myFile.mimetype;
+        var filename      = myFile.filename;
+
+        //Get the file type
+        var mimes = mimetype.split('/');
+        var extension = mimes[mimes.length - 1];
+
+        //Append the file extension at the end of randomly generated filename
+        var file = filename+"."+extension;
+
+        var newpath = path+"."+extension;
+
+        //Rename the file path
+        fs.rename(path, newpath);
+
+        //Check whether the upload is for UPLOAD widget or IMAGE widget
+        var resume =
+        {
+            url: "/uploads/"+file, //originalname;
+            resume: originalname
+        };
+
+        //Check whether the user needs to be edited or created!
+        if(UserId){
+            userModel
+                .updateResumeOfStudent(UserId, resume)
+                .then(
+                    function(user) {
+                        res.send(200);
+                        // res.redirect("/sprofile");
+                    },
+                    function(err) {
+                        res.status(400).send(err);
+                    }
+                );
+        }
+
     }
 
 

@@ -16,7 +16,13 @@ module.exports= function(app, models){
     app.get("/api/findallpositions", findallpositions);
 
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                      Developed by Srivatsav                                                      //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    // Author: Sesha Sai Srivatsav
+    // Description: returns the position with a specific position ID
+    // function: findPositionById
     function findPositionById(req, res) {
         var id = req.params.positionId;
         positionModel
@@ -28,7 +34,9 @@ module.exports= function(app, models){
             });
     }
 
-
+    // Author: Sesha Sai Srivatsav
+    // Description: Updates the position for a specified position ID
+    // function: updatePosition
     function updatePosition(req, res) {
         var id = req.params.positionId;
         var position = req.body;
@@ -62,7 +70,9 @@ module.exports= function(app, models){
                 }
             );
     }
-
+    // Author: Sesha Sai Srivatsav
+    // Description: deletes a position for a given position ID
+    // function:deletePosition
     function deletePosition(req,res) {
 
          
@@ -76,7 +86,9 @@ module.exports= function(app, models){
                 });
     }
 
-
+    // Author: Sesha Sai Srivatsav
+    // Description: returns all positions in the system
+    // function: findallpositions
     function findallpositions(req,res) {
         positionModel
             .findAllPositions()
@@ -90,6 +102,9 @@ module.exports= function(app, models){
             );
     }
 
+    // Author: Sesha Sai Srivatsav
+    // Description: Creates a new TA Position
+    // function: createPosition
     function createPosition(req, res) {
         var position = req.body;
         positionModel
@@ -104,7 +119,14 @@ module.exports= function(app, models){
             );
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                      Developed by Anvita                                                      //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                      Developed by Manognya                                                      //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

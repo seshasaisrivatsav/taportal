@@ -23,37 +23,55 @@
         return api;
         /*functions are implemented below*/
 
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                      Developed by Srivatsav                                                      //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // The below functions perform CRUD Operations of position
+
+        // Author: Sesha Sai Srivatsav
         function createPosition(position) {
             var url = "/api/position";
             return $http.post(url, position);
         }
 
+        // Author: Sesha Sai Srivatsav
         function findPositionById(positionId) {
             var url = "/api/position/" + positionId;
             return $http.get(url);
         }
-
+        // Author: Sesha Sai Srivatsav
         function updatePosition(positionId, position) {
             var url="/api/position/"+positionId;
             return $http.put(url, position);
         }
-
+        // Author: Sesha Sai Srivatsav
         function updateDeadline(position) {
             var url = "/api/position/semestername" ;
             return $http.put(url, position);
         }
-
+        // Author: Sesha Sai Srivatsav
         function findAllPositions() {
             var url = "/api/findallpositions";
             return $http.get(url);
         }
-
+        // Author: Sesha Sai Srivatsav
         function deletePosition(positionId) {
             var url = "/api/position/"+positionId;
             return $http.delete(url);
         }
 
-        
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                      Developed by Anvita                                                      //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                      Developed by Manognya                                                      //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
     }
 })();

@@ -25,6 +25,12 @@
                 });
         }
         init();
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                      Developed by Srivatsav                                                      //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        // Author: Sesha Sai Srivatsav
 
         function logout() {
             UserService
@@ -38,6 +44,7 @@
                     }
                 );
         }
+        // Author: Sesha Sai Srivatsav
         function deleteUser() {
             UserService
                 .deleteUser(userId)
@@ -50,6 +57,8 @@
                     }
                 });
         }
+
+        // Author: Sesha Sai Srivatsav
 
         function updateUser(user){
             UserService
