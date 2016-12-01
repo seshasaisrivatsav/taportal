@@ -37,7 +37,7 @@
         //                      Developed by Srivatsav                                                      //
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // Working code. After Anvita's fun is fixed
+        // Working code. After Anvita's function is fixed
         //Decomissioned
         // function register(username,password, firstName, lastName, email, usertype) {
         //
