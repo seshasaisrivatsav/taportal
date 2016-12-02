@@ -10,6 +10,6 @@ module.exports = function () {
     var SemesterSchema = mongoose.Schema({
         semestername: String
 
-    }, {collections: 'taportal.semester'});
+    }, {collection: 'taportal.semester'});
     return SemesterSchema;
 };

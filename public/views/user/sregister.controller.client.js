@@ -29,7 +29,7 @@
                     .then(function (response) {
                             var user = response.data;
                             if(user){
-                                $location.url("/sprofile");
+                                $location.url("/seditprofile");
                             }
 
                         },

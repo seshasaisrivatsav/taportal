@@ -114,7 +114,7 @@ module.exports = function () {
     // the below fields are updated because of this function
     // Author: Sesha Sai Srivatsav
     function updateUser(userId, user) {
-        // delete user._id;
+        delete user._id;
         return User
             .update({_id: userId},{
                 $set: {username: user.username,

@@ -8,6 +8,6 @@ module.exports = function () {
 
     var CourseSchema = mongoose.Schema({
         coursename: String
-    }, {collections: 'taportal.course'});
+    }, {collection: 'taportal.course'});
     return CourseSchema;
 };

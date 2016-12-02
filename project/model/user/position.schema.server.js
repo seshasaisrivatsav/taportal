@@ -14,6 +14,6 @@ module.exports = function () {
     
 
 
-    }, {collections: 'taportal.position'});
+    }, {collection: 'taportal.position'});
     return PositionSchema;
 };
