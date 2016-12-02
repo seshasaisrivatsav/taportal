@@ -24,6 +24,17 @@ module.exports = function () {
     return api;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //                      Developed by Anvita                                                     //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    function findPositionByName(Name) {
+        // return Course.findById({_id: courseId});
+        return Position.findOne({course: Name});
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     //                      Developed by Srivatsav                                                      //
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -35,10 +46,10 @@ module.exports = function () {
         return Position
             .update({_id: positionId},{
                 $set: {course: position.course,
-                        semester: position.semester,
-                        number: position.number,
-                        professor: position.professor,
-                        deadline : position.deadline}}
+                    semester: position.semester,
+                    number: position.number,
+                    professor: position.professor,
+                    deadline : position.deadline}}
             );
     }
 
