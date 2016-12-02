@@ -44,16 +44,6 @@ describe('Tests For Courses', function() {
     });
 
 
-    // it('should create course', function (done) {
-    //     chai.request(server)
-    //         .post('/api/course')
-    //         .send({'coursename': 'testCourse1_test'})
-    //         .end(function (err, res) {
-    //             res.should.have.status(200);
-    //             done();
-    //         });
-    // });
-
     it('should create course', function (done) {
         chai.request(server)
             .post('/api/course')
@@ -64,8 +54,8 @@ describe('Tests For Courses', function() {
             });
     });
 
-    // anvita
-    //it('should create course negative path', function (done) {
+    //anvita
+    // it('should create course negative path', function (done) {
     //    chai.request(server)
     //        .post('/api/course')
     //        .send("")
@@ -73,8 +63,8 @@ describe('Tests For Courses', function() {
     //            err.should.have.status(200);
     //            done();
     //        });
-    //});
-    // end anvita
+    // });
+    //end anvita
 
     it('should not create a course that exists', function (done) {
         chai.request(server)
@@ -85,7 +75,6 @@ describe('Tests For Courses', function() {
                 done();
             });
     });
-
 
     it('should update a course', function (done) {
         chai.request(server)
@@ -156,42 +145,47 @@ describe('Tests For Courses', function() {
     //            });
     //        done();
     //    });
-});
 
+
+    it('should delete a course', function (done) {
+        chai.request(server)
+            .get('/api/courseName/newCourse_test1')
+            .end(function(err, res){
+                chai.request(server)
+                    .delete('/api/course/' + res.body._id)
+                    .end(function (error, response) {
+                        response.should.have.status(200);
+                        done();
+                    });
+                // done();
+            });
+    });
 // end anvita
 
-// anvita fix
-it('should delete a course', function (done) {
-    chai.request(server)
-        .get('/api/courseName/newCourse_test1')
-        .end(function(err, res){
-            chai.request(server)
-                .delete('/api/course/' + res.body._id)
-                .end(function (error, response) {
-                    response.should.have.status(200);
-                    // done();
-                });
-            done();
-        });
-});
-// end anvita
+    // anvita fix
 //anvita
-it('should delete a course negative path', function (done) {
-    chai.request(server)
-        .get('/api/courseName/:courseName')
-        .end(function(err, res){
-            chai.request(server)
-                .delete('/api/course/123')
-                .end(function (error, response) {
-                    response.should.have.status(200);
-                    // done();
-                });
-            done();
-        });
-});
+    it('should delete a course negative path', function (done) {
+        chai.request(server)
+            .get('/api/courseName/:courseName')
+            .end(function(err, res){
+                chai.request(server)
+                    .delete('/api/course/123')
+                    .end(function (error, response) {
+                        response.should.have.status(200);
+                        // done();
+                    });
+                done();
+            });
+    });
 // end anvita
 
-//});
+
+});
+
+
+
+
+
 
 describe('Tests For Semesters', function() {
 
@@ -225,14 +219,14 @@ describe('Tests For Semesters', function() {
             });
     });
 //anvita - check
-    it('should create semester negative path', function (done) {
-        chai.request(server)
-            .post('/api/semester')
-            .end(function (err, res) {
-                res.should.have.status(200);
-                done();
-            });
-    });
+//     it('should create semester negative path', function (done) {
+//         chai.request(server)
+//             .post('/api/semester')
+//             .end(function (err, res) {
+//                 res.should.have.status(200);
+//                 done();
+//             });
+//     });
     // anvita end
 
     it('should not create a semester that exists', function (done) {
@@ -281,7 +275,7 @@ describe('Tests For Semesters', function() {
 
 
 
-    it('should find semester by semesterid neagateive path', function (done) {
+    it('should find semester by semesterid negative path', function (done) {
         chai.request(server)
             .get('/api/semester/123')
             .end(function (error, response) {
