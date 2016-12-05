@@ -131,6 +131,7 @@ module.exports= function(app, models){
 
                     }else {
                         done("Error in login!", null);
+
                     }
                 },
                 function(err) {
@@ -397,7 +398,7 @@ module.exports= function(app, models){
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     //                      Developed by Anvita                                                      //
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-// uploadResume:
+    // uploadResume:
     // Author: Anvita
     // Description : To be written by the author
     function uploadResume(req, res) {

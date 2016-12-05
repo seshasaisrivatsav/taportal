@@ -38,6 +38,8 @@
             if(vm.myform.$valid == false){
                 vm.error = "Enter the username/password";
                 vm.alert = "* Enter the required fields";
+                
+
             }else{
                 UserService
                 //  .findUserByCredentials (username, password)
@@ -56,6 +58,7 @@
                             $location.url("/aconsole")
                         }else{
                             vm.error = response.data;
+                            
                         }
                     });
             }
