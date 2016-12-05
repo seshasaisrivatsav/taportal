@@ -58,6 +58,7 @@
                             $location.url("/aconsole")
                         }else{
                             vm.error = response.data;
+                            
                         }
                     });
             }

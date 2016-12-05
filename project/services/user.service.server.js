@@ -131,6 +131,7 @@ module.exports= function(app, models){
 
                     }else {
                         done("Error in login!", null);
+
                     }
                 },
                 function(err) {
