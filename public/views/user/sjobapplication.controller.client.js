@@ -9,34 +9,62 @@
     /* HTML and Java script communicate via scope */
     /* handles the JAVA Script */
 
-    function SJobApplicationController($routeParams, $location, UserService, $rootScope, CoursesandSemestersService, PositionService) {
+    function SJobApplicationController($routeParams, $location, UserService, $rootScope, CoursesandSemestersService, PositionService,applicationsService) {
         var vm = this;
 
         vm.userId = $rootScope.currentUser._id;
         var userId = $rootScope.currentUser._id;
         vm.logout = logout;
 
+        vm.createApplications=createApplications;
+        vm.findApplicationForUser = findApplicationForUser;
+
+
         /*it is good practice to declare initialization ina function. say init*/
         function init(){
             findAllCourses();
             findAllSemesters();
             findAllPositions();
-            UserService
-                .findUserById(userId)
-                .then(function (response) {
-                    vm.user = response.data;
-                });
+            findApplicationForUser();
+
         }
         init();
 
+        // Author : Sesha Sai
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        //                      Developed by Srivatsav                                                      //
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        function findApplicationForUser() {
+            applicationsService
+                .findApplicationForUser(userId)
+                .then(function (response) {
+                    vm.applications = response.data;
+                    })
+        }
 
-        // Author: Sesha Sai Srivatsav
+        // Author : Sesha Sai
+        function createApplications(application){
+            application.status = "In Progress";
+            applicationsService
+                .findApplicationForUser(userId)
+                .then(function (response) {
+                    if(response.data.length==0 || response.data.length==1 ||response.data.length==2){
+                        PositionService.findPositionIDByTitle(application._position)
+                            .then(function(response){
+                                var posId = response.data;
 
-        
+                                applicationsService.createApplication(application,vm.userId,posId)
+                                    .then(function (response){
+                                        init();
+                                    })
+                            });
+
+                    } else{
+                        vm.updatedmessage = "Maximum applications for course = 3. please withdraw un-required application!";
+                    }
+                })
+
+        }
+
+        // Author : Sesha Sai
         function findAllSemesters() {
             CoursesandSemestersService
                 .findAllSemesters()
@@ -45,7 +73,8 @@
                     vm.semesterCount = vm.semesters.length;
                 })
         }
-        // Author: Sesha Sai Srivatsav
+
+        // Author : Sesha Sai
         function findAllCourses() {
             CoursesandSemestersService
                 .findAllCourses()
@@ -54,7 +83,8 @@
                     vm.courseCount = vm.courses.length;
                 })
         }
-        // Author: Sesha Sai Srivatsav
+
+        // Author : Sesha Sai
         function findAllPositions() {
             PositionService
                 .findAllPositions()
@@ -65,17 +95,14 @@
                         var temp = pos[i].deadline;
                         pos[i].deadline = new Date(temp);
                     }
-
-
                     vm.positions = pos;
-                    //console.log(  vm.positions);
                     vm.positionCount = vm.positions.length;
 
                 });
         }
 
 
-        // Author: Sesha Sai Srivatsav
+        // Author : Sesha Sai
         function logout() {
             UserService
                 .logout()

@@ -10,13 +10,15 @@ module.exports = function () {
 
 
 
+
     var api = {
         createCourse: createCourse,
         findCourseByCoursename: findCourseByCoursename,
         findAllCourses: findAllCourses,
         updateCourse: updateCourse,
         deleteCourse: deleteCourse,
-        findCourseById: findCourseById
+        findCourseById: findCourseById,
+        findCourseByName: findCourseByName
    };
 
     return api;
@@ -71,6 +73,10 @@ module.exports = function () {
     //                      Developed by Anvita                                                      //
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    function findCourseByName(courseName) {
+      // return Course.findById({_id: courseId});
+          return Course.findOne({coursename: courseName});
+        }
 
 
 

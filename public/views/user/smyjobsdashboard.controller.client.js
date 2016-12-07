@@ -10,28 +10,63 @@
     /* HTML and Java script communicate via scope */
     /* handles the JAVA Script */
 
-    function SMyJobsDashboardController($routeParams, $location, UserService, $rootScope) {
+    function SMyJobsDashboardController($routeParams, $location, UserService, $rootScope,applicationsService,PositionService) {
         var vm = this;
 
         vm.userId = $rootScope.currentUser._id;
         var userId = $rootScope.currentUser._id;
         vm.logout = logout;
+        vm.deleteapplication=deleteapplication;
+        vm.findApplicationForUser = findApplicationForUser;
 
-        /*it is good practice to declare initialization ina function. say init*/
+
+
         function init(){
+            vm.applicationnames=[];
+            findApplicationForUser();
 
-            UserService
-                .findUserById(userId)
-                .then(function (response) {
-                    vm.user = response.data;
-                });
         }
         init();
 
+        // Author : Manognya
+        function findApplicationForUser() {
+            applicationsService
+                .findApplicationForUser(userId)
+                .then(function (response) {
+                    vm.applications = response.data;
+                    for (var i = 0; i < vm.applications.length; i++) {
+                        PositionService.findPositionById(vm.applications[i]._position)
+                            .then(function(position){
+                                var obj={name:position.data.course};
+                                
+                                vm.applicationnames.push(obj);
+                            });
+                    }
+
+                });
+        }
 
 
+        // Author : Manognya
+        function deleteapplication(applicationname){
+            PositionService.findPositionIDByTitle(applicationname)
+                .then(function(response){
+                    var posId = response.data;
 
+                    for (var i = 0; i < vm.applications.length; i++) {
 
+                        if(vm.applications[i]._position==posId){
+                            applicationsService.deleteApplication(vm.applications[i]._id)
+                                .then(function (response) {
+                                    vm.deletemsg = "application withdrawn successfully!";
+                                })
+                        }
+                    }
+
+                    init();
+                })
+
+        }
 
 
         // Author: Sesha Sai Srivatsav

@@ -1,3 +1,121 @@
-<h1>
-    Admin Profile Page
-</h1>
+
+
+
+<div class="container">
+    <h1>Admin Profile Edit</h1>
+    <div ng-if="model.success"
+         class="alert alert-success">
+        {{model.success}}
+    </div>
+
+    <div ng-if="model.error"
+         class="alert alert-danger">
+        {{model.error}}
+    </div>
+
+    <!--Username-->
+    <form>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input ng-model="model.user.username"
+                   type="text"
+                   class="form-control"
+                   id="username" placeholder="walice">
+        </div>
+    </form>
+
+    <!--Email-->
+    <form>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input ng-model="model.user.email"
+                   type="email"
+                   class="form-control"
+                   id="email"
+                   placeholder="alice.wonderland@unicorn.com">
+        </div>
+    </form>
+
+    <!--First name-->
+    <form>
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input ng-model="model.user.firstName"
+                   type="text"
+                   class="form-control"
+                   id="first-name"
+                   placeholder="Alice">
+        </div>
+    </form>
+
+    <!-- Last Name-->
+    <form>
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input ng-model="model.user.lastName"
+                   type="text"
+                   class="form-control"
+                   id="last-name"
+                   placeholder="Wonderland">
+        </div>
+    </form>
+
+
+
+
+    <!-- Phone Number-->
+    <form>
+        <div class="form-group">
+            <label for="last-name">Phone Number</label>
+            <input ng-model="model.user.phone"
+                   type="text"
+                   class="form-control"
+                   id="phone"
+                   placeholder="617-447-9680">
+        </div>
+    </form>
+
+    <!-- About Myself-->
+    <form>
+        <div class="form-group">
+            <label for="last-name">About Myself</label>
+            <input ng-model="model.user.aboutMyself"
+                   type="text"
+                   class="form-control"
+                   id="About Myself"
+                   placeholder="Few Lines about myself">
+        </div>
+    </form>
+
+
+
+    <a ng-click = "model.updateUser(model.user)" class="btn btn-success btn-block">Update Profile</a>
+
+
+
+
+    <a ng-click = "model.logout()" class="btn btn-danger btn-block">Logout</a>
+    <a class="btn btn-danger btn-block "
+       ng-click = "model.deleteUser()">un-register</a>
+
+</div>
+
+
+<!-------------------------------------------------->
+<!----------------- Footer ------------------------->
+<!--------------------------------------------------->
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a ng-click = "model.logout()">Logout</a>
+            </a>
+        </p>
+
+        <p class="navbar-text pull-left">
+            <a href="#/aconsole">
+                <span>Back to Admin Console</span>
+            </a>
+        </p>
+
+    </div>
+</nav>

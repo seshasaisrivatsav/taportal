@@ -1,0 +1,186 @@
+<div ng-class="container">
+    <h1>Student Profile</h1>
+</div>
+
+<div class="container-fluid">
+    <div>
+
+        <br>
+        <hr>
+        <br>
+
+        <div class="container-fluid, col-md-6 col-sm-6 col-lg-6 col-xs-6">
+
+            Upload File:
+            <br>
+
+
+
+            <iframe name='formresponse' width='300' height='200'></iframe>
+
+            <form action="/api/Documenteupload"  target="formresponse" method="post" enctype="multipart/form-data">
+                <input  name="myFile"   type="file" class="form-control"/>
+                <button type="submit"   class="btn btn-block btn-primary">Upload Docs</button>
+            </form>
+
+
+            <br>
+
+            Upload Resume:
+            <br>
+            <br>
+
+            View Full Resume:<a ng-href="{{model.user.resumeURL}}">{{model.user.resumeName}}</a>
+            <br>
+            <iframe name='formresponse1' src="{{model.user.resumeURL}}" width='300' height='400'></iframe>
+
+            <form action="/api/resumeupload" target="formresponse1" method="post" enctype="multipart/form-data">
+
+
+                <input name="userId" value="{{model.user._id}}" style="display: none"/>
+                <input  name="myResume"   type="file" class="form-control"/>
+                <button type="submit"   class="btn btn-block btn-primary">Upload Resume</button>
+            </form>
+
+            <label>User name:</label>
+            <input ng-model="model.user.username"
+                   type="text"
+                   class="form-control"
+                   id="username"
+                   ng-placeholder="{{model.user.username}}">
+
+            <br>
+
+            <br>
+            <label>email:</label>
+            <input ng-model="model.user.email"
+                   type="email"
+                   class="form-control"
+                   id="nuid"
+                   ng-placeholder="{{model.user.email}}">
+            {{model.user.email}}
+            <br>
+
+            <label>First name:</label>
+            <input ng-model="model.user.firstName"
+                   type="text"
+                   class="form-control"
+                   id="fname"
+                   ng-placeholder="{{model.user.firstName}}">
+
+            <br>
+
+            <label>Last name:</label>
+            <input ng-model="model.user.lastName"
+                   type="text"
+                   class="form-control"
+                   id="lname"
+                   ng-placeholder="{{model.user.lastName}}">
+
+            <br>
+
+            <label>gpa:</label>
+            <input ng-model="model.user.gpa"
+                   type="text"
+                   class="form-control"
+                   id="gpa"
+                   ng-placeholder="{{model.user.gpa}}">
+            <br>
+            <label>availability:</label>
+            <input ng-model="model.user.availability"
+                   type="text"
+                   class="form-control"
+                   id="availability"
+                   ng-placeholder="{{model.user.availability}}">
+            <br>
+
+
+            <br>
+            <label>currentCourses:</label><br>
+            <text  style="font-weight:normal;"
+                   ng-repeat="x in model.user.currentCourses">
+                {{x.name}}<br>
+            </text>
+
+            <label>Choose to Update Current Courses:</label>
+
+            <form>
+                <div class="multiselect">
+                    <div class="selectBox">
+                        <select
+                                ng-model="newcoursesCurrent"
+                                ng-options="course.coursename as course.coursename for course in model.courses"
+                                ng-multiple="true" multiple>
+
+                            <option value="{{newcoursesCurrent}}">Choose groups</option>
+                        </select>
+
+                    </div>
+
+                </div>
+            </form>
+
+
+            <br>
+            <br>
+            <label>CoursesTaken:</label><br>
+            <text  style="font-weight:normal;" ng-repeat="x in model.user.coursesTaken">{{x.name}}<br></text>
+            <label>Choose to Update Courses Taken:</label>
+
+            <form>
+                <div class="multiselect">
+                    <div class="selectBox">
+                        <select
+                                ng-model="newcoursesTaken"
+                                ng-options="course.coursename as course.coursename for course in model.courses"
+                                ng-multiple="true" multiple>
+
+                            <option value="{{newcoursesTaken}}">Choose groups</option>
+                        </select>
+
+                    </div>
+
+                </div>
+            </form>
+
+
+
+
+            <br>
+            <button ng-click="model.updateUser(model.user, newcoursesCurrent, newcoursesTaken)"
+                    class="btn btn-primary btn-block" type="submit">Update Fields</button>
+            <br>
+
+
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+
+        <div class="verticalline">
+        </div>
+
+    </div>
+
+
+
+
+
+    <!-- Footer -->
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="container-fluid">
+            <p class="navbar-text pull-right">
+                <a href="#/seditprofile">
+                    <span>Edit Profile</span>
+                </a>
+            </p>
+
+            <p class="navbar-text pull-left">
+                <a ng-click = "model.logout()">Logout</a>
+                </a>
+            </p>
+
+        </div>
+    </nav>
+

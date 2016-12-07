@@ -17,7 +17,8 @@
             updatePosition:updatePosition,
             findAllPositions: findAllPositions,
             deletePosition: deletePosition,
-            updateDeadline: updateDeadline
+            updateDeadline: updateDeadline,
+            findPositionIDByTitle:findPositionIDByTitle
         };
 
         return api;
@@ -70,7 +71,11 @@
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         //                      Developed by Manognya                                                      //
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        //Author: Manognya Koduganti
+        function findPositionIDByTitle(positiontitle) {
+            var url = "/api/application/" + positiontitle;
+            return $http.get(url);
+        }
 
 
     }

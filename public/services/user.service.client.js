@@ -26,18 +26,42 @@
             addUserCourses: addUserCourses,
             deleteUserCourse: deleteUserCourse,
             addCurrentCourses: addCurrentCourses,
-            deleteCurrentCourse: deleteCurrentCourse
+            deleteCurrentCourse: deleteCurrentCourse,
+            rateStudent: rateStudent,
+            findUserById1: findUserById1
         };
 
         return api;
         /*functions are implemented below*/
+               ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                      Developed by Anvita                                                      //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        function findUserById1(userId) {
+            var url = "/api/user1/" + userId;
+            return $http.get(url);
+        }
+
+
+
+ //   .rateStudent(StudentID, rating, faculty)
+
+        // anvita
+        function rateStudent(StudentID, rating1) {
+
+            var url = "/api/rateStudent/" +StudentID;
+
+            return $http.put(url, rating1);
+        }
 
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         //                      Developed by Srivatsav                                                      //
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // Working code. After Anvita's fun is fixed
+        // Working code. After Anvita's function is fixed
         //Decomissioned
         // function register(username,password, firstName, lastName, email, usertype) {
         //
@@ -214,38 +238,9 @@
         }
 
 
-        // TODO - get the javascript work in controller for Sprint 4
+
         // Function written by Anvita - 11/27
-        function updateUser(userId, user, newCourcesCurrent, oldCoursesCurrent, newcoursesTaken, oldcoursesTaken){
-
-            // current courses
-            var newCourcesCurrent1 = [];
-            for(var i in newCourcesCurrent){
-                var x = {name: newCourcesCurrent[i]};
-                newCourcesCurrent1.push(x);
-            }
-
-            if(newCourcesCurrent1.length > 0){
-                user.currentCourses = newCourcesCurrent1;
-            }else{
-                user.currentCourses = oldCoursesCurrent;
-            }
-
-            // courses taken
-            var newCourcesTaken1 = [];
-            for(var i in newcoursesTaken) {
-                var x = {name: newcoursesTaken[i]};
-                newCourcesTaken1.push(x);
-            }
-
-            if(newCourcesTaken1.length > 0){
-                user.coursesTaken = newCourcesTaken1;
-            }else{
-                user.coursesTaken = oldcoursesTaken;
-            }
-
-
-
+        function updateUser(userId, user){
             var url="/api/user/"+userId;
             return $http.put(url, user);
         }

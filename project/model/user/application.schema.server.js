@@ -8,7 +8,7 @@ module.exports = function () {
     var ApplicationSchema = mongoose.Schema({
         _position:{type : mongoose.Schema.ObjectId, ref: "Position"},
         _user : {type : mongoose.Schema.ObjectId, ref: "User"},
-        priority : Number,
+        priority : String,
         previouslyTaken : String,
         gradeObtained : {type : String,  enum: ['A', 'A-', 'B', 'B-', 'lower']},
         beenTASemester : String ,

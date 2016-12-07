@@ -4,33 +4,28 @@
 
 <div class="container">
 
+    <!-- Deleted Message -->
+    <div ng-if="model.updatedmessage" class="alert alert-success">
+        {{model.deletemsg}}
+    </div>
 
     <div class="table-responsive">
         <table class="table table-hover">
+
             <!-- Table header--------->
-            <!-- Header for Position-->
-            <!------------------------>
             <th>Position</th>
             <th>Status</th>
             <th>Actions</th>
 
-            <tr>
-                <td>MSD Spring 2017 TA</td>
-                <td>Under Review</td>
-                <td><a class="btn btn-block btn-danger">Withdraw</a></td>
+            <!------------------------>
+            <!-- Table Data--------->
+            <tr ng-repeat="appname in model.applicationnames">
+                <td> {{appname.name}} </td>
+                <td>{{appname.status}}</td>
+                <td><button ng-click="model.deleteapplication(appname.name)" class="btn btn-block btn-danger">
+                    Withdraw</button></td>
             </tr>
-
-            <tr>
-                <td>Algorithms Summer 1 2017 TA</td>
-                <td>Accepted</td>
-                <td><a class="btn btn-block btn-danger">Withdraw</a></td>
-            </tr>
-
-            <tr>
-                <td>Web Development Fall 2017 TA</td>
-                <td>Rejected</td>
-                <td><a class="btn btn-block btn-danger">Withdraw</a></td>
-            </tr>
+            <!------------------------>
 
         </table>
 

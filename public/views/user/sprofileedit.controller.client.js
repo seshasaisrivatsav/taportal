@@ -159,19 +159,24 @@
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         //                      Developed by Anvita                                                      //
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        function updateUser(user, newcoursesCurrent, newcoursesTaken){
+        function updateUser(user){
+            if(vm.myform.$valid == false){
 
-            UserService
-                .updateUser(userId, user, newcoursesCurrent, oldCoursesCurrent, newcoursesTaken, oldCoursesTaken)
-                .then(function (res) {
-                    var updatedUser = res.data;
-                    if (updatedUser){
-                        vm.success="successfully updated!";
-                        init();
-                    }else{
-                        vm.error = "Some thing doesn't seem right here";
-                    }
-                });
+                vm.alert = "* Enter the fields";
+
+            }else {
+                UserService
+                    .updateUser(userId, user)
+                    .then(function (res) {
+                        var updatedUser = res.data;
+                        if (updatedUser){
+                            vm.success="successfully updated!";
+                            init();
+                        }else{
+                            vm.error = "Some thing doesn't seem right here";
+                        }
+                    });
+            }
         }
 
     }

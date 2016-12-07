@@ -139,6 +139,17 @@
                 // }
             })
 
+             // anvita
+            .when("/applicationsForCource",{
+                templateUrl :"views/faculty/applicationsForCourse.client.html",
+                controller: "FProfileController",
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
+            })
+            // end anvita
+
             // Faculty Edit Profile
             .when("/feditprofile",{
                 templateUrl :"views/faculty/fprofileedit.view.client.html",

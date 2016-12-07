@@ -1,6 +1,3 @@
-/**
- * Created by seshasai on 11/5/2016.
- */
 (function(){
     angular
         .module("TaPortal")
@@ -9,15 +6,19 @@
     /* HTML and Java script communicate via scope */
     /* handles the JAVA Script */
 
-    function AProfileController($routeParams, $location, UserService, $rootScope) {
+    function AProfileController($routeParams, $location, UserService, $rootScope, CoursesandSemestersService) {
         var vm = this;
         vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
+
+
         vm.userId = $rootScope.currentUser._id;
-        vm.logout = logout;
         var userId = $rootScope.currentUser._id;
+        vm.logout = logout;
+
         /*it is good practice to declare initialization ina function. say init*/
         function init(){
+
             UserService
                 .findUserById(userId)
                 .then(function (response) {
@@ -25,13 +26,14 @@
                 });
         }
         init();
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         //                      Developed by Srivatsav                                                      //
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        // Author: Sesha Sai Srivatsav
 
+        // Author: Sesha Sai Srivatsav
         function logout() {
             UserService
                 .logout()
@@ -44,6 +46,9 @@
                     }
                 );
         }
+
+
+
         // Author: Sesha Sai Srivatsav
         function deleteUser() {
             UserService
@@ -58,15 +63,17 @@
                 });
         }
 
+         
         // Author: Sesha Sai Srivatsav
-
         function updateUser(user){
+            user.gpa = 0;
             UserService
                 .updateUser(userId, user)
                 .then(function (res) {
                     var updatedUser = res.data;
                     if (updatedUser){
                         vm.success="successfully updated!";
+
                     }else{
                         vm.error = "Some thing doesn't seem right here";
                     }

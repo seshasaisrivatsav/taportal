@@ -1,8 +1,7 @@
+<div class="container-fluid">
 
-
-
-<div class="container">
     <h1>Faculty Profile Edit</h1>
+
     <div ng-if="model.success"
          class="alert alert-success">
         {{model.success}}
@@ -13,69 +12,90 @@
         {{model.error}}
     </div>
 
-    <!--Username-->
-    <form>
-        <div class="form-group">
+
+    <form novalidate name="model.myform">
+        <!--Username-->
             <label for="username">Username</label>
             <input ng-model="model.user.username"
                    type="text"
+                   name="username"
                    class="form-control"
-                   id="username" placeholder="walice">
-        </div>
-    </form>
+                   id="username" placeholder="walice" required>
+            <span class="alert-class"
+            ng-show="model.myform.username.$invalid">{{model.alert}}
+            </span>
 
+    <br>
     <!--Email-->
-    <form>
-        <div class="form-group">
+
+
             <label for="email">Email address</label>
             <input ng-model="model.user.email"
                    type="email"
+                   name="email"
                    class="form-control"
                    id="email"
-                   placeholder="alice.wonderland@unicorn.com">
-        </div>
-    </form>
+                   placeholder="alice.wonderland@unicorn.com" required>
+            <span class="alert-class"
+                  ng-show="model.myform.email.$invalid">{{model.alert}}
+            </span>
+        <br>
 
     <!--First name-->
-    <form>
-        <div class="form-group">
+
+
             <label for="first-name">First Name</label>
             <input ng-model="model.user.firstName"
                    type="text"
+                   name="firstName"
                    class="form-control"
                    id="first-name"
-                   placeholder="Alice">
-        </div>
-    </form>
+                   placeholder="Alice" required>
+            <span class="alert-class"
+                  ng-show="model.myform.firstName.$invalid">{{model.alert}}
+            </span>
+        <br>
 
     <!-- Last Name-->
-    <form>
-        <div class="form-group">
+
+
             <label for="last-name">Last Name</label>
             <input ng-model="model.user.lastName"
                    type="text"
+                   name="lastName"
                    class="form-control"
                    id="last-name"
-                   placeholder="Wonderland">
-        </div>
-    </form>
+                   placeholder="Wonderland" required>
+
+            <span class="alert-class"
+                  ng-show="model.myform.lastName.$invalid">{{model.alert}}
+            </span>
+        <br>
+
 
     <!--Course Name-->
     <!-- Dropdown is populated from the database -->
 
-    <form>
-        <div class="form-group">
+
+        <form novalidate name="model.myform1">
             <div class="row container">
                 <!--Dropdown to select courses-->
                 <div class="col-sm-8 col-md-8">
                     <label for="username">My Courses</label>
-                    <select type="string"
+                    <select required
+                            type="string"
                             class="form-control"
+                            name="coursename"
                             placeholder="Course Name"
-                            ng-model="model.user.coursename">
+                            ng-model="model.user.coursename" required>
 
                         <option ng-repeat="course in model.courses">{{course.coursename}}</option>
                     </select>
+
+                     <span class="alert-class"
+                           ng-show="model.myform1.coursename.$invalid">{{model.alert}}
+                    </span>
+
                 </div>
                 <!--Button to add-->
                 <div class="col-sm-4 col-md-4">
@@ -93,41 +113,45 @@
                 </a>
             </p>
 
-        </div>
-     </form>
+        </form>
+
 
     <!-- Phone Number-->
-    <form>
-        <div class="form-group">
+
+
             <label for="last-name">Phone Number</label>
             <input ng-model="model.user.phone"
                    type="text"
+                   name="phone"
                    class="form-control"
                    id="phone"
-                   placeholder="617-447-9680">
-        </div>
-    </form>
+                   placeholder="617-447-9680" required>
+            <span class="alert-class"
+                  ng-show="model.myform.phone.$invalid">{{model.alert}}
+            </span>
+        <br>
 
     <!-- About Myself-->
-    <form>
-        <div class="form-group">
+
+
             <label for="last-name">About Myself</label>
             <input ng-model="model.user.aboutMyself"
                    type="text"
                    class="form-control"
                    id="About Myself"
                    placeholder="Few Lines about myself">
-        </div>
-    </form>
 
+
+        <br>
 
 
     <a ng-click = "model.updateUser(model.user)" class="btn btn-success btn-block">Update Profile</a>
-
-
+        <br>
+    </form>
 
 
     <a ng-click = "model.logout()" class="btn btn-danger btn-block">Logout</a>
+    <br>
     <a class="btn btn-danger btn-block "
        ng-click = "model.deleteUser()">un-register</a>
 

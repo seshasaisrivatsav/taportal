@@ -9,9 +9,6 @@ var app = express();
 // var connectionString = 'mongodb://127.0.0.1:27017/taportal';
 var connectionString = 'mongodb://admin:admin@ds149567.mlab.com:49567/taportal';
 
-//var connectionString = 'mongodb://127.0.0.1:27017/taportal';
-
-
 var mongoose = require("mongoose");
 mongoose.connect(connectionString);
 

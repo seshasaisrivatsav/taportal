@@ -34,7 +34,8 @@
                    type="text"
                    class="form-control"
                    required/>
-
+<span class="alert-class"
+      ng-show="model.myform.firstName.$invalid">{{model.alert}}</span>
             <p></p>
 
             <input ng-model="lastName"
@@ -43,7 +44,8 @@
                    type="text"
                    class="form-control"
                    required/>
-
+<span class="alert-class"
+      ng-show="model.myform.lastName.$invalid">{{model.alert}}</span>
             <p></p>
 
             <input ng-model="password"
@@ -77,11 +79,12 @@
                    type="email"
                    class="form-control"
                    required/>
-
+<span class="alert-class"
+      ng-show="model.myform.email.$invalid">{{model.pwmatch}}</span>
             <p></p>
 
             <button class="btn btn-primary btn-block"
-                    ng-click="model.register(username, password, firstName, lastName, email)"
+                    ng-click="model.register(username, password, vpassword, firstName, lastName, email)"
                     type="submit">Register</button>
 
         </form>

@@ -18,12 +18,25 @@ module.exports = function () {
         updatePosition: updatePosition,
         updateDeadline: updateDeadline,
         deletePosition: deletePosition,
-        findPositionById: findPositionById
+        findPositionById: findPositionById,
+        findPositionIDByTitle:findPositionIDByTitle,
+        findPositionByName: findPositionByName
     };
 
     return api;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //                      Developed by Anvita                                                     //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    function findPositionByName(Name) {
+        // return Course.findById({_id: courseId});
+        return Position.findOne({course: Name});
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     //                      Developed by Srivatsav                                                      //
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -89,5 +102,10 @@ module.exports = function () {
     //                      Developed by Manognya                                                      //
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //Author: Manognya Koduganti
+    function findPositionIDByTitle(title) {
+        return Position.find({course: title});
+
+    }
 
 };

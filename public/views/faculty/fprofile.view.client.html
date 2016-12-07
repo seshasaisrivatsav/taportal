@@ -15,14 +15,22 @@
     </div>
 
 
-    <div class="col-sm-8 col-md-8">
+   <div class="col-sm-8 col-md-8">
         <h3>Check TA Applications</h3>
-        <select type="string"
+       <!--      <select type="string"
+                    class="form-control"
+                    placeholder="TAPosition"
+                    ng-model="position">
+                <option ng-repeat="position in model.positions">{{position.course}}</option>
+            </select> -->
+
+        <select
+                select type="string"
                 class="form-control"
                 placeholder="TAPosition"
-                ng-model="position">
-            <option ng-repeat="position in model.positions">{{position.course}}</option>
-        </select>
+                ng-model="position" ng-options="position as position.course for position in model.positions"></select>
+
+
         <a class="btn btn-block btn-primary" ng-click="model.getApplications(position)">Get Applications for Position</a>
     </div>
 </div>

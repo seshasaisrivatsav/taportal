@@ -12,12 +12,17 @@ module.exports= function(app, models){
     app.put("/api/course/:courseId", updateCourse);
     app.get("/api/findallcourses", findallcourses);
 
-    
+
     app.post("/api/semester", createSemester);
     app.get("/api/semester/:semesterId", findSemesterById);
     app.delete("/api/semester/:semesterId", deleteSemester);
     app.put("/api/semester/:semesterId", updateSemester);
     app.get("/api/findallsemesters", findallsemesters);
+
+    // anvita
+    app.get("/api/semesterName/:semesterName", findSemesterByName);
+    app.get("/api/courseName/:courseName", findCourseByName);
+    // end anvita
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -29,7 +34,7 @@ module.exports= function(app, models){
     // function: findCourseById
     function findCourseById(req, res) {
         var id = req.params.courseId;
-        
+
         courseModel
             .findCourseById(id)
             .then(function (course) {
@@ -52,7 +57,7 @@ module.exports= function(app, models){
                     res.sendStatus(200);
                 },
                 function (error) {
-                    res.sendStatus(404);
+                    res.statusCode(404).send(error);
                 }
             );
     }
@@ -66,7 +71,7 @@ module.exports= function(app, models){
             .deleteCourse(courseId)
             //responds with some stats
             .then(function (stats) {
-                res.sendStatus(200);
+                    res.sendStatus(200);
                 },
                 function (error) {
                     res.statusCode(404).send(error);
@@ -77,14 +82,14 @@ module.exports= function(app, models){
     // Description: Returns all courses in the system
     // function: findallcourses
     function findallcourses(req,res) {
-       courseModel
+        courseModel
             .findAllCourses()
             .then(
                 function (courses) {
                     res.json(courses);
                 },
                 function (error) {
-                    res.sendStatus(404);
+                    res.statusCode(404).send(error);
                 }
             );
     }
@@ -111,21 +116,21 @@ module.exports= function(app, models){
                 }
             )
             .then(
-            function (course) {
-                if(course){
-                    res.sendStatus(200);
+                function (course) {
+                    if(course){
+                        res.sendStatus(200);
+                    }
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
                 }
-            },
-            function (err) {
-                res.sendStatus(400).send(err);
-            }
-        );
+            );
     }
 
     /* for future use if required */
 
 
- 
+
 
 
     /* Semester Functions */
@@ -143,8 +148,8 @@ module.exports= function(app, models){
                 res.statusCode(404).send(error);
             });
     }
-    
-    
+
+
     // Author: Sesha Sai Srivatsav
     // Description: Updates the semester for a given semesterId
     // function:  updateSemester
@@ -160,7 +165,7 @@ module.exports= function(app, models){
                     res.sendStatus(200);
                 },
                 function (error) {
-                    res.sendStatus(404);
+                    res.statusCode(404).send(error);
                 }
             );
     }
@@ -194,7 +199,7 @@ module.exports= function(app, models){
                     res.json(semesters);
                 },
                 function (error) {
-                    res.sendStatus(404);
+                    res.statusCode(404).send(error);
                 }
             );
     }
@@ -238,23 +243,44 @@ module.exports= function(app, models){
     /* for future use if required */
 
     /*function findSemesterBySemestername(semestername, res) {
-        semesterModel
-            .findSemesterBySemestername(semestername)
-            .then(
-                function (semester) {
-                    res.json(semester);
-                },
-                function (error) {
-                    res.sendStatus(404).send(error);
-                }
-            );
-    }*/
+     semesterModel
+     .findSemesterBySemestername(semestername)
+     .then(
+     function (semester) {
+     res.json(semester);
+     },
+     function (error) {
+     res.sendStatus(404).send(error);
+     }
+     );
+     }*/
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     //                      Developed by Anvita                                                      //
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    function findCourseByName(req, res) {
+        var name = req.params.courseName;
+        courseModel
+            .findCourseByName(name)
+            .then(function (course) {
+                res.send(course);
+            }, function (error) {
+                res.statusCode(404).send(error);
+            });
+    }
+    function findSemesterByName(req, res) {
+        var name = req.params.semesterName;
+        semesterModel
+            .findSemesterByName(name)
+            .then(function (semester) {
+                res.send(semester);
+            }, function (error) {
+                res.statusCode(404).send(error);
+            });
+
+    }
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////

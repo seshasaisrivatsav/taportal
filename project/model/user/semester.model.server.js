@@ -17,7 +17,8 @@ module.exports = function () {
         findAllSemesters: findAllSemesters,
         updateSemester: updateSemester,
         deleteSemester: deleteSemester,
-        findSemesterById: findSemesterById
+        findSemesterById: findSemesterById,
+        findSemesterByName: findSemesterByName
     };
 
     return api;
@@ -72,6 +73,10 @@ module.exports = function () {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+    function findSemesterByName(SemisterName) {
+       // return Course.findById({_id: courseId});
+        return Semester.findOne({semestername: SemisterName});
+     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     //                      Developed by Manognya                                                      //

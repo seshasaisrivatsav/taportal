@@ -1,3 +1,19 @@
 body{
     padding-bottom: 60px;
 }
+
+
+.resizedTextbox {
+    width: 55px;
+    height: 40px;
+}
+
+.resizedTextboxLonger {
+    width: 130px;
+    height: 40px;
+}
+
+.resizedTextboxLongest {
+    width: 150px;
+    height: 40px;
+}

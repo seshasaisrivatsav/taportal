@@ -1,12 +1,12 @@
 /**
  * Created by seshasai on 11/17/2016.
  */
- 
+
 module.exports= function(app, models){
 
     var positionModel = models.positionModel;
 
-    
+
 
     app.post("/api/position", createPosition);
     app.get("/api/position/:positionId", findPositionById);
@@ -14,6 +14,27 @@ module.exports= function(app, models){
     app.put("/api/position/:positionId", updatePosition);
     app.put("/api/position/semestername", updateDeadline);
     app.get("/api/findallpositions", findallpositions);
+    //  app.get("/api/findPositionByCourseName", courseName);
+
+    //Author: Manognya
+    app.get("/api/application/:positionTitle",findPositionIDByTitle);
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                      Developed by Anvita                                                     //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    app.get("/api/findPositionByCourseName/:courseName", findPositionByCourseName);
+
+    function findPositionByCourseName(req, res) {
+        var name = req.params.courseName;
+        positionModel
+            .findPositionByName(name)
+            .then(function (position) {
+                res.send(position);
+            }, function (error) {
+                res.statusCode(404).send(error);
+            });
+    }
+
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -47,7 +68,7 @@ module.exports= function(app, models){
                     res.sendStatus(200);
                 },
                 function (error) {
-                    res.sendStatus(404);
+                    res.statusCode(404).send(error);
                 }
             );
     }
@@ -58,7 +79,7 @@ module.exports= function(app, models){
 
         var deadline = position.deadline;
         var semester = position.semester;
- 
+
         positionModel
             .updateDeadline(semester, deadline)
             .then(
@@ -66,7 +87,7 @@ module.exports= function(app, models){
                     res.sendStatus(200);
                 },
                 function (error) {
-                    res.sendStatus(404);
+                    res.statusCode(404).send(error);
                 }
             );
     }
@@ -75,7 +96,7 @@ module.exports= function(app, models){
     // function:deletePosition
     function deletePosition(req,res) {
 
-         
+
         positionModel
             .deletePosition(req.params.positionId)
             .then(function (stats) {
@@ -97,7 +118,7 @@ module.exports= function(app, models){
                     res.json(positions);
                 },
                 function (error) {
-                    res.sendStatus(404);
+                    res.statusCode(404).send(error);
                 }
             );
     }
@@ -128,6 +149,18 @@ module.exports= function(app, models){
     //                      Developed by Manognya                                                      //
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+    function findPositionIDByTitle(req,res) {
+        var posTitle = req.params.positionTitle;
+        positionModel. findPositionIDByTitle(posTitle)
+            .then(
+                function (position) {
+                    console.log(position[0]);
+                    console.log(position[0]._id);
+                    res.send(position[0]._id);
+                },
+                function (error) {
+                    res.sendStatus(404);
+                }
+            )}
 
 };
