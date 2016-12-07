@@ -46,25 +46,27 @@
                             type="string"
                             class="form-control resizedTextboxLongest"
                             placeholder="TA Role"
-                            ng-model="model.application._position">
+                            ng-model="model.application._position"
+                            ng-change="model.updateposnum(model.application._position)">
 
                         <!-- Drop down values -->
-                        <option ng-repeat="position in model.positions">{{position.course}}</option>
+                        <option ng-repeat="position in model.positions" value="{{position.course}}+{{position.number}}+{{position.semester}}">{{position.course}}</option>
 
                     </select>
                 </td>
 
-                <!-- TODO -->
+
+
                 <!-- Number of positions available-->
                 <td>
-                    {{model.position.number}}
+                    {{model.tempposnum}}
                 </td>
 
 
-                <!-- TODO -->
+
                 <!-- TA position is for given semester-->
                 <td>
-                    {{position.semester}}
+                    {{model.tempsemester}}
                 </td>
 
                 <!--Previously taken this semester-->
@@ -141,7 +143,9 @@
 </div>
 
 <!----------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------->
 <!--                     (DATA)             My  Applications                             -->
+<!----------------------------------------------------------------------------------------->
 <!----------------------------------------------------------------------------------------->
 <div class="container ">
     <h4 ><b>My Applications </b></h4>
@@ -159,8 +163,7 @@
 
             <th>Priority</th>
             <th>TA Role</th>
-            <th># positions</th>
-            <th>Semester</th>
+
             <th>Previously took this course</th>
             <th>Grade in this course</th>
             <th>Assistantship</th>
@@ -190,27 +193,15 @@
                 <!----- TA Role ------>
                 <td>
                     <select type="string"
-                            class="form-control resizedTextboxLonger"
+                            class="form-control resizedTextboxLongest"
                             placeholder="TA Role"
-                            ng-model="application3._position">
+                            ng-model="app.courseName">
                         <option ng-repeat="position in model.positions">{{position.course}}</option>
 
                     </select>
                 </td>
 
 
-                <!-- TODO -->
-                <!-- Number of positions available-->
-                <td>
-                    {{position.number}}
-                </td>
-
-
-                <!-- TODO -->
-                <!-- TA position is for given semester-->
-                <td>
-                    {{position.semester}}
-                </td>
 
                 <!--Previously taken this semester-->
                 <td>
@@ -274,15 +265,18 @@
                 <!-- Update Position Button-->
                 <td>
                     <a class="glyphicon glyphicon-ok makeblack"
-                       ng-click="model.updatePosition(position._id, position)"></a>
+                       ng-click="model.updateApplication(app._id, app)"></a>
                 </td>
 
                 <!--Delete Position Button-->
                 <td>
                     <a class="glyphicon glyphicon-remove makeblack"
-                       ng-click="model.deletePosition(position._id)"></a>
+                       ng-click="model.deleteApplication(app._id)"></a>
                 </td>
 
+                <td>
+
+                </td>
             </tr>
         </table>
     </div>

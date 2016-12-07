@@ -15,10 +15,21 @@
         vm.userId = $rootScope.currentUser._id;
         var userId = $rootScope.currentUser._id;
         vm.logout = logout;
-
+        vm.updateposnum = updateposnum;
+        vm.updateApplication = updateApplication ;
         vm.createApplications=createApplications;
         vm.findApplicationForUser = findApplicationForUser;
+        
+        var newap_pos = "";
+        function updateposnum(position){
 
+            var vals = position.split("+");
+
+            vm.tempposnum = vals[1];
+            vm.tempsemester = vals[2];
+            newap_pos = vals[0];
+
+        }
 
         /*it is good practice to declare initialization ina function. say init*/
         function init(){
@@ -36,12 +47,44 @@
             applicationsService
                 .findApplicationForUser(userId)
                 .then(function (response) {
-                    vm.applications = response.data;
+
+                    var appsforuser = response.data;
+                    var temparray = [];
+                    var j = -1;
+                    for(var i =0; i<appsforuser.length; i++){
+                        PositionService
+                            .findPositionById(appsforuser[i]._position)
+                            .then(function(response){
+                                j++;
+                                var position = response.data.course;
+
+                                var tempobj = {};
+                                    tempobj._id = appsforuser[j]._id;
+                                    tempobj.availability = appsforuser[j].availability;
+                                    tempobj.priority = appsforuser[j].priority;
+                                    tempobj.beenTASemester = appsforuser[j].beenTASemester;
+                                    tempobj.gradeObtained= appsforuser[j].gradeObtained;
+                                    tempobj.previouslyTaken= appsforuser[j].previouslyTaken;
+                                    tempobj.remarks= appsforuser[j].remarks;
+                                    tempobj.courseName = position;
+                                    temparray.push(tempobj);
+                                vm.applications = temparray;
+                               
+                         });
+
+
+                    }
+
+
+
+
                     })
         }
 
         // Author : Sesha Sai
         function createApplications(application){
+            var _pos = application._position;
+            application._position = newap_pos;
             application.status = "In Progress";
             applicationsService
                 .findApplicationForUser(userId)
@@ -63,6 +106,20 @@
                 })
 
         }
+
+        // Author : Sesha Sai Srivatsav
+        function updateApplication(applicationId, application) {
+            console.log(applicationId + "  "+ application);
+            applicationsService
+                .updateApplication(applicationId, application)
+                .then(
+                    function (response) {
+                        vm.updatedmessage = "Updated Successfully!";
+                        init();
+                    }
+                );
+        }
+
 
         // Author : Sesha Sai
         function findAllSemesters() {

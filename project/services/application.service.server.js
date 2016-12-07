@@ -12,7 +12,7 @@ module.exports= function(app, models) {
     app.get("/api/application/:applicationId", findApplicationById);
     app.delete("/api/application/:applicationId", deleteApplication);
     app.put("/api/application/:applicationId", updateApplication);
-    //app.get("/api/findallapplications", findallapplications);
+    // app.get("/api/findallapplications", findallapplications);
     app.get("/api/user/:userId/application", findApplicationForUser);
 
 
