@@ -2,17 +2,23 @@
     <h1>Student Profile</h1>
 
 
-
+    <div class="col-sm-6 col-md-6">
     <a class="btn btn-primary btn-block"
        href="#/studentjobapplication">Apply For TA Positions</a>
+    </div>
+
+    <div class="col-sm-6 col-md-6">
+        <a class="btn btn-primary btn-block"
+           href="#/studentjobapplication">My Jobs Dashboard</a>
+    </div>
 </div>
 
 
 
-<div class="row container">
-    <h1>
-        Welcome Student. {{model.user.firstName}} {{model.user.lastName}}
-    </h1>
+<div class="container-fluid">
+    <h2>
+        Welcome Student, {{model.user.firstName}} {{model.user.lastName}}
+    </h2>
     <hr>
     <div class="col-sm-4 col-md-4">
         <img src="http://leafii.com/images/defaultProfilePic.png" style="width:75%;">
