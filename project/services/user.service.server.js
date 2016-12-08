@@ -81,7 +81,7 @@ module.exports= function(app, models){
     // Creates new user
     // Author: Sesha Sai Srivatsav
     function register(req,res) {
-        console.log("here");
+     //   console.log("here");
         var username = req.body.username;
         var password = req.body.password;
         userModel
@@ -406,15 +406,30 @@ module.exports= function(app, models){
 
   
 
+    
     function rateStudentByFaculty(req,res) {
 
         var sid = req.params.StudentID;
      
         var rating = req.body.array12;
 
-        console.log("asfcsdvcvfdhbdfxzsdvgsdbv");
-        console.log(rating);
+        var ratingGiven =1 ;
+        var sum = 0;
 
+        for (i1 = 0; i1 < rating.length; i1++) {
+            sum = sum + parseInt(rating[i1].rating);
+
+        }
+
+
+        ratingGiven = parseInt(sum/rating.length);
+
+
+        if(parseInt(ratingGiven) < 1){
+            ratingGiven = 1;
+        }
+        //console.log("anananaacacacacac");
+        //console.log(ratingGiven);
 
         userModel.rateStudentByFaculty(sid, rating)
             .then(
@@ -427,7 +442,21 @@ module.exports= function(app, models){
                     res.sendStatus(400).send(err);
                 }
             );
+
+
+        userModel.UpdateAverageRating(sid, ratingGiven)
+            .then(
+                function (student)
+                {
+                   // console.log("stud");
+                   //console.log(student);
+                },
+                function (error) {
+                    res.sendStatus(400).send(err);
+                }
+            );
     }
+
 
 
     function findUserById1(req, res){
@@ -436,7 +465,8 @@ module.exports= function(app, models){
         userModel
             .findUserById(id)
             .then(function (user) {
-                    res.json(user);
+                return(user);
+                    //res.json(user);
 
                 },
                 function (error) {

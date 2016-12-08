@@ -23,6 +23,7 @@ module.exports = function () {
         deleteCurrentCourse: deleteCurrentCourse,
         updateResumeOfStudent: updateResumeOfStudent,
         rateStudentByFaculty: rateStudentByFaculty,
+        UpdateAverageRating: UpdateAverageRating
 
 
     };
@@ -173,6 +174,16 @@ module.exports = function () {
         return User
             .update({_id: stuId},{
                 "$set": { "rating": ratingFull
+                }}
+            );
+    }
+
+    function UpdateAverageRating(stuId, ratingavg) {
+
+
+        return User
+            .update({_id: stuId},{
+                "$set": { "avgRating": ratingavg
                 }}
             );
     }

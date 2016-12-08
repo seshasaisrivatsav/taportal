@@ -50,6 +50,8 @@ module.exports = function () {
             }
         ],
 
+        avgRating: Number,
+
         feedBack : [
             {
                 _user : {type : mongoose.Schema.ObjectId, ref: "User"}, //in model
