@@ -81,7 +81,6 @@ module.exports= function(app, models){
     // Creates new user
     // Author: Sesha Sai Srivatsav
     function register(req,res) {
-     //   console.log("here");
         var username = req.body.username;
         var password = req.body.password;
         userModel

@@ -25,7 +25,7 @@ module.exports = function () {
 
         nuid : Number,
         phone : String,
-        gpa : Number,
+        gpa : String,
 
         // coursesTaken: [
         //     {

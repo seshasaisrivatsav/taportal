@@ -127,7 +127,7 @@ module.exports = function () {
                     phone: user.phone,
                     // currentCourses: user.currentCourses, // to fix a bug - by srivatsav
                     // coursesTaken: user.coursesTaken, // to fix a bug - by srivatsav
-                    gpa: parseInt(user.gpa),
+                    gpa: user.gpa,
                     aboutMyself: user.aboutMyself
 
                 }}

@@ -14,7 +14,17 @@ module.exports = function () {
         beenTASemester : String ,
         availability : {type : String,  enum: ['Fully Available', 'Looking for Co-ops']}, // Enum
         remarks : String,
-        status :{type : String,  enum: ['Accepted', 'Rejected', 'In Progress']}// Enum Accepted Rejected
+        status :{type : String,  enum: ['Accepted', 'Rejected', 'In Progress']},// Enum Accepted Rejected
+        avgRating : String,
+        gpa : String, 
+        coursesTaken: [String],
+        currentCourses : [String],
+        email : String,
+        phone : String,
+        resumeURL: String,
+        resumeName: String
+
+
 }, {collection: 'taportal.application'});
     return ApplicationSchema;
 };
