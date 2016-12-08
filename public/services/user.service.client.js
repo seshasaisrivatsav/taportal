@@ -207,30 +207,14 @@
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        function register(username,password, firstName, lastName, email, usertype, gpa, coursestaken, coursecurrent) {
-
-            var coursesTakenList = [ ];
-
-            for(var i in coursestaken) {
-                var x = {name: coursestaken[i]};
-                coursesTakenList.push(x);}
-
-            var coursesCurrent = [];
-            for(var i in coursecurrent) {
-                var x = {name: coursecurrent[i]};
-                coursesCurrent.push(x);
-            }
-
+        function register(username,password, firstName, lastName, email, usertype, gpa) {
             var user= {
                 username: username,
                 password : password,
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
-                usertype: usertype,
-                gpa: gpa,
-                coursesTaken: coursesTakenList,
-                currentCourses: coursesCurrent
+                usertype: usertype
             };
 
             return $http.post("/api/register",user);

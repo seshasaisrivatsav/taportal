@@ -89,30 +89,39 @@
             var _pos = application._position;
             application._position = newap_pos;
             application.status = "In Progress";
-            applicationsService
-                .findApplicationForUser(userId)
+            UserService
+                .findUserById(userId)
                 .then(function (response) {
-                    if(response.data.length==0 || response.data.length==1 ||response.data.length==2){
-                        PositionService.findPositionIDByTitle(application._position)
-                            .then(function(response){
-                                var posId = response.data;
+                    vm.user = response.data;
 
-                                applicationsService.createApplication(application,vm.userId,posId)
-                                    .then(function (response){
-                                        init();
-                                    })
-                            });
+                    // avgRating, gpa, coursesTaken, currentCourses, email, phone
 
-                    } else{
-                        vm.updatedmessage = "Maximum applications for course = 3. please withdraw un-required application!";
-                    }
-                })
+
+                    applicationsService
+                        .findApplicationForUser(userId)
+                        .then(function (response) {
+                            if(response.data.length==0 || response.data.length==1 ||response.data.length==2){
+                                PositionService.findPositionIDByTitle(application._position)
+                                    .then(function(response){
+                                        var posId = response.data;
+
+                                        applicationsService.createApplication(application,vm.userId,posId,vm.user.avgRating, vm.user.gpa, vm.user.coursesTaken, vm.user.currentCourses, vm.user.email, vm.user.phone, vm.user.resumeName, vm.user.resumeURL)
+                                            .then(function (response){
+                                                init();
+                                            })
+                                    });
+
+                            } else{
+                                vm.updatedmessage = "Maximum applications for course = 3. please withdraw un-required application!";
+                            }
+                        })
+                });
+
 
         }
 
         // Author : Sesha Sai Srivatsav
         function updateApplication(applicationId, application) {
-            console.log(applicationId + "  "+ application);
             applicationsService
                 .updateApplication(applicationId, application)
                 .then(

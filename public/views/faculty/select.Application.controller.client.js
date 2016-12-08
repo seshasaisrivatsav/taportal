@@ -70,12 +70,7 @@
                     function (response) {
 
                     var  rating1 = response.data.rating;
-                        //if(response.data.rating == undefined){
-                        //    rating1 = [];
-                        //}
                         var ratingAll = [];
-
-
                         var ratingNew =   {
                             _user : faculty._id, //in model
                             //ratedBy: String,
@@ -91,17 +86,11 @@
                         }
                         ratingAll.push(ratingNew);
 
-
-
-
-
                         var ii = {
                             array12: ratingAll
                         };
 
-
-
-                        UserService
+                    UserService
                             .rateStudent(StudentID, ii)
                             .then(
                                 function (response1) {
@@ -122,9 +111,6 @@
 
 
         function getApplications(position) {
-            //$rootScope.pos = position;
-            //vm.possss = position;
-            //var position = vm.Position;
             applicationsService
                 .getApplicationsForPosition(position._id)
                 .then(function(response){
@@ -135,16 +121,10 @@
                         var j = -1;
                         var ratingGiven = 1;
                         for(var i =0; i<apps1.length; i++){
-                            // console.log(i);
                             var sid = apps1[i]._user;
-                           // console.log(sid);
                             UserService
                                 .findUserById(sid).then(
                                 function(response1){
-                                //    console.log(response1);
-
-                                   // console.log(response1);
-
                                     j++;
                                     var   ratingavg = response1.data.avgRating;
 
@@ -152,10 +132,15 @@
                                     if(ratingavg > 1){
                                         rateval = ratingavg;
                                     }
-                                 //   console.log(rateval);
-                                    //var app1 = {};
                                     var   app1 = {
-
+                                        "avgRating" :     apps1[j].avgRating       ,
+                                        "gpa"  :          apps1[j].gpa             ,
+                                        "coursesTaken" :  apps1[j].coursesTaken    ,
+                                        "currentCourses": apps1[j].currentCourses  ,
+                                        "email" :         apps1[j].email           ,
+                                        "phone"  :        apps1[j].phone           ,
+                                        "resumeURL" :     apps1[j].resumeURL       ,
+                                        "resumeName" :    apps1[j].resumeName      ,
                                         "_id":apps1[j]._id,"priority":apps1[j].priority,"_position":apps1[j]._position,
                                         "previouslyTaken":apps1[j].previouslyTaken,"gradeObtained":apps1[j].gradeObtained,
                                         "beenTASemester":apps1[j].beenTASemester,"availability": apps1[j].availability,
@@ -167,15 +152,11 @@
                                     apps2.push(app1);
 
                                     $rootScope.apps = apps2;
-                               //     console.log( $rootScope.apps);
-                               //      init();
 
                                 });
 
                         }
 
-                        //  console.log($rootScope.apps);
-                        //$location.url("/applicationsForCource");
                     }
 
                 );

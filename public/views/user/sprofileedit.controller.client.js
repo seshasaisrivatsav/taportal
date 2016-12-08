@@ -80,12 +80,29 @@
                         vm.success="Successfully Deleted courses";
                         init();
                     }else {
-                        vm.error="Someting is off";
+                        vm.error="Something is off";
                     }
                 })
 
         }
 
+        // Author: Sesha Sai Srivatsav
+        function deleteUserCourse(course) {
+            UserService
+                .deleteUserCourse(userId, course)
+                .then(function (res) {
+                    var updatedUser = res.data;
+                    if(updatedUser){
+                        vm.success="Successfully Deleted courses";
+                        init();
+                    }else {
+                        vm.error="Something is off";
+                    }
+                })
+
+        }
+
+        
         // Author: Sesha Sai Srivatsav
         function addUserCourses(user) {
             UserService
@@ -101,21 +118,6 @@
                 })
         }
 
-        // Author: Sesha Sai Srivatsav
-        function deleteUserCourse(course) {
-            UserService
-                .deleteUserCourse(userId, course)
-                .then(function (res) {
-                    var updatedUser = res.data;
-                    if(updatedUser){
-                        vm.success="Successfully Deleted courses";
-                        init();
-                    }else {
-                        vm.error="Someting is off";
-                    }
-                })
-
-        }
 
 
         // Author: Sesha Sai Srivatsav

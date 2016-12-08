@@ -24,26 +24,33 @@
         //am
 
         function GiveDecisionforApp(appId, decision) {
-
-            console.log(decision);
             var url = "/api/GiveDecisionforApp/" +appId+ "/decision/" +decision;
-
             return $http.put(url);
         }
 
-    // anvita
 
+        // Author : Anvita
         function getApplicationsForPosition(posId) {
             var url = "/api/ApplicationForPosition/" +posId;
-
             return $http.get(url);
         }
         // end anvita
 
-        function createApplication(application,uid,posId) {
+        // Author : Srivatsav
+        // Packing things related to application
+        function createApplication(application,uid,posId,avgRating, gpa, coursesTaken, currentCourses, email, phone, resumeName, resumeUrl) {
             var url = "/api/user/"+uid+"/application";
             application._user=uid;
             application._position=posId;
+            application.avgRating = avgRating;
+            application.gpa = gpa;
+            application.coursesTaken = coursesTaken;
+            application.currentCourses = currentCourses;
+            application.email = email;
+            application.phone = phone;
+            application.resumeName = resumeName;
+            application.resumeURL = resumeUrl;
+
             return $http.post(url, application);
         }
 

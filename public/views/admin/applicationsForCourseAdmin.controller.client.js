@@ -22,6 +22,7 @@
         vm.orderByField = 'application';
         vm.reverseOrder = false;
 
+
         
         vm.userId = $rootScope.currentUser._id;
         vm.logout = logout;
@@ -67,11 +68,12 @@
             console.log(Appid);
             console.log(decision);
 
+           
+
             applicationsService
                 .GiveDecisionforApp(Appid, decision)
                 .then(
                     function (response1) {
-console.log(response1.data);
                         init();
                     });
 
@@ -83,10 +85,6 @@ console.log(response1.data);
 
 
         function getApplicationsByPosId(position) {
-
-            //$rootScope.pos = position;
-            //vm.possss = position;
-            //var position = vm.Position;
             applicationsService
                 .getApplicationsForPosition(position._id)
                 .then(function(response){
@@ -94,52 +92,48 @@ console.log(response1.data);
 
                         var apps1 = response.data;
 
-                        //    console.log(apps1.length);
                         var apps2 = [] ;
                         var j = -1;
                         var ratingGiven = 1;
                         for(var i =0; i<apps1.length; i++){
-                            // console.log(i);
+
                             var sid = apps1[i]._user;
-                            // console.log(sid);
+
                             UserService
                                 .findUserById(sid).then(
                                 function(response1){
-                                    //    console.log(response1);
-
-                                    // console.log(response1);
-
                                     j++;
                                     var   ratingavg = response1.data.avgRating;
-
                                     var rateval = 1;
                                     if(ratingavg > 1){
                                         rateval = ratingavg;
                                     }
-                                    //   console.log(rateval);
-                                    //var app1 = {};
-                                    var   app1 = {
 
-                                        "_id":apps1[j]._id,"priority":apps1[j].priority,"_position":apps1[j]._position,
+                                    var   app1 = {
+                                        "avgRating" :     apps1[j].avgRating       ,
+                                        "gpa"  :          apps1[j].gpa             ,
+                                        "coursesTaken" :  apps1[j].coursesTaken    ,
+                                        "currentCourses": apps1[j].currentCourses  ,
+                                        "email" :         apps1[j].email           ,
+                                        "phone"  :        apps1[j].phone           ,
+                                        "resumeURL" :     apps1[j].resumeURL       ,
+                                        "resumeName" :    apps1[j].resumeName      ,
+                                        "_id":            apps1[j]._id,
+                                        "priority":       apps1[j].priority,
+                                        "_position":apps1[j]._position,
                                         "previouslyTaken":apps1[j].previouslyTaken,"gradeObtained":apps1[j].gradeObtained,
                                         "beenTASemester":apps1[j].beenTASemester,"availability": apps1[j].availability,
                                         "_user":apps1[j]._user,"__v":apps1[j].__v,"rating":apps1[j].rating,
-                                        "ratingvalue": rateval, username: response1.data.username, status: apps1[j].status
+                                        "ratingvalue": rateval, username: response1.data.username, status: apps1[j].status,
+
 
                                     };
 
                                     apps2.push(app1);
-
                                     $rootScope.apps = apps2;
-                                    //     console.log( $rootScope.apps);
-                                    //      init();
-
                                 });
 
                         }
-
-                        //  console.log($rootScope.apps);
-                        //$location.url("/applicationsForCource");
                     }
 
                 );
@@ -164,8 +158,6 @@ console.log(response1.data);
                         var temp = pos[i].deadline;
                         pos[i].deadline = new Date(temp);
                     }
-
-
                     vm.positions = pos;
                     possss = pos[-1];
                     //console.log(  vm.positions);
@@ -188,34 +180,6 @@ console.log(response1.data);
                     }
                 );
         }
-        // Author: Sesha Sai Srivatsav
-        //function deleteUser() {
-        //    UserService
-        //        .deleteUser(userId)
-        //        .then(function (response) {
-        //            var result= response.data;
-        //            if(result){
-        //                $location.url("/login");
-        //            }else{
-        //                vm.error = "can't delete you."
-        //            }
-        //        });
-        //}
-
-        // Author: Sesha Sai Srivatsav
-        //function updateUser(user){
-        //    UserService
-        //        .updateUser(userId, user)
-        //        .then(function (res) {
-        //            var updatedUser = res.data;
-        //            if (updatedUser){
-        //                vm.success="successfully updated!";
-        //            }else{
-        //                vm.error = "Some thing doesn't seem right here";
-        //            }
-        //        });
-        //}
-
 
 
     }

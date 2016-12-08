@@ -112,11 +112,9 @@
         // Author: Sesha Sai Srivatsav
         function updateUser(user){
             if(vm.myform.$valid == false){
-
                 vm.alert = "* Enter the fields";
-
             }else{
-           user.gpa = 0;
+            console.log(user);
             UserService
                 .updateUser(userId, user)
                 .then(function (res) {

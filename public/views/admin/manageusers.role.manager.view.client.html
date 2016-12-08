@@ -45,12 +45,8 @@
         <div class="table-responsive">
             <table class="table table-hover">
                 <th>Update User</th>
-
-
                 <th>Username</th>
                 <th>Role (Student/Faculty/Admin)</th>
-
-
 
                 <tr ng-repeat="user in model.users">
                     <td><a class="glyphicon glyphicon-ok makeblack"
@@ -62,7 +58,7 @@
                            href="#/user/profile/{{user.username}}">{{user.username}}</a>
                     </td>
 
-                    <!-- Admin -->
+                    <!-- RolePicker -->
                     <td>
                         <select type="string"
                                 class="form-control"
@@ -74,11 +70,6 @@
                             <option value="faculty">Faculty</option>
                         </select>
                     </td>
-
-
-
-
-
                 </tr>
             </table>
         </div>

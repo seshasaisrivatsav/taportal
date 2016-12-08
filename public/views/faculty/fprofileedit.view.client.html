@@ -12,6 +12,48 @@
         {{model.error}}
     </div>
 
+    <!--Course Name-->
+    <!-- Dropdown is populated from the database -->
+
+
+    <form novalidate name="model.myform1">
+        <div class="row container">
+            <!--Dropdown to select courses-->
+            <div class="col-sm-8 col-md-8">
+                <label for="username">My Courses</label>
+                <select required
+                        type="string"
+                        class="form-control"
+                        name="coursename"
+                        placeholder="Course Name"
+                        ng-model="model.user.coursename" required>
+
+                    <option ng-repeat="course in model.courses">{{course.coursename}}</option>
+                </select>
+
+                     <span class="alert-class"
+                           ng-show="model.myform1.coursename.$invalid">{{model.alert}}
+                    </span>
+
+            </div>
+            <!--Button to add-->
+            <div class="col-sm-4 col-md-4">
+                <label>Add Courses</label>
+                <a ng-click = "model.addUserCourses(model.user)" class="btn btn-success btn-block">Add my courses</a>
+            </div>
+        </div>
+
+
+        <!-- Display Courses-->
+        <p ng-repeat="course in model.user.coursesTaken">{{course}}
+            <a class="glyphicon glyphicon-remove makeblack"
+               ng-click="model.deleteUserCourse(course)">
+
+            </a>
+        </p>
+
+    </form>
+
 
     <form novalidate name="model.myform">
         <!--Username-->
@@ -73,47 +115,7 @@
         <br>
 
 
-    <!--Course Name-->
-    <!-- Dropdown is populated from the database -->
 
-
-        <form novalidate name="model.myform1">
-            <div class="row container">
-                <!--Dropdown to select courses-->
-                <div class="col-sm-8 col-md-8">
-                    <label for="username">My Courses</label>
-                    <select required
-                            type="string"
-                            class="form-control"
-                            name="coursename"
-                            placeholder="Course Name"
-                            ng-model="model.user.coursename" required>
-
-                        <option ng-repeat="course in model.courses">{{course.coursename}}</option>
-                    </select>
-
-                     <span class="alert-class"
-                           ng-show="model.myform1.coursename.$invalid">{{model.alert}}
-                    </span>
-
-                </div>
-                <!--Button to add-->
-                <div class="col-sm-4 col-md-4">
-                    <label>Add Courses</label>
-                    <a ng-click = "model.addUserCourses(model.user)" class="btn btn-success btn-block">Add my courses</a>
-                </div>
-            </div>
-
-
-            <!-- Display Courses-->
-            <p ng-repeat="course in model.user.coursesTaken">{{course}}
-                <a class="glyphicon glyphicon-remove makeblack"
-                   ng-click="model.deleteUserCourse(course)">
-
-                </a>
-            </p>
-
-        </form>
 
 
     <!-- Phone Number-->

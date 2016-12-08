@@ -13,7 +13,17 @@
                 Priority
             </a>
             </th>
-
+            <th><a ng-click="model.orderByField='gpa';
+                             model.reverseSort = !model.reverseSort">
+                GPA
+            </a>
+            </th>
+            <th>
+                Resume
+            </th>
+            <th>
+                Email
+            </th>
             <th><a ng-click="model.orderByField='previouslyTaken';
                              model.reverseSort = !model.reverseSort">
                 Previously Taken
@@ -50,7 +60,9 @@
 
 <tr ng-repeat="application in apps | orderBy:model.orderByField : model.reverseSort">
     <td>{{ application.priority }}</td>
-
+    <td>{{application.gpa}}</td>
+    <td><a ng-href="{{application.resumeURL}}">Link</a></td>
+    <td>{{application.email}}</td>
     <td>{{ application.previouslyTaken }}</td>
     <td>{{ application.gradeObtained }}</td>
     <td>{{ application.beenTASemester }}</td>
