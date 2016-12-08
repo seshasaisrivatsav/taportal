@@ -121,17 +121,26 @@
 
             <!-- Header for Position-->
 
-            <th>Course</th>
+            <th>Course
+            </th>
+
+
             <th>Semester</th>
-            <th># Positions</th>
-            <th>Lecturer</th>
+            <th><a ng-click="model.orderByField='number';
+                             model.reverseSort = !model.reverseSort">
+                # Positions
+            </a>
+            <th><a ng-click="model.orderByField='lecturer';
+                             model.reverseSort = !model.reverseSort">
+                Lecturer
+            </a>
             <th>Deadline</th>
 
             <th>Update Position</th>
             <th>Delete Position</th>
 
 
-            <tr ng-repeat="position in model.positions">
+            <tr ng-repeat="position in model.positions | orderBy:model.orderByField : model.reverseSort">
 
 
                 <!--Course-->

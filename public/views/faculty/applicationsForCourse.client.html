@@ -1,51 +1,62 @@
 
-
-
-<div class="container">
-    <h1>Appplications for course</h1>
-    <div ng-if="model.success"
-         class="alert alert-success">
-        {{model.success}}
-    </div>
-
-    <div ng-if="model.error"
-         class="alert alert-danger">
-        {{model.error}}
-    </div>
-
     <div class="container-fluid">
-    {{apps}}
+    <h1>Applications for {{model.Position.course}}</h1>
 
-    main
-
+    <p></p>
     <div class="table-responsive">
         <table class="table table-hover">
             <!-- Table header--------->
             <!-- Header for Position-->
             <!------------------------->
-            <th>Priority</th>
-            <th>Position</th>
-            <th>Previously Taken</th>
-            <th>Grade Obtained</th>
-            <th>Been TA Semister</th>
-            <th>Availability</th>
-            <th>User</th>
-            <th>_v</th>
+            <th><a ng-click="model.orderByField='priority';
+                             model.reverseSort = !model.reverseSort">
+                Priority
+            </a>
+            </th>
 
-            <th>Current Rating</th>
+            <th><a ng-click="model.orderByField='previouslyTaken';
+                             model.reverseSort = !model.reverseSort">
+                Previously Taken
+            </a>
+            </th>
+
+            <th><a ng-click="model.orderByField='gradeObtained';
+                             model.reverseSort = !model.reverseSort">
+                Grade Obtained
+            </a>
+            </th>
+
+            <th><a ng-click="model.orderByField='beenTASemester';
+                             model.reverseSort = !model.reverseSort">
+                Been TA semester
+            </a>
+            </th>
+            <th><a ng-click="model.orderByField='availability';
+                             model.reverseSort = !model.reverseSort">
+                Availability
+            </a>
+            </th>
+            <th>User</th>
+
+
+            <th><a ng-click="model.orderByField='ratingvalue';
+                             model.reverseSort = !model.reverseSort">
+                Current Rating
+            </a>
+            </th>
             <th>Rate a Student</th>
 
 
 
-<tr ng-repeat="application in apps">
+<tr ng-repeat="application in apps | orderBy:model.orderByField : model.reverseSort">
     <td>{{ application.priority }}</td>
-    <td><!--{{ application._position }} --> 123</td>
+
     <td>{{ application.previouslyTaken }}</td>
     <td>{{ application.gradeObtained }}</td>
     <td>{{ application.beenTASemester }}</td>
     <td>{{ application.availability }}</td>
-    <td><!--{{ application._user }} --> abc</td>
-    <td>{{ application.__v }}</td>
+    <td><a href="#/UserInfo/{{application._user}}">{{ application.username }}</a></td>
+
     <td> {{application.ratingvalue}} </td>
     <td>
         <button ng-if="1 > application.ratingvalue" ng-href="#" ng-click="model.rateStudent(application._user, 1)"  class="glyphicon glyphicon-star-empty"></button>

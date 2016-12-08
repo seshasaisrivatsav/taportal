@@ -4,6 +4,17 @@
 <!------------------------------------------------------------------------>
 <div class="container">
     <h3 ><b>Apply for TA Position</b></h3>
+    <div class="container">
+        <h3>Guidelines to fill an application</h3>
+        <h5><b>Priority</b>: Each application needs to have priority between 1 and 3</h5>
+        <h5><b>TA Role</b>: Upon selecting your desired TA role, you will be able to see the number of openings for the position</h5>
+        <h5><b>Prev Semester</b>: Enter the last semester where you took the course</h5>
+        <h5><b>Grade</b>: Enter your grade in this course.  Leave blank if you have not taken it</h5>
+        <h5><b>Assistantship</b>: Enter your most recent semester for which you've been TA for this subject. Leave Blank otherwise</h5>
+    </div>
+
+    <br>
+
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -12,10 +23,10 @@
                 <th>TA Role</th>
                 <th># positions</th>
                 <th>Semester</th>
-                <th>Semester where you have previously taken the course</th>
-                <th>Grade Obtained in this course</th>
-                <th>Assistantship (enter your most recent semester for which you've been TA for this subject. Leave Blank otherwise</th>
-                <th>Availabilty</th>
+                <th>Prev Semester</th>
+                <th>Grade</th>
+                <th>Assistantship</th>
+                <th>Availability</th>
                 <th>Remarks</th>
             </tr>
             </thead>
@@ -137,9 +148,16 @@
         </table>
         <a ng-click="model.createApplications(model.application )"
            class="btn btn-block btn-primary">
-            Create
+            Apply
         </a>
     </div>
+</div>
+
+<br>
+<br>
+<div class="container">
+    <h4>The below applications submitted by you can be managed from your Jobs Dashboard ("Go to my Jobs Dashboard" button below)</h4>
+    <h4>You can check the status of the application and/or withdraw an application in your Jobs DashBoard</h4>
 </div>
 
 <!----------------------------------------------------------------------------------------->
@@ -167,11 +185,10 @@
             <th>Previously took this course</th>
             <th>Grade in this course</th>
             <th>Assistantship</th>
-            <th>Availabilty</th>
+            <th>Availability</th>
             <th>Remarks</th>
 
-            <th>Update Position</th>
-            <th>Delete Position</th>
+            <th>Update Application</th>
 
 
             <tr ng-repeat="app in model.applications">
@@ -262,21 +279,12 @@
                            placeholder="Enter your remarks"/></td>
 
 
-                <!-- Update Position Button-->
-                <td>
-                    <a class="glyphicon glyphicon-ok makeblack"
-                       ng-click="model.updateApplication(app._id, app)"></a>
-                </td>
+                <!-- Update Application Button-->
 
-                <!--Delete Position Button-->
-                <td>
-                    <a class="glyphicon glyphicon-remove makeblack"
-                       ng-click="model.deleteApplication(app._id)"></a>
-                </td>
 
-                <td>
+                <td><a ng-click="model.updateApplication(app._id, app)" class="btn btn-block btn-primary">
+                Update</a></td>
 
-                </td>
             </tr>
         </table>
     </div>

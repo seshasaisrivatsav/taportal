@@ -1,58 +1,81 @@
-<h1>
-    My Jobs Dashboard
-</h1>
+<!----------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------->
+<!--                     (DATA)             My  Applications                             -->
+<!----------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------->
+<div class="container ">
+    <h4 ><b>My Applications </b></h4>
 
-<div class="container">
+    <!-- Update Message -->
+    <div ng-if="model.updatedmessage" class="alert alert-success">
+        {{model.updatedmessage}}
+    </div>
 
     <!-- Deleted Message -->
     <div ng-if="model.updatedmessage" class="alert alert-success">
         {{model.deletemsg}}
     </div>
 
+    <!-- Heading -->
     <div class="table-responsive">
         <table class="table table-hover">
 
-            <!-- Table header--------->
-            <th>Position</th>
+            <!-- Header for Position-->
+
+
+            <th>TA Role</th>
+
             <th>Status</th>
             <th>Actions</th>
 
-            <!------------------------>
-            <!-- Table Data--------->
-            <tr ng-repeat="appname in model.applicationnames">
-                <td> {{appname.name}} </td>
-                <td>{{appname.status}}</td>
-                <td><button ng-click="model.deleteapplication(appname.name)" class="btn btn-block btn-danger">
-                    Withdraw</button></td>
+
+            <tr ng-repeat="app in model.applications">
+
+                <!----- TA Role Name ------>
+                <td>
+                   {{app.courseName}}
+                </td>
+
+                <!--Status-->
+                <td>
+                   {{app.status}}
+                </td>
+
+
+                <!--Delete Position Button-->
+                <td><a ng-click="model.deleteApplication(app._id)" class="btn btn-block btn-danger">
+                    Withdraw</a></td>
+
+
+
+
             </tr>
-            <!------------------------>
-
         </table>
-
     </div>
+
     <p></p>
-    <p></p><p></p>
-
-
     <a  class="btn btn-block btn-primary"
-        href="#/studentjobapplication">Apply for more TA Positions</a>
-
+        href="#/studentjobapplication">Apply for more TA positions</a>
 
 </div>
 
 
-<!-------------------------------------------------->
-<!----------------- Footer ------------------------->
-<!--------------------------------------------------->
+
+
+<!------------------------------------------------->
+<!--                 Footer                      -->
+<!------------------------------------------------->
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a ng-click = "model.logout()">Logout</a>
+            <a  ng-click="model.logout()">
+                <span>Logout</span>
             </a>
-        </p>
 
+        </p>
         <p class="navbar-text pull-left">
-            <a href="#/sprofile">
+
+            <a  href="#/sprofile">
                 <span>Back to Profile</span>
             </a>
         </p>

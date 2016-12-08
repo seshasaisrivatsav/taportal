@@ -19,7 +19,10 @@
         vm.updateApplication = updateApplication ;
         vm.createApplications=createApplications;
         vm.findApplicationForUser = findApplicationForUser;
-        
+
+        vm.deleteApplication=deleteApplication;
+
+
         var newap_pos = "";
         function updateposnum(position){
 
@@ -119,6 +122,20 @@
                     }
                 );
         }
+
+
+        function deleteApplication(applicationId) {
+            applicationsService
+                .deleteApplication(applicationId)
+                .then(
+                    function (response) {
+                        init();
+                        vm.warning = "Deleted Successfully!";
+
+                    }
+                )
+        }
+
 
 
         // Author : Sesha Sai

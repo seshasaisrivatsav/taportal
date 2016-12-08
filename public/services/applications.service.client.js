@@ -14,11 +14,22 @@
             updateApplication:updateApplication ,
             findApplicationById:findApplicationById,
             findApplicationForUser:findApplicationForUser,
-            getApplicationsForPosition: getApplicationsForPosition
+            getApplicationsForPosition: getApplicationsForPosition,
+            GiveDecisionforApp: GiveDecisionforApp
         };
 
 
         return api;
+
+        //am
+
+        function GiveDecisionforApp(appId, decision) {
+
+            console.log(decision);
+            var url = "/api/GiveDecisionforApp/" +appId+ "/decision/" +decision;
+
+            return $http.put(url);
+        }
 
     // anvita
 

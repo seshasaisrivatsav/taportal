@@ -21,6 +21,9 @@
         vm.deletePosition = deletePosition;
         vm.updateDeadline = updateDeadline;
         vm.logout = logout;
+        
+        vm.orderByField = 'course';
+        vm.reverseOrder = false;
 
         function init() {
             findAllPositions();

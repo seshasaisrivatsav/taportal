@@ -13,10 +13,13 @@
         var vm = this;
 
         vm.rateStudent = rateStudent;
+      //  vm.findAverage = findAverage;
         var faculty;
+        vm.avg1;
         vm.apps;
         vm.getApplications = getApplications;
         vm.applications;
+        vm.avg = 0;
         vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
         vm.userId = $rootScope.currentUser._id;
@@ -65,6 +68,8 @@
 
 
 
+
+
                       var ii = {
                           array12: rating1
                       }
@@ -93,7 +98,28 @@
         }
 
 
-
+        //function findAverage(StudentID) {
+        //    UserService
+        //        .findUserById1("58476899f2228854246e14bd")
+        //        .then(
+        //            function (response) {
+        //
+        //                console.log(response.data);
+        //                var   ratingavg = response.data.avgRating;
+        //                console.log(ratingavg);
+        //
+        //                $rootScope.avg1 = ratingavg;
+        //                $rootScope.a12 = 12;
+        //
+        //
+        //                return ratingavg;
+        //
+        //
+        //
+        //
+        //
+        //            });
+        //}
 
 
         function getApplications(position) {
@@ -107,9 +133,10 @@
 
                     var apps1 = response.data;
                         var apps2 = [] ;
-                        ratingGiven = 1;
+
                         for (i = 0; i < apps1.length; i++) {
                             var sid = apps1[i]._user;
+
 
 
                             UserService
@@ -118,34 +145,33 @@
                                     function (response) {
 
 
-                                        var  rating1 = response.data.rating;
-                                        var sum = 0;
+                                       var   ratingavg = response.data.avgRating;
+                                        console.log(ratingavg);
 
-                                        for (i1 = 0; i1 < rating1.length; i1++) {
-                                            sum = sum + parseInt(rating1[i1].rating);
-
-                                        }
+                                            $rootScope.avg1 = ratingavg;
 
 
-                                            ratingGiven = parseInt(sum/rating1.length);
 
 
-                                        if(parseInt(ratingGiven) < 1){
-                                            ratingGiven = 1;
-                                        }
-                                        console.log(ratingGiven);
 
+                                        //console.log($rootScope.avg1);
 
 
 
                                     });
-
+                           //console.log( vm.findAverage(sid));
+                           // console.log($rootScope.avg1);
+                            //console.log($rootScope.a12);
+                            var rateval = 1;
+                            if($rootScope.avg1 > 1){
+                                rateval = $rootScope.avg1;
+                            }
                             var app1 = {
 
                                 "_id":apps1[i]._id,"priority":apps1[i].priority,"_position":apps1[i]._position,
                                 "previouslyTaken":apps1[i].previouslyTaken,"gradeObtained":apps1[i].gradeObtained,
                                 "beenTASemester":apps1[i].beenTASemester,"availability": apps1[i].availability,
-                                "_user":apps1[i]._user,"__v":apps1[i].__v,"rating":apps1[i].rating, "ratingvalue": ratingGiven
+                                "_user":apps1[i]._user,"__v":apps1[i].__v,"rating":apps1[i].rating, "ratingvalue": rateval
 
                             };
 

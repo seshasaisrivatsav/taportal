@@ -31,7 +31,7 @@
                 ng-model="position" ng-options="position as position.course for position in model.positions"></select>
 
 
-        <a class="btn btn-block btn-primary" ng-click="model.getApplications(position)">Get Applications for Position</a>
+       <a class="btn btn-block btn-primary" href="#/applicationsForCource/{{position._id}}">Get Applications for Position</a>
     </div>
 </div>
 
