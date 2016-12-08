@@ -15,10 +15,20 @@ module.exports = function () {
         deleteApplication: deleteApplication,
         findApplicationForUser: findApplicationForUser,
         findApplicationById: findApplicationById,
-        findApplicationsForPosition: findApplicationsForPosition
+        findApplicationsForPosition: findApplicationsForPosition,
+        GiveDecisionforApp:GiveDecisionforApp
     };
 
     return api;
+
+
+    function GiveDecisionforApp(appId, decision) {
+        return Application
+            .update({_id: appId},{
+                $set: { status: decision
+                }}
+            );
+    }
 
     function createApplication(application) {
         return  Application.create(application);
@@ -32,7 +42,7 @@ module.exports = function () {
         delete application._id;
         return Application
             .update({_id: applicationId},{
-                $set: { _position: application._position,
+                $set: {
                     priority : application.priority,
                     previouslyTaken : application.previouslyTaken,
                     gradeObtained : application.gradeObtained,
