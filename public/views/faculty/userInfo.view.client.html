@@ -1,0 +1,34 @@
+
+<div class="row container">
+    <h1>
+        Student: {{model.user.firstName}} {{model.user.lastName}}
+    </h1>
+    <hr>
+    <div class="col-sm-4 col-md-4">
+        <p><b>First Name</b>: {{model.user.firstName}}</p>
+        <p><b>Last Name</b>: {{model.user.lastName}}</p>
+        <p><b>Email Address</b>: {{model.user.email}}</p>
+        <p><b>Phone:</b>{{model.user.phone}}</p>
+        <p><b>Current Courses:</b><p ng-repeat="currentcourse in model.user.currentCourses">{{currentcourse}}</p></p>
+        <p><b>My Previous Courses:</b><p ng-repeat="course in model.user.coursesTaken">{{course}}</p></p>
+        <p><b>About Myself:</b>{{model.user.aboutMyself}}</p>
+        <p><b>Rating from other professors:</b>
+
+        <p ng-repeat="rating in model.user.rating" ng-init="model.getProfessorname(rating._user)">
+            {{model.professorname}} : {{rating.rating}}</p></p>
+
+    </div>
+
+
+    <div class="col-sm-8 col-md-8">
+
+
+
+        <!-- Display resume -->
+        <br>
+        <a ng-href="{{model.user.resumeURL}}">View Full Resume: {{model.user.resumeName}}</a>
+        <br>
+        <!-------------------->
+
+    </div>
+</div>

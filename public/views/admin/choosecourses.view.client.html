@@ -1,0 +1,44 @@
+
+<div class="row container">
+    <h1>
+        Welcome Admin. {{model.user.firstName}} {{model.user.lastName}}
+    </h1>
+    <hr>
+
+
+
+    <div class="col-sm-8 col-md-8">
+
+        <select
+                select type="string"
+                class="form-control"
+                placeholder="TAPosition"
+                ng-model="position" ng-options="position as position.course for position in model.positions"></select>
+
+
+        <a class="btn btn-block btn-primary" href="#/applicationsForCourseAdmin/{{position._id}}">Get Applications for Position</a>
+    </div>
+</div>
+
+
+
+
+<!------------------------------------------------>
+<!-- Footer -->
+<!------------------------------------------------>
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a ng-click = "model.logout()">Logout</a>
+            </a>
+        </p>
+
+        <p class="navbar-text pull-left">
+            <a href="#/feditprofile">
+                <span>Edit Profile</span>
+            </a>
+        </p>
+
+    </div>
+</nav>
+

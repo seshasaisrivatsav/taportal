@@ -1,0 +1,135 @@
+
+<div class="container-fluid">
+    <h1>Applications for {{model.Position.course}} TA Positions</h1>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <!-- Table header--------->
+            <!-- Header for Position-->
+            <!------------------------->
+            <th><a ng-click="model.orderByField='priority';
+                             model.reverseSort = !model.reverseSort">
+                Priority
+            </a>
+            </th>
+
+            <th><a ng-click="model.orderByField='previouslyTaken';
+                             model.reverseSort = !model.reverseSort">
+                Previously Taken
+            </a>
+            </th>
+
+
+
+            <th><a ng-click="model.orderByField='gradeObtained';
+                             model.reverseSort = !model.reverseSort">
+                Grade Obtained
+            </a>
+            </th>
+
+
+            <th><a ng-click="model.orderByField='beenTASemester';
+                             model.reverseSort = !model.reverseSort">
+                Been TA Semester
+            </a>
+            </th>
+
+
+
+            <th><a ng-click="model.orderByField='availability';
+                             model.reverseSort = !model.reverseSort">
+                Availability
+            </a>
+            </th>
+
+            <th>User</th>
+
+
+
+            <th><a ng-click="model.orderByField='ratingvalue';
+                             model.reverseSort = !model.reverseSort">
+                Current Rating
+            </a>
+            </th>
+
+
+            <th><a ng-click="model.orderByField='status';
+                             model.reverseSort = !model.reverseSort">
+                Status
+            </a>
+            </th>
+
+
+            <th>Accept</th>
+            <th>Reject</th>
+            <th>In Review</th>
+
+            <tr ng-repeat="application in apps| orderBy:model.orderByField : model.reverseSort">
+                <td>{{ application.priority }}</td>
+
+                <td>{{ application.previouslyTaken }}</td>
+                <td>{{ application.gradeObtained }}</td>
+                <td>{{ application.beenTASemester }}</td>
+                <td>{{ application.availability }}</td>
+                <td><a href="#/UserInfo/{{application._user}}">{{ application.username }}</a></td>
+
+                <td> {{application.ratingvalue}} </td>
+                <td> {{application.status}} </td>
+
+                <td>
+
+                    <a ng-click="model.giveDecision(application._id, 'Accepted')"
+                       class="btn btn-block btn-success">
+                        Accept
+                    </a>
+                </td>
+
+                <td>
+                    <a ng-click="model.giveDecision(application._id, 'Rejected')"
+                       class="btn btn-block btn-danger">
+                        Reject
+                    </a>
+                </td>
+
+                <td>
+                    <a ng-click="model.giveDecision(application._id, 'In Progress')"
+                       class="btn btn-block btn-primary">
+                        In Progress
+                    </a>
+                </td>
+
+                </td>
+            </tr>
+
+
+        </table>
+
+
+
+
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-------------------------------------------------->
+<!----------------- Footer ------------------------->
+<!--------------------------------------------------->
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a ng-click = "model.logout()">Logout</a>
+            </a>
+        </p>
+
+        <p class="navbar-text pull-left">
+            <a href="#/aprofile">
+                <span>Back to Profile</span>
+            </a>
+        </p>
+
+    </div>
+</nav>
