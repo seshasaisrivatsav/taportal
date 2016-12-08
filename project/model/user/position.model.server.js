@@ -48,10 +48,10 @@ module.exports = function () {
         return Position
             .update({_id: positionId},{
                 $set: {course: position.course,
-                    semester: position.semester,
-                    number: position.number,
-                    professor: position.professor,
-                    deadline : position.deadline}}
+                        semester: position.semester,
+                        number: position.number,
+                        professor: position.professor,
+                        deadline : position.deadline}}
             );
     }
 

@@ -15,6 +15,31 @@ module.exports= function(app, models) {
     // app.get("/api/findallapplications", findallapplications);
     app.get("/api/user/:userId/application", findApplicationForUser);
 
+    app.put("/api/GiveDecisionforApp/:appId/decision/:decision", GiveDecisionforApp);
+
+    function GiveDecisionforApp(req,res) {
+
+        var aid=req.params.appId;
+        var decision=req.params.decision;
+
+        console.log("in server");
+        console.log(decision);
+        console.log(aid);
+
+        applicationModel.GiveDecisionforApp(aid, decision)
+            .then(
+                function (status) {
+
+                    console.log("response from model");
+                    console.log(status);
+                    res.json(status);
+                },
+                function (error) {
+                    res.statusCode(400).send(error);
+                }
+            );
+    }
+
 
     // author: ANvita
 
