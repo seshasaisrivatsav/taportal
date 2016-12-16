@@ -25,14 +25,14 @@
 
         var newap_pos = "";
         function updateposnum(position){
-
             var vals = position.split("+");
-
             vm.tempposnum = vals[1];
             vm.tempsemester = vals[2];
             newap_pos = vals[0];
 
         }
+
+
 
         /*it is good practice to declare initialization ina function. say init*/
         function init(){
@@ -44,8 +44,8 @@
         }
         init();
 
-        // Author : Sesha Sai
 
+        // Author : Sesha Sai
         function findApplicationForUser() {
             applicationsService
                 .findApplicationForUser(userId)
@@ -77,11 +77,7 @@
 
 
                     }
-
-
-
-
-                    })
+                })
         }
 
         // Author : Sesha Sai
@@ -89,18 +85,41 @@
             var _pos = application._position;
             application._position = newap_pos;
             application.status = "In Progress";
+
+
+
             UserService
                 .findUserById(userId)
                 .then(function (response) {
                     vm.user = response.data;
-
                     // avgRating, gpa, coursesTaken, currentCourses, email, phone
-
-
                     applicationsService
                         .findApplicationForUser(userId)
                         .then(function (response) {
-                            if(response.data.length==0 || response.data.length==1 ||response.data.length==2){
+                            // Priority Validations. No two applications can have same priority
+                            if (response.data.length ==1){
+                                if(application.priority == response.data[0].priority){
+                                    vm.updatedmessage = "Na Na! Can't select 2 same priorities for one application";
+                                }else if(response.data.length ==2){
+                                    if(application.priority == response.data[0].priority || application.priority == response.data[1].priority ){
+                                        vm.updatedmessage = "Na Na! Can't select 2 same priorities for one application";
+                                }
+                            }
+                            // Student must enter grade if the course previously taken
+                            }else if(application.previouslyTaken != null && application.gradeObtained == null){
+                                vm.error1 = "Must enter grade obtained if course previously taken";
+                            }
+                            // Student MUST give out availibility
+                            else if(application.availability ==null){
+                                vm.error2 = "Enter your availability! please";
+                            }
+                            // Student Must enter course if been TA before
+                            else if(application.beenTASemester != null && application.previouslyTaken ==null){
+                                vm.error3 = "Enter your course taken semester if you were a TA before";
+                            }
+                                
+                            // Restricting applications to 3 per student . Change this code to make any differences to number of applications per user
+                            else if(response.data.length==0 || response.data.length==1 ||response.data.length==2){
                                 PositionService.findPositionIDByTitle(application._position)
                                     .then(function(response){
                                         var posId = response.data;
@@ -114,6 +133,9 @@
                             } else{
                                 vm.updatedmessage = "Maximum applications for course = 3. please withdraw un-required application!";
                             }
+
+
+
                         })
                 });
 
