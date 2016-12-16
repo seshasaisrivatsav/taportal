@@ -96,17 +96,20 @@
                     applicationsService
                         .findApplicationForUser(userId)
                         .then(function (response) {
-                            // Priority Validations. No two applications can have same priority
-                            if (response.data.length ==1){
-                                if(application.priority == response.data[0].priority){
+                            //Priority Validations. No two applications can have same priority
+                            if (response.data.length ==1 && application.priority == response.data[0].priority) {
+
                                     vm.updatedmessage = "Na Na! Can't select 2 same priorities for one application";
-                                }else if(response.data.length ==2){
-                                    if(application.priority == response.data[0].priority || application.priority == response.data[1].priority ){
-                                        vm.updatedmessage = "Na Na! Can't select 2 same priorities for one application";
-                                }
+                                
                             }
-                            // Student must enter grade if the course previously taken
-                            }else if(application.previouslyTaken != null && application.gradeObtained == null){
+                            else if(response.data.length ==2 && (application.priority == response.data[0].priority || application.priority == response.data[1].priority) ){
+
+                                    vm.updatedmessage = "Na Na! Can't select 2 same priorities for one application";
+
+
+                            //Student must enter grade if the course previously taken
+                            }
+                            else if(application.previouslyTaken != null && application.gradeObtained == null){
                                 vm.error1 = "Must enter grade obtained if course previously taken";
                             }
                             // Student MUST give out availibility
@@ -117,7 +120,7 @@
                             else if(application.beenTASemester != null && application.previouslyTaken ==null){
                                 vm.error3 = "Enter your course taken semester if you were a TA before";
                             }
-                                
+
                             // Restricting applications to 3 per student . Change this code to make any differences to number of applications per user
                             else if(response.data.length==0 || response.data.length==1 ||response.data.length==2){
                                 PositionService.findPositionIDByTitle(application._position)
