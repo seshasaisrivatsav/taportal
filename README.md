@@ -13,13 +13,13 @@ The users i.e., students, have to register to this portal to apply for TA Positi
   <li><a href="https://drive.google.com/file/d/0B-6TLW-AJILFZmEtV2RGZE0xdk0/view?usp=sharing">Student use cases with diagrams</li>
   <li><a href="https://drive.google.com/file/d/0B-6TLW-AJILFY2UzMVZ4U192YTA/view?usp=sharing">Faculty user use cases with diagrams</li>
   <li><a href="https://drive.google.com/file/d/0B-6TLW-AJILFMDRNZVJZQTBnaEk/view?usp=sharing">Admin user use cases with diagrams</li>
-  <li><a href="https://drive.google.com/file/d/0B-6TLW-AJILFaDZQeVI4aFcwUFE/view?usp=sharing">Project Description</li>
-  <li><a href="https://drive.google.com/open?id=0B-6TLW-AJILFVnFLWVZIY3pOQVE">Project setup on local machine</li>
-  <li><a href="https://drive.google.com/open?id=0B-6TLW-AJILFa3J0clFxSFMtN3M">Sequence Diagrams</li>
-  <li><a href="https://drive.google.com/open?id=0B-6TLW-AJILFUWZmTVFFQnVzcUE">MongoDB</li>
-  <li><a href="https://drive.google.com/open?id=0B-6TLW-AJILFWEVobUttYTVsUWc">Mobile Friendly usage</li>
-  <li><a href"https://drive.google.com/open?id=0B-6TLW-AJILFNDh6N0JVOHBtcWc">Pushing to AWS</li>
-  <li><a hre="https://drive.google.com/open?id=0B-6TLW-AJILFTlRWZ0dWLXdHLWc">UML Diagram</li>
+  <li><a href="https://drive.google.com/file/d/0B-6TLW-AJILFaDZQeVI4aFcwUFE/view?usp=sharing">Project Description</a></li>
+  <li><a href="https://drive.google.com/open?id=0B-6TLW-AJILFVnFLWVZIY3pOQVE">Project setup on local machine</a></li>
+  <li><a href="https://drive.google.com/open?id=0B-6TLW-AJILFa3J0clFxSFMtN3M">Sequence Diagrams</a></li>
+  <li><a href="https://drive.google.com/open?id=0B-6TLW-AJILFUWZmTVFFQnVzcUE">MongoDB</a></li>
+  <li><a href="https://drive.google.com/open?id=0B-6TLW-AJILFWEVobUttYTVsUWc">Mobile Friendly usage</a></li>
+  <li><a href"https://drive.google.com/open?id=0B-6TLW-AJILFNDh6N0JVOHBtcWc">Pushing to AWS</a></li>
+  <li><a href="https://drive.google.com/open?id=0B-6TLW-AJILFTlRWZ0dWLXdHLWc">UML Diagram</a></li>
 </ul>
 
 
