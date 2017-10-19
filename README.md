@@ -18,7 +18,7 @@ The users i.e., students, have to register to this portal to apply for TA Positi
   <li><a href="https://drive.google.com/open?id=0B-6TLW-AJILFa3J0clFxSFMtN3M">Sequence Diagrams</a></li>
   <li><a href="https://drive.google.com/open?id=0B-6TLW-AJILFUWZmTVFFQnVzcUE">MongoDB</a></li>
   <li><a href="https://drive.google.com/open?id=0B-6TLW-AJILFWEVobUttYTVsUWc">Mobile Friendly usage</a></li>
-  <li><a href"https://drive.google.com/open?id=0B-6TLW-AJILFNDh6N0JVOHBtcWc">Pushing to AWS</a></li>
+  <li><a href="https://drive.google.com/open?id=0B-6TLW-AJILFNDh6N0JVOHBtcWc">Pushing to AWS</a></li>
   <li><a href="https://drive.google.com/open?id=0B-6TLW-AJILFTlRWZ0dWLXdHLWc">UML Diagram</a></li>
 </ul>
 
