@@ -31,7 +31,6 @@ module.exports= function(app, models){
     app.put("/api/user/deletecurrentcourse/:userId",deleteCurrentCourse);
     app.get('/api/findallusers', findallusers);
     app.post("/api/resumeupload",upload.single('myResume'), uploadResume);
-    // anvita
     app.get("/api/user1/:userId", findUserById1);
     // var url = "/api/rateStudent/" +StudentID+ "/rating/" +rating+ "/byFaculty/" + facultyId;
     app.put("/api/rateStudent/:StudentID", rateStudentByFaculty);
@@ -477,8 +476,6 @@ module.exports= function(app, models){
 
 
     // uploadResume:
-    // Author: Anvita
-    // Description : To be written by the author
     function uploadResume(req, res) {
         var UserId        = req.body.userId;
 
@@ -504,24 +501,26 @@ module.exports= function(app, models){
         //Check whether the upload is for UPLOAD widget or IMAGE widget
         var resume =
         {
-            url: "/uploads/"+file, //originalname;
+            url: "/uploads/"+file,
             resume: originalname
         };
 
         //Check whether the user needs to be edited or created!
-        if(UserId){
+
             userModel
                 .updateResumeOfStudent(UserId, resume)
                 .then(
                     function(user) {
-                        res.send(200);
-                        // res.redirect("/sprofile");
+                            res.send(200);
+
                     },
                     function(err) {
                         res.status(400).send(err);
                     }
                 );
-        }
+
+
+        res.redirect("/#/sprofile");
 
     }
 

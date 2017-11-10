@@ -34,7 +34,7 @@
             })
 
 
-            //anvita
+
 
            .when("/applicationsForCource/:posId",{
                 templateUrl :"views/faculty/applicationsForCourse.client.html",
@@ -44,7 +44,16 @@
                     loggedIn: checkLoggedIn
                 }
             })
- 
+
+            //Upload resume
+            .when("/uploadResume", {
+                templateUrl :"views/user/resumeUpload.view.client.html",
+                controller: "ResumeUploadController",
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
+            })
 
         // Student Profile
             .when("/fprofile",{

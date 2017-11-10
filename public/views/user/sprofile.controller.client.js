@@ -18,6 +18,7 @@
         var userId = $rootScope.currentUser._id;
         /*it is good practice to declare initialization ina function. say init*/
         function init(){
+
             UserService
                 .findUserById(userId)
                 .then(function (response) {

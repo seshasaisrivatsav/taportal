@@ -1,27 +1,39 @@
-<div class="container-fluid">
-    <h1>Student Profile</h1>
+<div class="container">
+    <h2>
+        Welcome Student, {{model.user.firstName}} {{model.user.lastName}}
+    </h2>
 
 
-    <div class="col-sm-6 col-md-6">
-    <a class="btn btn-primary btn-block"
-       href="#/studentjobapplication">Apply For TA Positions</a>
-    </div>
-
-    <div class="col-sm-6 col-md-6">
-        <a class="btn btn-primary btn-block"
-           href="#/myjobsdashboard">My Jobs Dashboard</a>
-    </div>
 </div>
 
 
 
-<div class="container-fluid">
-    <h2>
-        Welcome Student, {{model.user.firstName}} {{model.user.lastName}}
-    </h2>
+<div class="container">
+
     <hr>
+
+
     <div class="col-sm-4 col-md-4">
-        <img src="http://leafii.com/images/defaultProfilePic.png" style="width:75%;">
+        <a class="btn btn-primary btn-block"
+           href="#/studentjobapplication">Apply For TA Positions</a>
+    </div>
+    <div class="col-sm-4 col-md-4">
+        <a class="btn btn-primary btn-block"
+           href="#/uploadResume">Update Resume</a>
+    </div>
+
+    <div class="col-sm-4 col-md-4">
+        <a class="btn btn-primary btn-block"
+           href="#/myjobsdashboard">My Jobs Dashboard</a>
+    </div>
+
+    <h1 style="color:white">`</h1>
+
+
+    <div class="col-sm-4 col-md-4">
+
+        <img src="../../images/profile.jpeg" style="width:60%;">
+        <br>
         <p><b>First Name</b>: {{model.user.firstName}}</p>
         <p><b>Last Name</b>: {{model.user.lastName}}</p>
         <p><b>Email Address</b>: {{model.user.email}}</p>
@@ -37,11 +49,12 @@
 
 
         <!-- Display resume -->
+
+        <iframe  ng-src="{{model.user.resumeURL}}" width='700' height='900'></iframe>
         <br>
-            <a ng-href="{{model.user.resumeURL}}">View Full Resume: {{model.user.resumeName}}</a>
+        <a ng-href="{{model.user.resumeURL}}">View Full Resume: {{model.user.resumeName}}</a>
         <br>
 
-        <iframe name='formresponse' src="{{model.user.resumeURL}}" width='600' height='500'></iframe>
         <br>
         <!-------------------->
 

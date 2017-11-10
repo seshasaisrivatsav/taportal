@@ -1,0 +1,49 @@
+<div class="container">
+    <h1>Resume Upload</h1>
+
+
+    <form action="/api/resumeupload"  method="post" enctype="multipart/form-data">
+
+        <p>Use PDF format of your latest resume copy. Upon succesful upload, you will be redirected to your profile page.</p>
+
+
+        <div class="col-md-8">
+            <input name="userId" value="{{model.user._id}}" style="display: none"/>
+            <input  name="myResume"   type="file" class="form-control"/>
+        </div>
+
+        <div class="col-md-4">
+            <button type="submit"   class="btn btn-block btn-primary">Upload Resume</button>
+        </div>
+
+    </form>
+
+    <h1 style="color: white">`</h1>
+
+    <p>View Full Resume:<a ng-href="{{model.user.resumeURL}}">{{model.user.resumeName}}</a></p>
+
+
+
+</div>
+
+
+<!-------------------------------------------------->
+<!----------------- Footer ------------------------->
+<!--------------------------------------------------->
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a ng-click = "model.logout()">Logout</a>
+            </a>
+        </p>
+
+        <p class="navbar-text pull-left">
+            <a href="#/sprofile">
+                <span>Back to Profile</span>
+            </a>
+        </p>
+
+    </div>
+</nav>
+
+
