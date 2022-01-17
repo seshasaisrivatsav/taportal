@@ -6,12 +6,9 @@
         .module("TaPortal")
         .factory("UserService", UserService);
 
-
-
-
     function UserService($http) {
         /* provide an API that allows access to this thing */
-        var api = {
+        const api = {
             loggedIn: loggedIn,
             createUser: createUser,
             register: register,
@@ -43,8 +40,6 @@
             var url = "/api/user1/" + userId;
             return $http.get(url);
         }
-
-
 
  //   .rateStudent(StudentID, rating, faculty)
 
@@ -102,7 +97,7 @@
         // Author : Sesha Sai Srivatsav
         // logs in a user for given username and password
         function login(username, password) {
-            var user ={
+            const user = {
                 username: username,
                 password: password
             };

@@ -2,11 +2,9 @@
  * Authored by Seshasai on 11/3/2016.
  */
 module.exports = function () {
-    // mongoDb has no notion of schemas. this is at the application level
-    var mongoose = require("mongoose");
+    let mongoose = require("mongoose");
 
-    var UserSchema = mongoose.Schema ({
-
+    let UserSchema = mongoose.Schema ({
         //Common fields for all the users
         username: String, // Username
         password: String, //Password

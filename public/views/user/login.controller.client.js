@@ -14,11 +14,11 @@
     function LoginController($location, UserService){
         /* vm is view model. bound to instance of controller */
         /* we bind instance of controller to local variable vm. where ever we bind to VM, we are bound to instance of controller */
-        var vm = this;
+        let vm = this;
 
 
         // vm.login = function (username, password) {
-        //     var user = UserService.findUserByCredentials (username, password);
+        //     let user = UserService.findUserByCredentials (username, password);
         //     if (user){
         //         $location.url("/user/"+user._id);
         //     } else {
@@ -28,17 +28,17 @@
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         //                      Developed by Srivatsav                                                      //
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-
         // Author: Sesha Sai Srivatsav
         vm.login = function (username, password) {
+            console.log("inside login");
             /*receives a promise which allows us to register
              a function that will be invoked when the server comes back with data
              API called .then is used
              */
-            if(vm.myform.$valid == false){
+            if (vm.myform.$valid == false){
                 vm.error = "Enter the username/password";
                 vm.alert = "* Enter the required fields";
-            }else{
+            } else {
                 UserService
                 //  .findUserByCredentials (username, password)
                     .login(username, password)
@@ -46,7 +46,7 @@
 
 
                         /* this is NOT synchronous */
-                        var user = response.data;
+                        let user = response.data;
 
                         if (user.usertype == "student"){
                             $location.url("/sprofile");
@@ -57,7 +57,10 @@
                         }else{
                             vm.error = response.data;
                         }
-                    });
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
             }
         }
 

@@ -5,9 +5,6 @@
 module.exports= function(app, models){
 
     var positionModel = models.positionModel;
-
-
-
     app.post("/api/position", createPosition);
     app.get("/api/position/:positionId", findPositionById);
     app.delete("/api/position/:positionId", deletePosition);
@@ -15,13 +12,7 @@ module.exports= function(app, models){
     app.put("/api/position/semestername", updateDeadline);
     app.get("/api/findallpositions", findallpositions);
     //  app.get("/api/findPositionByCourseName", courseName);
-
-    //Author: Manognya
     app.get("/api/application/:positionTitle",findPositionIDByTitle);
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    //                      Developed by Anvita                                                     //
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-
     app.get("/api/findPositionByCourseName/:courseName", findPositionByCourseName);
 
     function findPositionByCourseName(req, res) {
@@ -35,13 +26,6 @@ module.exports= function(app, models){
             });
     }
 
-
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    //                      Developed by Srivatsav                                                      //
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    // Author: Sesha Sai Srivatsav
     // Description: returns the position with a specific position ID
     // function: findPositionById
     function findPositionById(req, res) {
@@ -54,8 +38,6 @@ module.exports= function(app, models){
                 res.statusCode(404).send(error);
             });
     }
-
-    // Author: Sesha Sai Srivatsav
     // Description: Updates the position for a specified position ID
     // function: updatePosition
     function updatePosition(req, res) {
