@@ -21,8 +21,8 @@ app.use(session({
 }));
 
 
-// let connectionString = 'mongodb://127.0.0.1:27017/taportal';
-let connectionString = 'mongodb://seshasaisrivatsav:mongodbpassword@cluster0.brg0p.mongodb.net/taportal?retryWrites=true&w=majority';
+// let connectionString = 'mongodb://127.0.0.1:27017/taportal';?
+let connectionString = 'mongodb://seshasaisrivatsav:mongodbpassword@cluster0.brg0p.mongodb.net/filmNerd?retryWrites=true&w=majority';
 let mongoose = require("mongoose");
 let options = {
     useMongoClient: true,
