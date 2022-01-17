@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "TA portal project",
   "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seshasaisrivatsav/taportal"
+  },
   "dependencies": {
+    "eslint": "^8.7.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.1",
     "cookie-parser": "^1.4.3",
@@ -32,7 +37,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "npm run lint -- --fix"
   },
   "author": "TA Portal Team ",
   "license": "ISC"

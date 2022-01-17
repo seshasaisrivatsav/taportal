@@ -1,10 +1,4 @@
-/**
- * Created by manog on 01-12-2016.
- */
-/**
- * Created by manog on 27-11-2016.
- */
-module.exports= function(app, models) {
+module.exports = function (app, models) {
 
     var applicationModel = models.applicationModel;
 
@@ -17,10 +11,10 @@ module.exports= function(app, models) {
 
     app.put("/api/GiveDecisionforApp/:appId/decision/:decision", GiveDecisionforApp);
 
-    function GiveDecisionforApp(req,res) {
+    function GiveDecisionforApp(req, res) {
 
-        var aid=req.params.appId;
-        var decision=req.params.decision;
+        var aid = req.params.appId;
+        var decision = req.params.decision;
 
         console.log("in server");
         console.log(decision);
@@ -40,19 +34,15 @@ module.exports= function(app, models) {
             );
     }
 
-
-    // author: ANvita
-
-   // var url = "/api/ApplicationForPosition/" +posId;
+    // var url = "/api/ApplicationForPosition/" +posId;
     app.get("/api/ApplicationForPosition/:applicationId", findApplicationsForPosition);
 
-    function findApplicationsForPosition(req,res) {
-        var aid=req.params.applicationId;
+    function findApplicationsForPosition(req, res) {
+        var aid = req.params.applicationId;
 
         applicationModel.findApplicationsForPosition(aid)
             .then(
-                function (application)
-                {
+                function (application) {
                     res.json(application);
                 },
                 function (error) {
@@ -61,16 +51,10 @@ module.exports= function(app, models) {
             );
     }
 
+    app.get("/api/application/:positionTitle", findPositionIDByTitle);
 
-
-    //Author: Manognya
-    app.get("/api/application/:positionTitle",findPositionIDByTitle);
-
-    function createApplication(req,res) {
-
-
+    function createApplication(req, res) {
         var application = req.body;
-
         applicationModel
             .createApplication(application)
             .then(
@@ -85,12 +69,11 @@ module.exports= function(app, models) {
     }
 
 
-    function findApplicationById(req,res) {
-        var aid=req.params.applicationId;
+    function findApplicationById(req, res) {
+        var aid = req.params.applicationId;
         applicationModel.findApplicationById(aid)
             .then(
-                function (application)
-                {
+                function (application) {
                     res.json(application);
                 },
                 function (error) {
@@ -99,7 +82,7 @@ module.exports= function(app, models) {
             );
     }
 
-    function findApplicationForUser(req,res) {
+    function findApplicationForUser(req, res) {
         applicationModel.findApplicationForUser(req.params.userId)
             .then(
                 function (application) {
@@ -112,9 +95,9 @@ module.exports= function(app, models) {
             )
     }
 
-    function updateApplication(req,res) {
+    function updateApplication(req, res) {
         var application = req.body;
-        var aid=req.params.applicationId;
+        var aid = req.params.applicationId;
 
         applicationModel.updateApplication(aid, application)
             .then(
@@ -128,7 +111,7 @@ module.exports= function(app, models) {
             );
     }
 
-    function deleteApplication(req,res) {
+    function deleteApplication(req, res) {
         var aid = req.params.applicationId;
 
         applicationModel.deleteApplication(aid)
@@ -140,17 +123,18 @@ module.exports= function(app, models) {
                 });
     }
 
-    function findPositionIDByTitle(req,res) {
+    function findPositionIDByTitle(req, res) {
         var posTitle = req.params.positionTitle;
-        positionModel. findPositionIDByTitle(posTitle)
+        positionModel.findPositionIDByTitle(posTitle)
             .then(
                 function (position) {
-               
+
                     res.send(position[0]._id);
                 },
                 function (error) {
                     res.sendStatus(404);
                 }
-            )}
+            )
+    }
 
 };

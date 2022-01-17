@@ -8,9 +8,6 @@ module.exports = function () {
     var CourseSchema = require("./course.schema.server")();
     var Course =  mongoose.model("Course", CourseSchema);
 
-
-
-
     var api = {
         createCourse: createCourse,
         findCourseByCoursename: findCourseByCoursename,
@@ -32,8 +29,6 @@ module.exports = function () {
     //                      Description: The below functions provide CRUD operations on Course     //
     //                                                                                              //
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
     function updateCourse(courseId, course) {
         delete course._id;
         return Course
@@ -62,17 +57,6 @@ module.exports = function () {
     function findCourseByCoursename(coursename) {
         return Course.findOne({coursename: coursename});
     }
-
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    //                      Developed by Manognya                                                      //
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    //                      Developed by Anvita                                                      //
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-
     function findCourseByName(courseName) {
       // return Course.findById({_id: courseId});
           return Course.findOne({coursename: courseName});

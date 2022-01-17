@@ -1,12 +1,8 @@
-/**
- * Created by manog on 26-11-2016.
- */
 module.exports = function () {
 
     var mongoose = require("mongoose");
     var ApplicationSchema = require("./application.schema.server")();
     var Application = mongoose.model("Application", ApplicationSchema);
-
 
     var api = {
         createApplication: createApplication,
@@ -61,7 +57,6 @@ module.exports = function () {
         return Application.findById({_id: applicationId});
     }
 
-        //anvita
     function findApplicationsForPosition(PosId) {
         return Application.find({_position: PosId});
     }
