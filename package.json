@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "TA portal project",
   "main": "server.js",
+  "engines": {
+    "node": "12.6.2"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/seshasaisrivatsav/taportal"
