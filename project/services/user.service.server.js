@@ -434,7 +434,6 @@ module.exports = function (app, models) {
 
         //Append the file extension at the end of randomly generated filename
         let file = filename + "." + extension;
-
         let newpath = path + "." + extension;
 
         //Rename the file path
@@ -453,7 +452,6 @@ module.exports = function (app, models) {
             .then(
                 function (user) {
                     res.send(200);
-
                 },
                 function (err) {
                     res.status(400).send(err);
@@ -461,6 +459,4 @@ module.exports = function (app, models) {
             );
         res.redirect("/#/sprofile");
     }
-
-
 };
