@@ -1,16 +1,45 @@
-<h1>TA Portal</h1>
+## TA Portal
 
-<p>
-TA Portal is a Web Application build for College of Computer Science (CCIS) at Northeastern University during Managing Software Development (MSD) Course
-Using this application, Admins(Professors, Senior Faculty) can create Teaching Assistant positions. They can also review the applications based on grades and weather a student has been TA before etc, set application status, application deadlines etc.
-The users i.e., students, have to register to this portal to apply for TA Positions. Students must upload resumes and fill basic profile information and can apply for TA Positions
-</p>
+- TA Portal is a Web Application built as part of a project for College of Computer Science (CCIS) at Northeastern University during Managing Software Development (MSD) Course.
+- Using this application, Admins (Professors, Senior Faculty) can create Teaching Assistant positions. 
+- They can also review the applications based on grades and weather a student has been TA before etc, set application status, application deadlines etc.
+- The users i.e., students, have to register to this portal to apply for TA Positions. 
+- Students must upload resumes and fill basic profile information and can apply for TA Positions
+
+### Live instance of app
+https://ta-portal.herokuapp.com/ 
+[Youtube video Demo](https://youtu.be/ZEoNRj-WUsA)
 
 
 ### Test accounts
 student: sesha
 faculty: faculty
 admin: admin
+
+
+
+### Prerequisites
+<ol>
+  <li>nodeJs</li>
+  <li>MongoDB</li>
+  <li>ExpressJS</li>
+</ol>  
+
+### Running Locally
+```shell script
+~ npm ci
+~ npm install
+~ npm start # or node server.js
+```
+
+### Environment variables
+<p>To enable third party log in </p>
+<ol>
+  <li>GOOGLE_CLIENT_ID</li>
+  <li>GOOGLE_CLIENT_SECRET</li>
+  <li>GOOGLE_CALLBACK_URL</li>
+</ol>  
+
 
 ### MongoDB commands
 ```shell script
@@ -23,45 +52,6 @@ db.taportal.user.find().pretty() ## prints a table
  db.taportal.user.update({username: 'admin'}, {$set: {usertype: 'admin'}}, false, true)
  
 ```
-
-
-<h2>Live instance of the project
-</h2>
-<p>https://ta-portal.herokuapp.com/ </p>
-
-
-<h2>Youtube demo</h2>
-<a href="https://youtu.be/ZEoNRj-WUsA" > Video Link</a>
-
-<h2>Required Installations on local machine</h2>
-<img src="https://excellentwebworld.com/wp-content/uploads/2017/09/images-3.jpg" height=190px>
-
-<ol>
-  <li>nodeJs</li>
-  <li>MongoDB</li>
-  <li>ExpressJS</li>
-</ol>  
-
-
-
-
-
-<h2>To run this on your machine, you must</h2>
-<ol>
-  <li>Uncomment line 33 and comment line 32 in server.js</li>
-  <li>Comment lines 14 to 18 in user.service.server.js﻿</li>
-  <li>You can run the project by running "node server.js"</li>
-</ol>  
-
- 
-<h2>Environment Variables</h2>
-<p>To enable third party log in </p>
-<ol>
-  <li>GOOGLE_CLIENT_ID</li>
-  <li>GOOGLE_CLIENT_SECRET</li>
-  <li>GOOGLE_CALLBACK_URL</li>
-</ol>  
-
 
 <h3>Useful Links </h2>
 <ul>
