@@ -35,21 +35,11 @@ module.exports = function (app, models) {
 
 
     passport.use('TaPortal', new LocalStrategy(localStrategy));
-
-
-    //done - is to notify passport of success/failures
-
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    //                      Developed by Srivatsav                                                     //
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
     // logout: ends session of a user
-    // Author: Sesha Sai Srivatsav
-
     function logout(req, res) {
         req.logout();
         res.sendStatus(200);
@@ -57,9 +47,7 @@ module.exports = function (app, models) {
 
     // findallUsers
     // retruns all the users in the system
-    // Author: Sesha Sai Srivatsav
     function findallusers(req, res) {
-
         userModel
             .findAllUsers()
             .then(
@@ -72,10 +60,9 @@ module.exports = function (app, models) {
             );
     }
 
-    // register
-    // Creates new user
-    // Author: Sesha Sai Srivatsav
+    // register Creates new user
     function register(req, res) {
+        console.log('in register');
         let username = req.body.username;
         let password = req.body.password;
         userModel
@@ -85,21 +72,20 @@ module.exports = function (app, models) {
                         res.status(400).send("Username is in use");
                         return;
                     } else {
-
+                        console.log('in register 1');
                         req.body.password = bcrypt.hashSync(req.body.password);
-                        return userModel
-                            .createUser(req.body);
-
+                        return userModel.createUser(req.body);
                     }
                 },
                 function (err) {
+                    console.log('in register- 2');
+                    console.log(err);
                     res.status(400).send(err);
-
                 })
-
             .then(
                 function (user) {
                     if (user) {
+                        console.log('in register 3');
                         //provided by passport
                         req.login(user, function (err) {
                             if (err) {
@@ -111,22 +97,20 @@ module.exports = function (app, models) {
                     }
                 },
                 function (err) {
+                    console.log('in register 4');
+                    console.log(err);
                     res.status(400).send(err);
                 });
     }
 
-
-    // Author: Sesha Sai Srivatsav
     // Finds user by username
     function localStrategy(username, password, done) {
         userModel
             .findUserByUsername(username)
-            .then(
-                function (user) {
+            .then(function (user) {
 
                     if (user && bcrypt.compareSync(password, user.password)) {
                         done(null, user);
-
                     } else {
                         done("Error in login!", null);
                     }
@@ -136,13 +120,11 @@ module.exports = function (app, models) {
                 });
     }
 
-    // Author: Sesha Sai Srivatsav
     // Serializes the user
     function serializeUser(user, done) {
         done(null, user);
     }
 
-    // Author: Sesha Sai Srivatsav
     // Deserialises the user
     // Finds the user when userId is given
     function deserializeUser(user, done) {
@@ -158,16 +140,11 @@ module.exports = function (app, models) {
             );
     }
 
-
-    // Author: Sesha Sai Srivatsav
     // A user can login
     function login(req, res) {
-        console.log('Here');
         let user = req.user;
         res.json(user);
     }
-
-    // Author: Sesha Sai Srivatsav
     // Checks whether the user is logged in
     function loggedIn(req, res) {
         if (req.isAuthenticated()) {

@@ -30,11 +30,6 @@
 
         return api;
         /*functions are implemented below*/
-               ////////////////////////////////////////////////////////////////////////////////////////////////////
-        //                      Developed by Anvita                                                      //
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
         function findUserById1(userId) {
             var url = "/api/user1/" + userId;
@@ -43,11 +38,8 @@
 
  //   .rateStudent(StudentID, rating, faculty)
 
-        // anvita
         function rateStudent(StudentID, rating1) {
-
             var url = "/api/rateStudent/" +StudentID;
-
             return $http.put(url, rating1);
         }
 
@@ -56,7 +48,6 @@
         //                      Developed by Srivatsav                                                      //
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // Working code. After Anvita's function is fixed
         //Decomissioned
         // function register(username,password, firstName, lastName, email, usertype) {
         //

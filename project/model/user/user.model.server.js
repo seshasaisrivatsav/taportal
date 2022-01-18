@@ -133,8 +133,10 @@ module.exports = function () {
     }
 
     // Creates a new user Object
-    function createUser(user){
-        return  User.create(user);
+    function createUser(user) {
+        console.log('mesa');
+        console.log(user);
+        return User.create(user);
     }
 
     function updateResumeOfStudent(userId, resume) {

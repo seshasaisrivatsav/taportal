@@ -36,14 +36,11 @@ module.exports = function () {
                 feedback: String
             }
         ],
-        //Fields related to the Faculty
         myCourses:[
             {
                 courseName: String //Consists of Course ID + Course Name
-
             }
         ]
-
     }, {collection: 'taportal.user'});
     return UserSchema;
 };

@@ -1,6 +1,6 @@
 module.exports = function (app, models) {
 
-    var applicationModel = models.applicationModel;
+    const applicationModel = models.applicationModel;
 
     app.post("/api/user/:userId/application", createApplication);
     app.get("/api/application/:applicationId", findApplicationById);
@@ -8,17 +8,11 @@ module.exports = function (app, models) {
     app.put("/api/application/:applicationId", updateApplication);
     // app.get("/api/findallapplications", findallapplications);
     app.get("/api/user/:userId/application", findApplicationForUser);
-
     app.put("/api/GiveDecisionforApp/:appId/decision/:decision", GiveDecisionforApp);
 
     function GiveDecisionforApp(req, res) {
-
         var aid = req.params.appId;
         var decision = req.params.decision;
-
-        console.log("in server");
-        console.log(decision);
-        console.log(aid);
 
         applicationModel.GiveDecisionforApp(aid, decision)
             .then(
@@ -36,10 +30,8 @@ module.exports = function (app, models) {
 
     // var url = "/api/ApplicationForPosition/" +posId;
     app.get("/api/ApplicationForPosition/:applicationId", findApplicationsForPosition);
-
     function findApplicationsForPosition(req, res) {
         var aid = req.params.applicationId;
-
         applicationModel.findApplicationsForPosition(aid)
             .then(
                 function (application) {
